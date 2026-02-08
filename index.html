@@ -144,10 +144,11 @@ nav {
 }
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--accent);
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
+  word-spacing: -2px;
   text-transform: uppercase;
   margin-bottom: 20px;
   opacity: 0;
@@ -311,6 +312,35 @@ nav {
   margin-bottom: 24px;
 }
 .problem p {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 640px;
+  line-height: 1.75;
+}
+
+/* ─── SOLUTION ─── */
+.solution {
+  padding: 0 0 80px;
+}
+.solution .solution-label {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.solution .statement {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+.solution p {
   font-size: 16px;
   color: var(--text-dim);
   max-width: 640px;
@@ -627,7 +657,7 @@ footer a:hover { color: var(--accent); }
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
       Snapper
-      <span class="nav-tag">AAF</span>
+      <span class="nav-tag">OPEN SOURCE</span>
     </div>
     <div class="nav-links">
       <a href="#features">Features</a>
@@ -644,7 +674,7 @@ footer a:hover { color: var(--accent); }
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow">Agent Application Firewall</div>
+    <div class="hero-eyebrow">The first open-source Agent Application Firewall (AAF)</div>
     <h1>Your agent keeps <span class="accent">full power.</span><br>You keep full control.</h1>
     <p class="hero-sub">Snapper hooks into your AI agent's tool pipeline and evaluates every action before it executes. Approve sensitive operations from Telegram. Keep PII in an encrypted vault the agent never touches. Open source, MIT licensed.</p>
     <div class="hero-actions">
@@ -692,8 +722,17 @@ footer a:hover { color: var(--accent); }
 <section class="problem">
   <div class="container">
     <h2>The problem</h2>
-    <div class="statement">AI agents can run any command, fill payment forms, access credential files, and install plugins — with zero oversight.</div>
-    <p>Today you either trust the agent completely and accept the risk, or restrict it so heavily it can barely function. Snapper eliminates this tradeoff. Agents keep their full capability set. You approve what matters from your phone.</p>
+    <div class="statement">Today, AI agents can run any command, fill payment forms, access credential files, and install plugins — with zero oversight.</div>
+    <p>Today you either trust the agent completely and accept the risk, or restrict it so heavily it can barely function.</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <h2 class="solution-label">The solution</h2>
+    <div class="statement">Snapper eliminates the tradeoff. Your agent keeps its full capabilities. You approve what matters from your phone.</div>
+    <p>Snapper hooks into your agent's tool pipeline and evaluates every action against configurable rules — before it executes. Sensitive operations route to Telegram for human approval. Your PII lives in an encrypted vault the agent never touches. The result: full agent power with full human control.</p>
   </div>
 </section>
 
