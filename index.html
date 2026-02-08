@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snapper — The Open-Source Agent Application Firewall</title>
+<meta name="description" content="Snapper gives your AI agents secure access to their full capabilities. PII vault, Telegram approvals, fail-closed rule engine. Supports Claude Code, Cursor, Windsurf, Cline, OpenClaw. MIT licensed.">
+<meta property="og:title" content="Snapper — Agent Application Firewall">
+<meta property="og:description" content="Open-source firewall for AI agents. PII vault + Telegram approvals + 15 rule types. Your agent keeps full power. You keep full control.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://snapper.bot">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Snapper — Agent Application Firewall">
+<meta name="twitter:description" content="Open-source firewall for AI agents. PII vault + Telegram approvals + 15 rule types.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #06090f;
+  --bg-elevated: #0c1119;
+  --bg-card: #0f1520;
+  --border: #1a2233;
+  --border-bright: #243044;
+  --text: #c8cdd5;
+  --text-dim: #6b7a8d;
+  --text-bright: #e8ecf1;
+  --accent: #10b981;
+  --accent-dim: rgba(16, 185, 129, 0.12);
+  --accent-glow: rgba(16, 185, 129, 0.06);
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-display);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(6, 9, 15, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text-bright);
+  letter-spacing: -0.3px;
+}
+.nav-brand svg { flex-shrink: 0; }
+.nav-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--text-bright); text-decoration: none; }
+.btn-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--text-bright);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 6px;
+  transition: opacity 0.15s;
+}
+.btn-gh:hover { opacity: 0.88; text-decoration: none; }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 140px 0 80px;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  max-width: 780px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.35s;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.5s;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  transition: all 0.15s;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.2);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 32px rgba(16, 185, 129, 0.3); text-decoration: none; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border-bright);
+  transition: all 0.15s;
+}
+.btn-secondary:hover { border-color: var(--text-dim); color: var(--text-bright); text-decoration: none; }
+
+/* ─── CODE SNIPPET ─── */
+.hero-code {
+  margin-top: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.65s;
+}
+.code-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+.code-dot { width: 10px; height: 10px; border-radius: 50%; }
+.code-dot:nth-child(1) { background: #ef4444; }
+.code-dot:nth-child(2) { background: #f59e0b; }
+.code-dot:nth-child(3) { background: #22c55e; }
+.code-bar span {
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.code-body {
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--text-dim);
+  overflow-x: auto;
+}
+.code-body .cmd { color: var(--accent); }
+.code-body .comment { color: #4a5568; }
+.code-body .arg { color: var(--amber); }
+
+/* ─── AGENTS BAR ─── */
+.agents-bar {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.agents-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.agents-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.agent-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-bright);
+  transition: border-color 0.15s;
+}
+.agent-chip:hover { border-color: var(--accent); }
+.agent-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+/* ─── PROBLEM ─── */
+.problem { padding: 80px 0; }
+.problem h2 {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--red);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.problem .statement {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+.problem p {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 640px;
+  line-height: 1.75;
+}
+
+/* ─── FEATURES ─── */
+.features { padding: 40px 0 80px; }
+.features-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.features-header h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.features-header p {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 520px;
+  margin: 0 auto;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+}
+.feature-card.highlight {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.03) 100%);
+}
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.feature-icon.green { background: rgba(16, 185, 129, 0.12); }
+.feature-icon.blue { background: rgba(59, 130, 246, 0.12); }
+.feature-icon.amber { background: rgba(245, 158, 11, 0.12); }
+.feature-icon.red { background: rgba(239, 68, 68, 0.12); }
+.feature-icon.purple { background: rgba(168, 85, 247, 0.12); }
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.feature-card .mono-detail {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 6px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* ─── ARCHITECTURE ─── */
+.architecture { padding: 80px 0; border-top: 1px solid var(--border); }
+.architecture h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.architecture .subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+.arch-diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 32px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-dim);
+  overflow-x: auto;
+  white-space: pre;
+  text-align: center;
+}
+.arch-diagram .node { color: var(--text-bright); font-weight: 600; }
+.arch-diagram .allow { color: var(--accent); }
+.arch-diagram .deny { color: var(--red); }
+.arch-diagram .approve { color: var(--amber); }
+
+/* ─── COMPARISON ─── */
+.comparison { padding: 80px 0; border-top: 1px solid var(--border); }
+.comparison h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.comparison .subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.comp-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 760px;
+}
+.comp-table th {
+  padding: 16px 14px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-bright);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+}
+.comp-table th:first-child { text-align: left; min-width: 200px; }
+.comp-table th.snapper-col {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.comp-table td {
+  padding: 12px 14px;
+  text-align: center;
+  border-bottom: 1px solid rgba(26, 34, 51, 0.6);
+  color: var(--text-dim);
+}
+.comp-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+}
+.comp-table td.snapper-col { background: rgba(16, 185, 129, 0.02); }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table .cat-row td {
+  padding: 10px 14px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+.check { color: var(--accent); font-weight: 700; font-size: 15px; }
+.cross { color: #374151; font-size: 14px; }
+.partial { color: var(--amber); font-size: 14px; }
+.comp-note {
+  margin-top: 16px;
+  padding: 14px 20px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.comp-note strong { color: var(--accent); }
+
+/* ─── STATS ─── */
+.stats { padding: 60px 0; border-top: 1px solid var(--border); }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.stat-card {
+  text-align: center;
+  padding: 28px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.stat-card .number {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+.stat-card .label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* ─── CTA ─── */
+.cta {
+  padding: 80px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.cta p {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-code {
+  display: inline-block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.cta-code .cmd { color: var(--accent); }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+footer p {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+footer a { color: var(--text-dim); }
+footer a:hover { color: var(--accent); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links a:not(.btn-gh) { display: none; }
+  .hero { padding: 110px 0 60px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .agents-grid { gap: 8px; }
+  .agent-chip { padding: 8px 14px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Snapper
+      <span class="nav-tag">AAF</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#comparison">Compare</a>
+      <a href="https://github.com/jmckinley/snapper" class="btn-gh">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Agent Application Firewall</div>
+    <h1>Your agent keeps <span class="accent">full power.</span><br>You keep full control.</h1>
+    <p class="hero-sub">Snapper hooks into your AI agent's tool pipeline and evaluates every action before it executes. Approve sensitive operations from Telegram. Keep PII in an encrypted vault the agent never touches. Open source, MIT licensed.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/jmckinley/snapper" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+      <a href="#features" class="btn-secondary">See how it works</a>
+    </div>
+    <div class="hero-code">
+      <div class="code-bar">
+        <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
+        <span>terminal</span>
+      </div>
+      <div class="code-body">
+<span class="comment"># Install and start Snapper</span>
+<span class="cmd">git clone</span> https://github.com/jmckinley/snapper.git
+<span class="cmd">cd</span> snapper && <span class="cmd">./setup.sh</span>
+
+<span class="comment"># Auto-detect your agent, register, and apply security profile</span>
+<span class="cmd">python</span> scripts/snapper-cli.py <span class="arg">init</span>
+
+<span class="comment"># That's it. Snapper is protecting your agent.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS BAR -->
+<section class="agents-bar">
+  <div class="container">
+    <div class="agents-label">Supported agents — auto-detected, one-command setup</div>
+    <div class="agents-grid">
+      <div class="agent-chip"><span class="agent-dot"></span>Claude Code</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Cursor</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Windsurf</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Cline</div>
+      <div class="agent-chip"><span class="agent-dot"></span>OpenClaw</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Custom</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <h2>The problem</h2>
+    <div class="statement">AI agents can run any command, fill payment forms, access credential files, and install plugins — with zero oversight.</div>
+    <p>Today you either trust the agent completely and accept the risk, or restrict it so heavily it can barely function. Snapper eliminates this tradeoff. Agents keep their full capability set. You approve what matters from your phone.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header">
+      <h2>Three things no one else does</h2>
+      <p>Snapper enables full agent capability instead of restricting it.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card highlight">
+        <div class="feature-icon green">🔐</div>
+        <h3>PII Vault</h3>
+        <p>Your credit cards, addresses, and SSNs live in Fernet-encrypted storage. The agent only sees tokens like <code>{{SNAPPER_VAULT:a7f3b2c1}}</code>. When it fills a payment form, you get a Telegram notification showing masked values, the destination, and the dollar amount. Approve from your phone.</p>
+        <span class="mono-detail">AES-128-CBC + HMAC-SHA256 · HKDF · 30s TTL · domain-locked tokens</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon blue">📱</div>
+        <h3>Telegram Command Center</h3>
+        <p>Approve actions, manage rules, test commands, control your PII vault, and hit the emergency kill switch — all from your phone. No dashboard to watch. When a sensitive action fires, you get a rich notification with [Approve] / [Deny] buttons. Five seconds, done.</p>
+        <span class="mono-detail">/block · /vault · /test · /rules · /purge · /pii</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon red">🛡️</div>
+        <h3>Defense in Depth</h3>
+        <p>15 rule types with a fail-closed engine. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills from the ClawHavoc campaign. Scans every tool call for raw PII across 30+ patterns. No rules = deny. Errors = deny.</p>
+        <span class="mono-detail">CVE-2026-25253 · CVE-2026-25157 · CVE-2026-24891</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon amber">⚡</div>
+        <h3>Adaptive Trust Scoring</h3>
+        <p>Agents earn autonomy through consistent good behavior. Violations reduce trust, which tightens rate limits. Score ranges from 0.0 to 1.0 and directly affects what the agent can do.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon purple">🔍</div>
+        <h3>Raw PII Interception</h3>
+        <p>Even if the agent finds PII by reading a file or scraping a website, Snapper catches it. 30+ regex patterns scan every tool call for credit cards, SSNs, emails, API keys, and more — across US, UK, Canada, and Australia formats.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon green">📊</div>
+        <h3>Audit & Observability</h3>
+        <p>Immutable, BRIN-indexed audit trail. Every security event logged with request correlation IDs, agent context, and full JSON details. Activity timeline, filterable log viewer, and exportable stats.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="architecture" id="architecture">
+  <div class="container">
+    <h2>How it works</h2>
+    <p class="subtitle">Snapper hooks into the PreToolUse pipeline. Every tool call is evaluated before execution.</p>
+    <div class="arch-diagram"><span class="node">AI Agent</span> wants to run a command / fill a form / install a skill
+        │
+        ▼
+   <span class="node">Hook intercepts</span> (PreToolUse — auto-installed)
+        │
+        ▼
+   <span class="node">Snapper</span> evaluates (15 rule types · priority-sorted · fail-closed)
+        │
+        ├── <span class="allow">ALLOW</span>    → agent proceeds (vault tokens resolved)
+        ├── <span class="deny">DENY</span>     → blocked, Telegram alert sent
+        └── <span class="approve">APPROVAL</span> → Telegram notification with [Approve] / [Deny]
+                     → agent pauses, polls for your decision
+                     → on approve: vault tokens decrypted, 30s TTL, one read</div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <h2>How Snapper compares</h2>
+    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only open-source tool at the agent-internet boundary that enables full capability.</p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="snapper-col">Snapper</th>
+            <th>LlamaFirewall</th>
+            <th>Cloudflare</th>
+            <th>Radware</th>
+            <th>GitHub</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="6">Snapper-Unique</td></tr>
+          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>HITM via Telegram</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Malicious Skill Blocking</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="6">Architecture</td></tr>
+          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Platform</td><td style="font-size:12px">Domain list</td></tr>
+          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
+          <tr><td>Open Source</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Self-Hosted</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Multi-Agent (5+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="comp-note">
+      <strong>Note:</strong> Snapper and LlamaFirewall are complementary, not competitive. LlamaFirewall operates <em>inside</em> the agent (prompt injection, CoT auditing, code analysis). Snapper operates at the <em>boundary</em> between the agent and the outside world. Use both for defense in depth.
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="number">15</div>
+        <div class="label">Rule types</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">410</div>
+        <div class="label">Tests (unit + E2E)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">341+</div>
+        <div class="label">Malicious skills blocked</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">30+</div>
+        <div class="label">PII detection patterns</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">6</div>
+        <div class="label">Agents supported</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">3</div>
+        <div class="label">CVEs mitigated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Get started in 5 minutes</h2>
+    <p>Docker, one command, and your agent is protected. MIT licensed, free forever.</p>
+    <div class="cta-code">
+      <span class="cmd">git clone</span> https://github.com/jmckinley/snapper.git && <span class="cmd">cd</span> snapper && <span class="cmd">./setup.sh</span>
+    </div>
+    <br>
+    <div class="hero-actions" style="justify-content: center; opacity: 1;">
+      <a href="https://github.com/jmckinley/snapper" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+      <a href="https://github.com/jmckinley/snapper/blob/main/docs/GETTING_STARTED.md" class="btn-secondary">Read the docs</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Snapper — Agent Application Firewall · MIT License · <a href="https://github.com/jmckinley/snapper">GitHub</a> · <a href="https://github.com/jmckinley/snapper/issues">Issues</a> · <a href="https://github.com/jmckinley/snapper/discussions">Discussions</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
