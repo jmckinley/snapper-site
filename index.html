@@ -570,6 +570,68 @@ nav {
   margin-top: 4px;
 }
 
+/* ─── SECURITY & TRUST ─── */
+.security-trust {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.security-trust h2 {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.security-intro {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.trust-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+}
+.trust-card:hover {
+  border-color: var(--border-bright);
+}
+.trust-icon {
+  margin-bottom: 14px;
+}
+.trust-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+}
+.trust-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.trust-card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.trust-card a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─── CTA ─── */
 .cta {
   padding: 80px 0;
@@ -664,6 +726,7 @@ footer a:hover { color: var(--accent); }
       <a href="#features">Features</a>
       <a href="#architecture">Architecture</a>
       <a href="#comparison">Compare</a>
+      <a href="#security-trust">Security</a>
       <a href="https://github.com/jmckinley/snapper" class="btn-gh">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
@@ -861,7 +924,7 @@ footer a:hover { color: var(--accent); }
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">410</div>
+        <div class="number">526</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
@@ -879,6 +942,44 @@ footer a:hover { color: var(--accent); }
       <div class="stat-card">
         <div class="number">3</div>
         <div class="label">CVEs mitigated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY & TRUST -->
+<section class="security-trust" id="security-trust">
+  <div class="container">
+    <h2>Security &amp; trust</h2>
+    <p class="security-intro">Snapper is a security tool — so we hold ourselves to the same standard we enforce on agents. Here's how we protect the project and our users.</p>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Vulnerability Disclosure</h3>
+        <p>Report security issues privately via <a href="https://github.com/jmckinley/snapper/security/advisories">GitHub Security Advisories</a>. We acknowledge reports within 72 hours and follow a 90-day coordinated disclosure timeline.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>No Security Guarantee</h3>
+        <p>Snapper enhances your security posture but does not guarantee complete protection. No security tool can. You are responsible for your own configuration, risk assessment, and compliance. See <a href="https://github.com/jmckinley/snapper/blob/main/TERMS.md">TERMS.md</a>.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>MIT Licensed, As-Is</h3>
+        <p>Snapper is provided "as is" without warranty of any kind. No liability for damages arising from use. Free forever, open source forever. Full license and supplementary terms in the <a href="https://github.com/jmckinley/snapper">repository</a>.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Contributor Verification</h3>
+        <p>All contributions require a Developer Certificate of Origin (DCO) sign-off, certifying that contributors have the right to submit their code and agree to the project's license terms.</p>
       </div>
     </div>
   </div>
@@ -906,4 +1007,9 @@ footer a:hover { color: var(--accent); }
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p>Snapper — Agent Application Firewall · MIT License · <a href="https://github.com/jmckinley/snapper">GitHub</a> · <a href="https://github.com/jmckinley/snapper/issues">Issues</a> · <a href="https://github.com/jmckinley/snapper/discussions">Discussions</a> · <a href="/cdn-cgi/l/email-protection#8ae0e5e2e4caedf8efebfeecebe6e6f9fcefe4fefff8eff9a4e9e5e7">Co
+    <p>Snapper &mdash; Agent Application Firewall &middot; MIT License &middot; <a href="https://github.com/jmckinley/snapper">GitHub</a> &middot; <a href="https://github.com/jmckinley/snapper/issues">Issues</a> &middot; <a href="https://github.com/jmckinley/snapper/discussions">Discussions</a> &middot; <a href="https://github.com/jmckinley/snapper/security/advisories">Security</a> &middot; <a href="mailto:john&#64;greatfallsventures.com">Contact</a> &middot; <a href="/terms.html">Terms</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
