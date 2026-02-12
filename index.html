@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/snapper-site/">
 <title>Snapper — The Open-Source Agent Application Firewall</title>
-<meta name="description" content="Snapper gives your AI agents secure access to their full capabilities. PII vault, Telegram approvals, fail-closed rule engine. Supports Claude Code, Cursor, Windsurf, Cline, OpenClaw. MIT licensed.">
+<meta name="description" content="Snapper gives your AI agents secure access to their full capabilities. PII vault, Telegram/Slack approvals, fail-closed rule engine. Supports Claude Code, Cursor, Windsurf, Cline, OpenClaw. MIT licensed.">
 <meta property="og:title" content="Snapper — Agent Application Firewall">
-<meta property="og:description" content="Open-source firewall for AI agents. PII vault + Telegram approvals + 15 rule types. Your agent keeps full power. You keep full control.">
+<meta property="og:description" content="Open-source firewall for AI agents. PII vault + Telegram/Slack approvals + 15 rule types. Your agent keeps full power. You keep full control.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapper.bot">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Snapper — Agent Application Firewall">
-<meta name="twitter:description" content="Open-source firewall for AI agents. PII vault + Telegram approvals + 15 rule types.">
+<meta name="twitter:description" content="Open-source firewall for AI agents. PII vault + Telegram/Slack approvals + 15 rule types.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -751,7 +751,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="hero-eyebrow">The first open-source Agent Application Firewall (AAF)</div>
     <h1>Your agent keeps <span class="accent">full power.</span><br>You keep full control.</h1>
-    <p class="hero-sub">Snapper hooks into your AI agent's tool pipeline and evaluates every action before it executes. Approve sensitive operations from Telegram. Keep PII in an encrypted vault the agent never touches. Open source, MIT licensed.</p>
+    <p class="hero-sub">Snapper hooks into your AI agent's tool pipeline and evaluates every action before it executes. Approve sensitive operations from Telegram or Slack. Keep PII in an encrypted vault the agent never touches. Open source, MIT licensed.</p>
     <div class="hero-actions">
       <a href="https://github.com/jmckinley/snapper" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -807,7 +807,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <h2 class="solution-label">The solution</h2>
     <div class="statement">Snapper eliminates the tradeoff. Your agent keeps its full capabilities. You approve what matters from your phone.</div>
-    <p>Snapper hooks into your agent's tool pipeline and evaluates every action against configurable rules — before it executes. Sensitive operations route to Telegram for human approval. Your PII lives in an encrypted vault the agent never touches. The result: full agent power with full human control.</p>
+    <p>Snapper hooks into your agent's tool pipeline and evaluates every action against configurable rules — before it executes. Sensitive operations route to Telegram or Slack for human approval. Your PII lives in an encrypted vault the agent never touches. The result: full agent power with full human control.</p>
   </div>
 </section>
 
@@ -823,15 +823,15 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card highlight">
         <div class="feature-icon green">🔐</div>
         <h3>PII Vault</h3>
-        <p>Your credit cards, addresses, and SSNs live in Fernet-encrypted storage. The agent only sees tokens like <code>{{SNAPPER_VAULT:a7f3b2c1e4d5f6a8...}}</code>. When it fills a payment form, you get a Telegram notification showing masked values, the destination, and the dollar amount. Approve from your phone.</p>
+        <p>Your credit cards, addresses, and SSNs live in Fernet-encrypted storage. The agent only sees tokens like <code>{{SNAPPER_VAULT:a7f3b2c1e4d5f6a8...}}</code>. When it fills a payment form, you get a Telegram or Slack notification showing masked values, the destination, and the dollar amount. Approve from your phone or desktop.</p>
         <span class="mono-detail">AES-128-CBC + HMAC-SHA256 · HKDF · 30s TTL · domain-locked tokens</span>
       </div>
 
       <div class="feature-card highlight">
         <div class="feature-icon blue">📱</div>
-        <h3>Telegram Command Center</h3>
-        <p>Approve actions, manage rules, test commands, control your PII vault, and hit the emergency kill switch — all from your phone. No dashboard to watch. When a sensitive action fires, you get a rich notification with [Approve] / [Deny] buttons. Five seconds, done.</p>
-        <span class="mono-detail">/block · /vault · /test · /rules · /purge · /pii</span>
+        <h3>Telegram & Slack Command Center</h3>
+        <p>Approve actions, manage rules, test commands, control your PII vault, and hit the emergency kill switch — all from your phone or desktop. Choose Telegram (inline buttons) or Slack (slash commands + Block Kit). When a sensitive action fires, you get a rich notification with [Approve] / [Deny] buttons. Five seconds, done.</p>
+        <span class="mono-detail">Telegram: /block · /vault · /test · /rules · /pii &nbsp;|&nbsp; Slack: /snapper-block · /snapper-vault · /snapper-test</span>
       </div>
 
       <div class="feature-card highlight">
@@ -877,8 +877,8 @@ footer a:hover { color: var(--accent); }
    <span class="node">Snapper</span> evaluates (15 rule types · priority-sorted · fail-closed)
         │
         ├── <span class="allow">ALLOW</span>    → agent proceeds (vault tokens resolved)
-        ├── <span class="deny">DENY</span>     → blocked, Telegram alert sent
-        └── <span class="approve">APPROVAL</span> → Telegram notification with [Approve] / [Deny]
+        ├── <span class="deny">DENY</span>     → blocked, Telegram/Slack alert sent
+        └── <span class="approve">APPROVAL</span> → Telegram/Slack notification with [Approve] / [Deny]
                      → agent pauses, polls for your decision
                      → on approve: vault tokens decrypted, 30s TTL, one read</div>
   </div>
@@ -904,7 +904,7 @@ footer a:hover { color: var(--accent); }
         <tbody>
           <tr class="cat-row"><td colspan="6">Snapper-Unique</td></tr>
           <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>HITM via Telegram</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>HITM via Telegram/Slack</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Malicious Skill Blocking</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
@@ -935,7 +935,7 @@ footer a:hover { color: var(--accent); }
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">624</div>
+        <div class="number">665</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
