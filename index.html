@@ -961,6 +961,7 @@ footer a:hover { color: var(--accent); }
     <div class="agents-grid">
       <div class="agent-chip"><span class="agent-dot"></span>OpenAI SDK</div>
       <div class="agent-chip"><span class="agent-dot"></span>Anthropic SDK</div>
+      <div class="agent-chip"><span class="agent-dot"></span>Gemini SDK</div>
       <div class="agent-chip"><span class="agent-dot"></span>Claude Code</div>
       <div class="agent-chip"><span class="agent-dot"></span>Cursor</div>
       <div class="agent-chip"><span class="agent-dot"></span>ChatGPT</div>
@@ -1234,42 +1235,43 @@ client = wrap(OpenAI())
             <th class="snapper-col">Snapper</th>
             <th>RunLayer</th>
             <th>LlamaFirewall</th>
-            <th>Lasso Security</th>
             <th>Cloudflare AI GW</th>
             <th>Prompt Security</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="cat-row"><td colspan="7">Threat Detection</td></tr>
-          <tr><td>Kill Chain Detection</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Behavioral Baselines</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Composite Threat Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Heuristic Signal Extraction</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Security Feed Auto-Mitigation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="7">Data Protection</td></tr>
-          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="7">Governance</td></tr>
-          <tr><td>Bot-in-the-Loop Approvals</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Hybrid Approval Policies</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Telegram & Slack Bot Alerting</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>CEF/SIEM Integration</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr class="cat-row"><td colspan="7">Architecture</td></tr>
-          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">MCP gateway</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Prompt layer</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Prompt layer</td></tr>
-          <tr><td>Non-MCP Agent Support</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable + Protect</td><td style="font-size:12px">Enable + Govern</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
-          <tr><td>Self-Hosted / On-Prem</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>SSO / Identity Provider</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Multi-Agent (10+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr class="cat-row"><td colspan="6">Threat Detection</td></tr>
+          <tr><td>Kill Chain Detection</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Behavioral Baselines</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Composite Threat Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Heuristic Signal Extraction</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Security Feed Auto-Mitigation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="6">Data Protection</td></tr>
+          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="6">Governance</td></tr>
+          <tr><td>Bot-in-the-Loop Approvals</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Hybrid Approval Policies</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Telegram & Slack Bot Alerting</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>CEF/SIEM Integration</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Platform Admin Console</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr class="cat-row"><td colspan="6">Architecture</td></tr>
+          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">MCP gateway</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Prompt layer</td></tr>
+          <tr><td>Non-MCP Agent Support</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable + Protect</td><td style="font-size:12px">Enable + Govern</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
+          <tr><td>Self-Hosted / On-Prem</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>SSO / Identity Provider</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Multi-Tenant Isolation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Multi-Agent (10+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
         </tbody>
       </table>
     </div>
     <div class="comp-note">
-      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer — with a bot-in-the-loop approval model that routes sensitive decisions to Telegram and Slack bots for human sign-off. RunLayer ($11M seed, Khosla/Felicis) secures the MCP protocol layer with threat detection and fine-grained permissions, but is limited to MCP-based agents and lacks dedicated bot-based alerting channels. Prompt-layer tools (LlamaFirewall, Lasso, Prompt Security) operate inside the agent on prompts and responses. Snapper is the only solution that covers all agent types — MCP servers, SDK-based agents, CLI tools, and browser-based agents — through <a href="#integration">SDK wrappers, shell hooks, browser extension, and MCP support</a>, with hybrid approval policies and real-time alerting via Telegram bots, Slack bots, webhooks, and email. Use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
+      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer — with a bot-in-the-loop approval model that routes sensitive decisions to Telegram and Slack bots for human sign-off. RunLayer ($11M seed, Khosla/Felicis) secures the MCP protocol layer with threat detection and fine-grained permissions, but is limited to MCP-based agents and lacks dedicated bot-based alerting channels. Prompt-layer tools (LlamaFirewall, Prompt Security) operate inside the agent on prompts and responses. Snapper is the only solution that covers all agent types — MCP servers, SDK-based agents, CLI tools, and browser-based agents — through <a href="#integration">SDK wrappers, shell hooks, browser extension, and MCP support</a>, with hybrid approval policies, multi-tenant isolation, platform admin provisioning, and real-time alerting via Telegram bots, Slack bots, webhooks, and email. Use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
     </div>
   </div>
 </section>
@@ -1283,7 +1285,7 @@ client = wrap(OpenAI())
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">950+</div>
+        <div class="number">1,750+</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
@@ -1353,6 +1355,10 @@ client = wrap(OpenAI())
         <p>Route alerts and approval requests through Telegram bots, Slack bots (Socket Mode with slash commands), webhook delivery to your endpoints, and Celery-based email notifications. Per-org routing rules send alerts to the right channel for the right team.</p>
       </div>
       <div class="enterprise-card">
+        <h3>Platform Admin Console</h3>
+        <p>Meta admin dashboard for customer provisioning, org management, impersonation for support, feature flags, and cross-org audit. Provision a new customer with one API call — they get an invite email and a guided setup wizard.</p>
+      </div>
+      <div class="enterprise-card">
         <h3>Dedicated Support</h3>
         <p>Enterprise customers get priority support, custom integration assistance, deployment guidance, and a dedicated technical account manager.</p>
       </div>
@@ -1391,8 +1397,8 @@ client = wrap(OpenAI())
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>950+ Automated Tests</h3>
-        <p>Unit tests, integration tests, E2E Playwright tests, live API tests, and a dedicated threat simulator that validates all 13 signal types and 7 kill chains against a running instance. Every commit is tested.</p>
+        <h3>1,750+ Automated Tests</h3>
+        <p>1,315 unit tests, 168 Playwright E2E tests, 85 multi-tenant isolation tests, 90 integration tests, 95 live API tests, and a 13-scenario threat simulator that validates all signal types and kill chains. Every commit is tested.</p>
       </div>
     </div>
   </div>
