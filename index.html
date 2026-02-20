@@ -113,6 +113,8 @@ nav {
   transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--text-bright); text-decoration: none; }
+.nav-links a.btn-demo { color: #fff; }
+.nav-links a.btn-demo:hover { color: #fff; }
 .btn-signin {
   display: inline-flex;
   align-items: center;
@@ -786,7 +788,7 @@ footer a:hover { color: var(--accent); }
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
         Sign In
       </a>
-      <a href="mailto:john@mckinleylabs.com" class="btn-demo">Request Demo</a>
+      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-demo">Request Demo</a>
     </div>
   </div>
 </nav>
@@ -798,7 +800,7 @@ footer a:hover { color: var(--accent); }
     <h1>Your agents keep <span class="accent">full power.</span><br>Your SOC keeps full control.</h1>
     <p class="hero-sub">Snapper intercepts every AI agent action before it executes. Heuristic bad actor detection, kill chain analysis, encrypted PII vault, SIEM integration, and human-in-the-loop approvals via Telegram or Slack. Enterprise-grade security without crippling agent capability.</p>
     <div class="hero-actions">
-      <a href="mailto:john@mckinleylabs.com" class="btn-primary">
+      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Request a Demo
       </a>
@@ -859,7 +861,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="features-header">
       <h2>Built for the enterprise</h2>
-      <p>Eight capabilities no other agent security tool provides.</p>
+      <p>Nine capabilities no other agent security tool provides.</p>
     </div>
     <div class="features-grid">
 
@@ -889,6 +891,13 @@ footer a:hover { color: var(--accent); }
         <h3>Defense in Depth</h3>
         <p>16 rule types with a fail-closed engine. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills from the ClawHavoc campaign. Scans every tool call for raw PII across 30+ regex patterns. Threat score overrides add behavioral intelligence on top of static rules. No rules = deny. Errors = deny.</p>
         <span class="mono-detail">16 rule types &middot; 341+ malicious skills &middot; 30+ PII patterns &middot; CVE coverage</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon amber">📡</div>
+        <h3>Security Feed Auto-Mitigation</h3>
+        <p>Snapper continuously monitors three security intelligence feeds and automatically creates mitigation rules when new vulnerabilities affect your agents' tools. The NVD (National Vulnerability Database) provides CVE data from NIST. The GitHub Advisory Database covers open-source package vulnerabilities. ClawHub — Snapper's own feed at api.clawhub.io — delivers agent-specific threat intelligence. When a new CVE matches an active agent tool, Snapper auto-generates deny or approval rules before the vulnerability can be exploited.</p>
+        <span class="mono-detail">NVD/NIST &middot; GitHub Advisories &middot; ClawHub agent intel &middot; auto-generated deny/approval rules</span>
       </div>
 
       <div class="feature-card">
@@ -973,6 +982,7 @@ footer a:hover { color: var(--accent); }
           <tr><td>Behavioral Baselines</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Composite Threat Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Heuristic Signal Extraction</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td>Security Feed Auto-Mitigation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr class="cat-row"><td colspan="7">Data Protection</td></tr>
           <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
@@ -1028,6 +1038,10 @@ footer a:hover { color: var(--accent); }
       <div class="stat-card">
         <div class="number">&lt;2ms</div>
         <div class="label">Threat analysis latency</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">3</div>
+        <div class="label">Security feeds monitored</div>
       </div>
       <div class="stat-card">
         <div class="number">40+</div>
@@ -1116,7 +1130,7 @@ footer a:hover { color: var(--accent); }
     <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with full threat detection, PII protection, and human-in-the-loop governance.</p>
     <br>
     <div class="hero-actions" style="justify-content: center; opacity: 1;">
-      <a href="mailto:john@mckinleylabs.com" class="btn-primary">
+      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Request a Demo
       </a>
@@ -1134,7 +1148,7 @@ footer a:hover { color: var(--accent); }
 <footer>
   <div class="container">
     <p style="margin-bottom: 6px;">&copy; 2026 McKinley Labs LLC &mdash; Snapper Agent Application Firewall</p>
-    <p><a href="mailto:john@mckinleylabs.com">Contact Sales</a> &middot; <a href="mailto:security@mckinleylabs.com">Security</a> &middot; <a href="https://app.snapperprotect.com">Dashboard</a> &middot; <a href="terms.html">Terms</a></p>
+    <p><a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!">Contact Sales</a> &middot; <a href="mailto:security@mckinleylabs.com">Security</a> &middot; <a href="https://app.snapperprotect.com">Dashboard</a> &middot; <a href="terms.html">Terms</a></p>
   </div>
 </footer>
 
