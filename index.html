@@ -1002,8 +1002,8 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card highlight">
         <div class="feature-icon red">🎯</div>
         <h3>Bad Actor Detection Engine</h3>
-        <p>Heuristic threat detection on every request. 13 signal types extracted in under 2ms. 7 kill chain state machines detect multi-step attacks: data exfiltration, credential theft, PII harvesting, encoded exfil, privilege escalation, vault extraction, and living-off-the-land. Per-agent behavioral baselines detect anomalies. Composite scoring from 0-100 with automatic deny above threshold.</p>
-        <span class="mono-detail">13 signals &middot; 7 kill chains &middot; &lt;2ms hot path &middot; behavioral baselines &middot; composite scoring</span>
+        <p>Heuristic threat detection on every request. 13 signal types extracted in under 2ms. 7 kill chain state machines detect multi-step attacks: data exfiltration, credential theft, PII harvesting, encoded exfil, privilege escalation, vault extraction, and living-off-the-land. Per-agent behavioral baselines detect anomalies. Composite scoring from 0-100 with automatic deny above threshold. Optional AI-powered threat review provides Claude-based deep analysis every 15 minutes for high-confidence verdict refinement.</p>
+        <span class="mono-detail">13 signals &middot; 7 kill chains &middot; &lt;2ms hot path &middot; behavioral baselines &middot; AI threat review</span>
       </div>
 
       <div class="feature-card highlight">
@@ -1050,7 +1050,7 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card">
         <div class="feature-icon green">📊</div>
         <h3>Traffic Discovery</h3>
-        <p>Auto-detect MCP servers and tools from live traffic. See which commands your agents use and add curated security rules with one click. 40+ known servers recognized out of the box with specialized rule packs. Unknown servers get smart defaults.</p>
+        <p>Auto-detect MCP servers and tools from live traffic. See which commands your agents use and add curated security rules with one click. 27,000+ MCP servers cataloged across 13 security categories with auto-classification. Known servers get specialized rule packs; unknown servers get smart defaults.</p>
       </div>
 
       <div class="feature-card">
@@ -1183,7 +1183,7 @@ client = wrap(OpenAI())
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <h3>MCP Server Support</h3>
-        <p>Native support for the Model Context Protocol standard. Snapper acts as a security proxy between the agent and any MCP server — GitHub, Slack, filesystem, databases, AWS, or custom servers. Auto-discovers active MCP servers from live traffic, applies curated rule packs for 40+ known servers, and generates smart defaults for unknown ones. Every tool call is evaluated before the MCP server executes it.</p>
+        <p>Native support for the Model Context Protocol standard. Snapper acts as a security proxy between the agent and any MCP server — GitHub, Slack, filesystem, databases, AWS, or custom servers. Auto-discovers active MCP servers from live traffic, with 27,000+ servers cataloged across 13 security categories. Known servers get curated rule packs; unknown servers get smart defaults. Every tool call is evaluated before the MCP server executes it.</p>
         <div class="code-snippet">
 <span class="comment"># Auto-detected: github MCP server</span>
 <span class="arg">→ Applied:</span> 5 curated security rules
@@ -1192,7 +1192,7 @@ client = wrap(OpenAI())
   <span class="cmd">DENY</span>   repos.delete, org.settings.*
         </div>
         <div class="agent-list">
-          <span>40+ known servers</span>
+          <span>27,000+ cataloged</span>
           <span>GitHub</span>
           <span>Slack</span>
           <span>Filesystem</span>
@@ -1271,7 +1271,7 @@ client = wrap(OpenAI())
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">1,850+</div>
+        <div class="number">2,000+</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
@@ -1299,8 +1299,8 @@ client = wrap(OpenAI())
         <div class="label">Security feeds monitored</div>
       </div>
       <div class="stat-card">
-        <div class="number">40+</div>
-        <div class="label">Known MCP servers</div>
+        <div class="number">27,000+</div>
+        <div class="label">MCP servers cataloged</div>
       </div>
       <div class="stat-card">
         <div class="number">4</div>
@@ -1383,7 +1383,7 @@ client = wrap(OpenAI())
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>1,850+ Automated Tests</h3>
+        <h3>2,000+ Automated Tests</h3>
         <p>1,300+ unit tests, 168 Playwright E2E tests, 85 multi-tenant isolation tests, 90 integration tests, 95 live API tests, 35 meta admin tests, and a 13-scenario threat simulator that validates all signal types and kill chains. Every commit is tested.</p>
       </div>
     </div>
