@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
 <title>Snapper — Agent Application Firewall for the Enterprise</title>
-<meta name="description" content="Snapper is the enterprise Agent Application Firewall. Bot-in-the-loop approvals, hybrid approval model, Telegram & Slack bot alerting, bad actor detection, PII vault, kill chain analysis, SIEM integration. Protect your AI agents at the boundary.">
+<meta name="description" content="Snapper is the enterprise Agent Application Firewall. Bot-in-the-loop approvals via Telegram & Slack bots, bad actor detection, PII vault, kill chain analysis, SIEM integration. Protect your AI agents at the boundary.">
 <meta property="og:title" content="Snapper — Agent Application Firewall">
-<meta property="og:description" content="Enterprise firewall for AI agents. Bot-in-the-loop approvals via Telegram & Slack bots, hybrid approval model, bad actor detection, PII vault, kill chain analysis, SIEM/SOAR integration. Your agents keep full power. You keep full control.">
+<meta property="og:description" content="Enterprise firewall for AI agents. Bot-in-the-loop approvals via Telegram & Slack bots, bad actor detection, PII vault, kill chain analysis, SIEM/SOAR integration. Your agents keep full power. You keep full control.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapperprotect.com">
 <meta name="twitter:card" content="summary_large_image">
@@ -986,7 +986,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <h2 class="solution-label">The solution</h2>
     <div class="statement">Snapper eliminates the tradeoff. A bot-in-the-loop approval model gives agents full capability while your security team keeps full visibility, real-time threat detection, and human override authority.</div>
-    <p>Snapper sits between the agent and the outside world as a bot-in-the-middle security layer. Every tool call is evaluated against configurable rules before execution. When a sensitive action is detected, Snapper pauses the agent and routes an approval request to your Telegram or Slack bot — complete with inline [Approve] / [Deny] buttons. The hybrid approval model lets you auto-approve known-safe operations, require human sign-off for risky ones, and always demand human approval for PII-protected requests. Heuristic bad actor detection identifies multi-step attack patterns. Kill chain state machines catch data exfiltration, credential theft, and privilege escalation in real time. PII lives in an AES-256-GCM encrypted vault the agent never touches. CEF/Syslog events flow to your SIEM. The result: full agent power with enterprise-grade governance.</p>
+    <p>Snapper sits between the agent and the outside world as a bot-in-the-middle security layer. Every tool call is evaluated against configurable rules before execution. Known-safe operations auto-approve instantly. Risky actions pause the agent and route an approval request to your Telegram or Slack bot — complete with inline [Approve] / [Deny] buttons. PII-protected requests always require human sign-off. Heuristic bad actor detection identifies multi-step attack patterns. Kill chain state machines catch data exfiltration, credential theft, and privilege escalation in real time. PII lives in an AES-256-GCM encrypted vault the agent never touches. CEF/Syslog events flow to your SIEM. The result: full agent power with enterprise-grade governance.</p>
   </div>
 </section>
 
@@ -995,7 +995,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="features-header">
       <h2>Built for the enterprise</h2>
-      <p>Ten capabilities no other agent security tool provides.</p>
+      <p>Nine capabilities no other agent security tool provides.</p>
     </div>
     <div class="features-grid">
 
@@ -1015,16 +1015,9 @@ footer a:hover { color: var(--accent); }
 
       <div class="feature-card highlight">
         <div class="feature-icon blue">📱</div>
-        <h3>Bot-in-the-Loop Alerting</h3>
-        <p>Snapper delivers real-time alerts and approval requests through dedicated Telegram and Slack bots. When an agent triggers a sensitive action, your bot sends a rich notification with inline [Approve] / [Deny] buttons. Approve from your phone in five seconds. Both bots support full command suites: manage rules, test commands, control your PII vault, view pending approvals, and hit the emergency kill switch. Telegram uses webhook mode with inline keyboards. Slack uses Socket Mode with 12 slash commands, Block Kit formatting, and DM-based vault management. Webhook delivery to custom endpoints and Celery-based email alerts round out the notification stack.</p>
-        <span class="mono-detail">Telegram bot &middot; Slack bot &middot; Webhook delivery &middot; Email alerts &middot; Inline approvals</span>
-      </div>
-
-      <div class="feature-card highlight">
-        <div class="feature-icon amber">🔄</div>
-        <h3>Hybrid Approval Model</h3>
-        <p>Not every action needs a human. Snapper's hybrid approval model combines three tiers: auto-approve policies for known-safe operations (read-only commands, allowlisted tools), human-required approval for risky operations (writes, deletes, external network calls), and mandatory human sign-off for any request that touches PII vault tokens. The bot-in-the-middle architecture means the agent sends its request, Snapper evaluates it, and if approval is required the agent pauses and polls while the human decides via Telegram or Slack. On approval, vault tokens are decrypted with a 30-second TTL and single-read expiry. Agents never stall on safe operations, and humans never miss dangerous ones.</p>
-        <span class="mono-detail">Auto-approve &middot; Human-required &middot; PII-mandatory &middot; Agent polling &middot; 30s TTL resolution</span>
+        <h3>Bot-in-the-Loop Approvals</h3>
+        <p>Not every action needs a human — but dangerous ones do. Snapper's three-tier approval model auto-approves known-safe operations, requires human sign-off for risky ones (writes, deletes, external calls), and always demands approval for PII vault requests. When approval is needed, your dedicated Telegram or Slack bot sends a rich notification with inline [Approve] / [Deny] buttons. Approve from your phone in five seconds. The agent pauses and polls until you decide — then vault tokens are decrypted with a 30-second TTL and single-read expiry. Both bots support full command suites: manage rules, test commands, control your PII vault, view pending approvals, and hit the emergency kill switch. Webhook delivery and email alerts complete the notification stack.</p>
+        <span class="mono-detail">Auto-approve &middot; Human-required &middot; PII-mandatory &middot; Telegram &middot; Slack &middot; Webhook &middot; Email</span>
       </div>
 
       <div class="feature-card highlight">
@@ -1088,18 +1081,12 @@ footer a:hover { color: var(--accent); }
         ├── <span class="deny">DENY</span>     → blocked, alert sent to SOC + Telegram bot + Slack bot
         └── <span class="approve">APPROVAL</span> → <span class="node">Bot-in-the-Loop</span>
                      │
-                     ├── Telegram bot: inline [Approve] / [Deny] buttons
-                     ├── Slack bot: Block Kit message with action buttons
-                     ├── Webhook: POST to org-configured endpoint
-                     └── Email: Celery-delivered alert
+                     ├── Auto-approve: known-safe ops (reads, allowlisted tools)
+                     ├── Human-required: risky ops → Telegram / Slack / Webhook / Email
+                     └── PII-mandatory: vault tokens always need human sign-off
                      │
                      → agent pauses, polls for human decision
                      → on approve: vault tokens decrypted, 30s TTL, one read
-
-   <span class="node">Hybrid Approval Policies</span>
-        ├── Auto-approve: known-safe ops (reads, allowlisted tools)
-        ├── Human-required: risky ops (writes, deletes, external calls)
-        └── PII-mandatory: vault token requests always need human sign-off
         │
         ▼
    <span class="node">Threat Analysis</span> (async, every request)
@@ -1226,7 +1213,7 @@ client = wrap(OpenAI())
 <section class="comparison" id="comparison">
   <div class="container">
     <h2>How Snapper compares</h2>
-    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only solution at the agent-internet boundary with full threat detection, bot-in-the-loop approvals, and hybrid human/auto governance.</p>
+    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only solution at the agent-internet boundary with full threat detection, bot-in-the-loop approvals, and enterprise governance.</p>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
@@ -1252,7 +1239,6 @@ client = wrap(OpenAI())
           <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr class="cat-row"><td colspan="6">Governance</td></tr>
           <tr><td>Bot-in-the-Loop Approvals</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Hybrid Approval Policies</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Telegram & Slack Bot Alerting</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
           <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
@@ -1271,7 +1257,7 @@ client = wrap(OpenAI())
       </table>
     </div>
     <div class="comp-note">
-      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer — with a bot-in-the-loop approval model that routes sensitive decisions to Telegram and Slack bots for human sign-off. RunLayer ($11M seed, Khosla/Felicis) secures the MCP protocol layer with threat detection and fine-grained permissions, but is limited to MCP-based agents and lacks dedicated bot-based alerting channels. Prompt-layer tools (LlamaFirewall, Prompt Security) operate inside the agent on prompts and responses. Snapper is the only solution that covers all agent types — MCP servers, SDK-based agents, CLI tools, and browser-based agents — through <a href="#integration">SDK wrappers, shell hooks, browser extension, and MCP support</a>, with hybrid approval policies, multi-tenant isolation, platform admin provisioning, and real-time alerting via Telegram bots, Slack bots, webhooks, and email. Use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
+      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer — with a bot-in-the-loop approval model that routes sensitive decisions to Telegram and Slack bots for human sign-off. RunLayer ($11M seed, Khosla/Felicis) secures the MCP protocol layer with threat detection and fine-grained permissions, but is limited to MCP-based agents and lacks dedicated bot-based alerting channels. Prompt-layer tools (LlamaFirewall, Prompt Security) operate inside the agent on prompts and responses. Snapper is the only solution that covers all agent types — MCP servers, SDK-based agents, CLI tools, and browser-based agents — through <a href="#integration">SDK wrappers, shell hooks, browser extension, and MCP support</a>, with bot-in-the-loop approvals, multi-tenant isolation, platform admin provisioning, and real-time alerting via Telegram bots, Slack bots, webhooks, and email. Use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
     </div>
   </div>
 </section>
@@ -1285,7 +1271,7 @@ client = wrap(OpenAI())
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">1,750+</div>
+        <div class="number">1,850+</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
@@ -1397,8 +1383,8 @@ client = wrap(OpenAI())
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>1,750+ Automated Tests</h3>
-        <p>1,315 unit tests, 168 Playwright E2E tests, 85 multi-tenant isolation tests, 90 integration tests, 95 live API tests, and a 13-scenario threat simulator that validates all signal types and kill chains. Every commit is tested.</p>
+        <h3>1,850+ Automated Tests</h3>
+        <p>1,300+ unit tests, 168 Playwright E2E tests, 85 multi-tenant isolation tests, 90 integration tests, 95 live API tests, 35 meta admin tests, and a 13-scenario threat simulator that validates all signal types and kill chains. Every commit is tested.</p>
       </div>
     </div>
   </div>
@@ -1408,7 +1394,7 @@ client = wrap(OpenAI())
 <section class="cta">
   <div class="container">
     <h2>Protect your AI agents today</h2>
-    <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with full threat detection, PII protection, bot-in-the-loop approvals via Telegram and Slack, and hybrid human/auto governance.</p>
+    <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with full threat detection, PII protection, and bot-in-the-loop approvals via Telegram and Slack.</p>
     <br>
     <div class="hero-actions" style="justify-content: center; opacity: 1;">
       <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
