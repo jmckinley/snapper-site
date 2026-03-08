@@ -729,6 +729,15 @@ footer a:hover { color: var(--accent); }
 
       <div class="doc-card">
         <div class="card-icon red">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Plugin Integrity</h3>
+        <p><strong>Canary probes</strong> detect plugin removal/disabling (heartbeat every 5 min, alert on 3 misses). <strong>Evaluation receipts</strong> detect selective bypass (single-use UUID on every allow, verifiable by downstream proxies via <code style="font-size:12px;color:var(--accent);">X-Snapper-Receipt</code>).</p>
+        <span class="mono-detail">Canary: 5-min heartbeat &middot; Receipts: 60s TTL, single-use</span>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon red">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
         </div>
         <h3>Emergency Controls</h3>
@@ -792,6 +801,47 @@ footer a:hover { color: var(--accent); }
           <span>/snapper-trust</span>
           <span>/snapper-block</span>
           <span>/snapper-help</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK ENFORCEMENT -->
+<section class="doc-section" id="network-enforcement">
+  <div class="container">
+    <div class="section-label red">Network Enforcement</div>
+    <p class="section-intro">Snapper enforces at three layers: SDK hooks (voluntary), network proxy (mandatory), and code scanner (pre-deployment). Together they ensure no AI traffic escapes governance.</p>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="card-icon red">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h12M20 7l-4-4m4 4l-4 4M4 17h12M16 17l-4 4m4-4l-4-4"/></svg>
+        </div>
+        <h3>Network Proxy</h3>
+        <p>Transparent HTTPS proxy (Go binary, &lt;15MB) that intercepts AI API traffic at the network layer. Monitors 55+ AI provider domains. Two modes: SNI (zero-config, domain-level) and MITM (full request inspection with CA cert). Circuit breaker, health checks, config sync from Snapper API.</p>
+        <div class="tag-list">
+          <span>55+ AI domains</span>
+          <span>SNI mode</span>
+          <span>MITM mode</span>
+          <span>Circuit breaker</span>
+          <span>Zero dependencies</span>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon purple">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h7a2 2 0 0 0 2-2V9.414a1 1 0 0 0-.293-.707l-5.414-5.414A1 1 0 0 0 12.586 3H7a2 2 0 0 0-2 2v11m0 5l4.879-4.879m0 0a3 3 0 1 0 4.243-4.242 3 3 0 0 0-4.243 4.242z"/></svg>
+        </div>
+        <h3>Code Scanner</h3>
+        <p>CI/CD scanner (Go binary, &lt;15MB) that detects ungoverned AI before deployment. 8 detection categories: unwrapped AI SDKs (CRITICAL), hardcoded endpoints, leaked credentials, missing dependencies, agent frameworks, MCP servers, AI infra, and unguarded prompts. SARIF output for GitHub Security tab.</p>
+        <div class="tag-list">
+          <span>8 categories</span>
+          <span>SARIF output</span>
+          <span>GitHub Action</span>
+          <span>Diff-only mode</span>
+          <span>Python/JS/Go</span>
         </div>
       </div>
 
@@ -909,12 +959,81 @@ footer a:hover { color: var(--accent); }
         <div class="api-desc">List pending approval requests</div>
       </div>
 
+      <div class="api-card">
+        <span class="api-method get">GET</span>
+        <div class="api-path">/api/v1/siem/targets</div>
+        <div class="api-desc">List SIEM targets (secrets redacted)</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method post">POST</span>
+        <div class="api-path">/api/v1/siem/targets</div>
+        <div class="api-desc">Create a SIEM target (syslog/webhook/splunk/sentinel)</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method get">GET</span>
+        <div class="api-path">/api/v1/siem/status</div>
+        <div class="api-desc">SIEM health summary and target status</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method get">PATCH</span>
+        <div class="api-path">/api/v1/organizations/{id}/settings/policy</div>
+        <div class="api-desc">Update org security policies (MFA, lockout, retention)</div>
+      </div>
+
     </div>
     <div style="text-align:center;">
       <a href="https://app.snapperprotect.com/docs" class="btn-primary" style="font-size:14px;padding:10px 24px;">
         Full API Documentation
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE FEATURES -->
+<section class="doc-section" id="enterprise-features">
+  <div class="container">
+    <div class="section-label blue">Enterprise Features</div>
+    <div class="feature-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">SIEM Integration</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Per-org SIEM targets with 4 transport types: Syslog (TLS), Webhook (HMAC-SHA256), Splunk HEC, and Azure Sentinel. CEF event format, secret redaction, and test connectivity.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">MCP Integrity Verification</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Tool manifest SHA-256 hashing with 8 suspicious-tool heuristics (credential harvester, prompt injection, encoded payload, and more). Per-org allowlists and risk scoring (0-100).</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Plugin Integrity (Canary + Receipts)</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Canary probes detect plugin removal/disabling (5-min heartbeat, alert after 3 misses). Evaluation receipts provide single-use proof that each tool call was evaluated, verifiable by downstream proxies.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Organization Policy</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Organization-level security policies: MFA requirement, login lockout, session timeout, and audit retention. Admin-only access with audit-logged changes.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Organization Audit Log</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Filtered audit trail scoped to your organization. Filter by severity, action type, date range, and text search. CSV export up to 10,000 records. Detail modal with full event context.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Meta-Admin Feature Flags</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Per-org feature flag management UI. Toggle built-in flags (Slack, SSO, threat detection, browser extension), add custom flags, filter by plan. Platform admin only.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Cross-Org Audit</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Platform-wide audit log for meta admins. Filter by organization, action type (26 types across 8 categories), severity, and date range. CSV export and detail modal.</p>
+      </div>
+
     </div>
   </div>
 </section>
