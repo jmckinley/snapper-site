@@ -1440,8 +1440,8 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card highlight">
         <div class="feature-icon purple">&#x1F50D;</div>
         <h3>Code Scanner (CI/CD)</h3>
-        <p>Static analysis tool that scans repositories for ungoverned AI code before it ships. 8 detection categories: unwrapped AI SDKs, hardcoded AI endpoints, leaked AI credentials, missing SDK dependencies, unregistered agent frameworks, unregistered MCP servers, AI infrastructure config, and unguarded prompts. SARIF output for GitHub Security tab. GitHub Action for automated PR checks.</p>
-        <span class="mono-detail">8 categories &middot; SARIF &middot; GitHub Action &middot; Go binary &middot; &lt;5s PR scans</span>
+        <p>Static analysis tool that scans repositories for ungoverned AI code before it ships. 8 detection categories across 3 scan tiers (basic/standard/full): unwrapped AI SDKs, hardcoded AI endpoints, leaked AI credentials, missing SDK dependencies, unregistered agent frameworks, unregistered MCP servers, AI infrastructure config, and unguarded prompts. SARIF output for GitHub Security tab. GitHub Action for automated PR checks.</p>
+        <span class="mono-detail">3 tiers &middot; 8 categories &middot; SARIF &middot; GitHub Action &middot; Go binary &middot; &lt;5s PR scans</span>
       </div>
 
       <div class="feature-card">
@@ -1679,6 +1679,7 @@ client = wrap(OpenAI())
 <span class="arg">&rarr; SARIF uploaded</span> to Security tab
         </div>
         <div class="agent-list">
+          <span>3 scan tiers</span>
           <span>8 categories</span>
           <span>SARIF</span>
           <span>GitHub Action</span>
