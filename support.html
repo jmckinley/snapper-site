@@ -723,8 +723,8 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <h3>Threat Detection</h3>
-        <p>Real-time behavioral analysis: 13 signal types, 7 kill chain patterns (data exfil, credential theft, PII harvest, encoded exfil, privilege escalation, vault extraction, LOTL), behavioral baselines with 7-day rolling window.</p>
-        <span class="mono-detail">Score &ge;60 &rarr; approval required &middot; &ge;80 &rarr; auto-deny</span>
+        <p>Real-time behavioral analysis: 13 signal types, 7 kill chain patterns (data exfil, credential theft, PII harvest, encoded exfil, privilege escalation, vault extraction, LOTL), behavioral baselines with 7-day rolling window. Feed health monitoring with auto-recovery and air-gapped threat intel support.</p>
+        <span class="mono-detail">Score &ge;60 &rarr; approval required &middot; &ge;80 &rarr; auto-deny &middot; Feed health: 15-min checks</span>
       </div>
 
       <div class="doc-card">
@@ -835,12 +835,12 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h7a2 2 0 0 0 2-2V9.414a1 1 0 0 0-.293-.707l-5.414-5.414A1 1 0 0 0 12.586 3H7a2 2 0 0 0-2 2v11m0 5l4.879-4.879m0 0a3 3 0 1 0 4.243-4.242 3 3 0 0 0-4.243 4.242z"/></svg>
         </div>
         <h3>Code Scanner</h3>
-        <p>CI/CD scanner (Go binary, &lt;15MB) that detects ungoverned AI before deployment. 8 detection categories: unwrapped AI SDKs (CRITICAL), hardcoded endpoints, leaked credentials, missing dependencies, agent frameworks, MCP servers, AI infra, and unguarded prompts. SARIF output for GitHub Security tab.</p>
+        <p>CI/CD scanner (Go binary, &lt;15MB) that detects ungoverned AI before deployment. 8 detection categories: unwrapped AI SDKs (CRITICAL), hardcoded endpoints, leaked credentials, missing dependencies, agent frameworks, MCP servers, AI infra, and unguarded prompts. SARIF output for GitHub Security tab. Dedicated Scan Reports dashboard with findings trend charts and compliance report integration.</p>
         <div class="tag-list">
           <span>8 categories</span>
           <span>SARIF output</span>
           <span>GitHub Action</span>
-          <span>Diff-only mode</span>
+          <span>Scan Reports UI</span>
           <span>Python/JS/Go</span>
         </div>
       </div>
@@ -983,6 +983,24 @@ footer a:hover { color: var(--accent); }
         <div class="api-desc">Update org security policies (MFA, lockout, retention)</div>
       </div>
 
+      <div class="api-card">
+        <span class="api-method get">GET</span>
+        <div class="api-path">/api/v1/setup/feed-health</div>
+        <div class="api-desc">Security feed health status (per-feed staleness, timestamps)</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method get">GET</span>
+        <div class="api-path">/api/v1/scanner/reports/timeline</div>
+        <div class="api-desc">Daily scan finding counts for trend charts</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method post">POST</span>
+        <div class="api-path">/api/v1/security/threat-intel/import</div>
+        <div class="api-desc">Import threat intel JSON file (air-gapped deployments)</div>
+      </div>
+
     </div>
     <div style="text-align:center;">
       <a href="https://app.snapperprotect.com/docs" class="btn-primary" style="font-size:14px;padding:10px 24px;">
@@ -1032,6 +1050,16 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
         <h3 style="color:var(--text);margin-bottom:8px;">Cross-Org Audit</h3>
         <p style="color:var(--text-muted);font-size:14px;">Platform-wide audit log for meta admins. Filter by organization, action type (26 types across 8 categories), severity, and date range. CSV export and detail modal.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Feed Health Monitoring</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Redis-based health tracking for all security feeds (NVD, GitHub, ClawHub, MCP catalog). Staleness detection, auto-recovery of stale feeds, critical alerts on 3+ failures, and dashboard status card.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Air-Gapped Deployments</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Full threat intelligence without internet. Curated CVE/advisory bundle (20 records), file import for custom intel, 4 deployment modes (cloud, private cloud, private server, air-gapped).</p>
       </div>
 
     </div>
