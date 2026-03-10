@@ -820,13 +820,14 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h12M20 7l-4-4m4 4l-4 4M4 17h12M16 17l-4 4m4-4l-4-4"/></svg>
         </div>
         <h3>Network Proxy</h3>
-        <p>Transparent HTTPS proxy (Go binary, &lt;15MB) that intercepts AI API traffic at the network layer. Monitors 55+ AI provider domains. Two modes: SNI (zero-config, domain-level) and MITM (full request inspection with CA cert). Circuit breaker, health checks, config sync from Snapper API.</p>
+        <p>Transparent HTTPS proxy (Go binary, &lt;15MB) that intercepts AI API traffic at the network layer. Monitors 55+ AI provider domains. Two modes: SNI (zero-config, domain-level) and MITM (full request inspection with canary token injection). Circuit breaker, Prometheus metrics, SIEM integration, fail-open/closed, config sync from Snapper API.</p>
         <div class="tag-list">
           <span>55+ AI domains</span>
           <span>SNI mode</span>
           <span>MITM mode</span>
+          <span>Canary tokens</span>
+          <span>Prometheus</span>
           <span>Circuit breaker</span>
-          <span>Zero dependencies</span>
         </div>
       </div>
 
