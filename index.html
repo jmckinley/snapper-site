@@ -795,8 +795,10 @@ footer a:hover { color: var(--accent); }
 <nav>
   <div class="nav-inner">
     <div class="nav-brand">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <svg width="26" height="24" viewBox="0 0 52 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 0L52 14L26 18L0 14L26 0Z" fill="#4A7FB5"/>
+        <path d="M26 18L52 22L26 32L0 22L26 18Z" fill="#10b981"/>
+        <path d="M26 32L52 36L26 46L0 36L26 32Z" fill="#1B3A5C"/>
       </svg>
       Snapper
       <span class="nav-tag">ENTERPRISE</span>
@@ -1181,59 +1183,176 @@ footer a:hover { color: var(--accent); }
 <!-- COMPARISON -->
 <section class="comparison" id="comparison">
   <div class="container">
+    <div style="max-width: 720px; margin: 0 auto 48px; text-align: center;">
+      <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Industry perspective</p>
+      <blockquote style="font-size: 1.15rem; line-height: 1.7; color: var(--text-bright); font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; text-align: left;">
+        &ldquo;By 2028, 33% of enterprise software applications will include agentic AI, up from less than 1% in 2024, enabling 15% of day-to-day work decisions to be made autonomously.&rdquo;
+      </blockquote>
+      <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 12px;">&mdash; Gartner, Technology Trends 2025 &nbsp;&bull;&nbsp; AI agents are the #1 strategic technology trend for 2025</p>
+    </div>
     <h2 class="section-title">How Snapper compares</h2>
-    <p class="section-subtitle">The only AI agent security platform with runtime enforcement, MCP integrity, document scanning, code scanning, network proxy, custom RBAC, and FinOps in a single product.</p>
+    <p class="section-subtitle">The most complete AI agent security platform — 7 enforcement layers, 19 security layers, and FinOps in a single product.</p>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
           <tr>
             <th>Capability</th>
             <th class="snapper-col">Snapper</th>
-            <th>Acuvity (Proofpoint)</th>
+            <th>Acuvity / Proofpoint</th>
             <th>Prompt Security</th>
             <th>Generic WAF</th>
           </tr>
         </thead>
         <tbody>
+          <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">RUNTIME ENFORCEMENT</td></tr>
           <tr>
-            <td>Runtime enforcement (18 rule types)</td>
+            <td>Policy rule engine (18 rule types)</td>
             <td class="snapper-col"><span class="check">&#x2713;</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="partial">~</span></td>
+            <td><span class="partial">~</span> Limited policies</td>
+            <td><span class="partial">~</span> Prompt-only</td>
             <td><span class="cross">&#x2717;</span></td>
           </tr>
           <tr>
-            <td>MCP integrity (27K+ servers, hashing)</td>
+            <td>Threat detection (15 signals, 7 kill chains)</td>
             <td class="snapper-col"><span class="check">&#x2713;</span></td>
-            <td><span class="cross">&#x2717;</span></td>
-            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="partial">~</span> Basic</td>
+            <td><span class="partial">~</span> Injection only</td>
             <td><span class="cross">&#x2717;</span></td>
           </tr>
           <tr>
-            <td>Document scanning (28 types, OCR)</td>
-            <td class="snapper-col"><span class="check">&#x2713;</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="cross">&#x2717;</span></td>
-          </tr>
-          <tr>
-            <td>Code scanner (CI/CD, 6 languages)</td>
-            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td>Human-in-the-loop approval workflows</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> Telegram + Slack</td>
             <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
           </tr>
           <tr>
-            <td>Network proxy (Go binary, SNI/MITM)</td>
+            <td>Adaptive trust scoring per agent</td>
             <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">DATA PROTECTION</td></tr>
+          <tr>
+            <td>PII detection (50+ patterns + NER)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="check">&#x2713;</span> SLM-based</td>
             <td><span class="partial">~</span></td>
             <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Document/attachment scanning</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> 28 types + OCR</td>
+            <td><span class="check">&#x2713;</span> Multimodal</td>
+            <td><span class="partial">~</span> Text only</td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Encrypted PII vault (AES-256-GCM)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Bidirectional scanning (input + output)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
             <td><span class="check">&#x2713;</span></td>
+            <td><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">MCP &amp; SUPPLY CHAIN</td></tr>
+          <tr>
+            <td>MCP server catalog (27K+ indexed)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
           </tr>
           <tr>
-            <td>Custom RBAC (org-defined, 20 permissions)</td>
+            <td>Runtime integrity verification (hash + heuristics)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> &lt;1ms</td>
+            <td><span class="partial">~</span> Minibridge (proxy)</td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Covert instruction scanner (6 checks)</td>
             <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Server block/unblock from dashboard</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">COVERAGE &amp; INTEGRATION</td></tr>
+          <tr>
+            <td>Enforcement entry points</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> 7 layers</td>
+            <td><span class="partial">~</span> 2 (proxy + API)</td>
+            <td><span class="partial">~</span> 1 (API)</td>
+            <td><span class="partial">~</span> 1 (network)</td>
+          </tr>
+          <tr>
+            <td>Browser extension (582 AI sites)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Code scanner (CI/CD, 9 categories, 6 languages)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>LLM proxy (OpenAI-compatible drop-in)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
             <td><span class="partial">~</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Import chain analysis (transitive deps)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">ENTERPRISE &amp; OPERATIONS</td></tr>
+          <tr>
+            <td>Custom RBAC (org-defined roles, 20 permissions)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="partial">~</span> Fixed roles</td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>SSO (SAML + OIDC + SCIM)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="check">&#x2713;</span></td>
+            <td><span class="partial">~</span> SAML only</td>
+            <td><span class="partial">~</span></td>
+          </tr>
+          <tr>
+            <td>EU AI Act compliance &amp; evidence export</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> 7 articles</td>
+            <td><span class="partial">~</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Tamper-evident audit chain (SHA-256)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
           </tr>
@@ -1244,11 +1363,32 @@ footer a:hover { color: var(--accent); }
             <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
           </tr>
+          <tr>
+            <td>Red team simulator (19 attack scenarios)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
+          <tr>
+            <td>Air-gapped &amp; self-hosted deployment</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span> SaaS only</td>
+            <td><span class="cross">&#x2717;</span> SaaS only</td>
+            <td><span class="check">&#x2713;</span></td>
+          </tr>
+          <tr>
+            <td>Shadow AI detection (582 GenAI domains)</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span></td>
+            <td><span class="check">&#x2713;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+            <td><span class="cross">&#x2717;</span></td>
+          </tr>
         </tbody>
       </table>
     </div>
     <div class="comp-note">
-      <strong>Note:</strong> Acuvity (acquired by Proofpoint) provides AI visibility and governance with network-layer monitoring. Prompt Security focuses on prompt injection defense and output guardrails. Generic WAFs (Cloudflare, Imperva) handle network traffic but have zero visibility into agent behavior, MCP tools, or AI-specific threats. Snapper is the only product that covers all seven enforcement layers &mdash; SDK, shell hooks, network proxy, browser extension, MCP, CI/CD code scanner, and LLM proxy.
+      <strong>Where each excels:</strong> Acuvity/Proofpoint leads in multimodal PII detection using SLMs and has strong browser visibility. Prompt Security specializes in prompt injection defense. Generic WAFs handle network traffic. <strong>Snapper is unique in covering all seven enforcement layers</strong> &mdash; SDK, shell hooks, network proxy, browser extension, MCP, CI/CD code scanner, and LLM proxy &mdash; plus MCP supply chain integrity, FinOps, red team simulation, tamper-evident audit, and custom RBAC &mdash; capabilities no other product offers.
     </div>
   </div>
 </section>
