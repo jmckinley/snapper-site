@@ -829,6 +829,26 @@ footer a:hover { color: var(--accent); }
           <span>Prometheus</span>
           <span>Circuit breaker</span>
         </div>
+        <h4 style="font-size:13px;font-weight:700;color:var(--text-bright);margin-top:20px;margin-bottom:8px;letter-spacing:-0.2px;">Multiple Proxy Instances</h4>
+        <p style="font-size:13px;">Run as many proxy instances as needed against a single Snapper control plane — no manual configuration required. Each instance self-registers on startup and appears in the proxy node registry within 30 seconds. Instances that stop sending heartbeats are automatically removed within 90 seconds.</p>
+        <p style="font-size:13px;margin-top:10px;"><strong style="color:var(--text-bright);">Rule propagation:</strong> Rule changes reach all running proxy instances within ~10 seconds. Each proxy polls for cache invalidation events on a 10-second interval.</p>
+        <p style="font-size:13px;margin-top:10px;"><strong style="color:var(--text-bright);">Verify running instances:</strong></p>
+        <div class="hero-code" style="margin-top:8px;">
+          <div class="code-bar">
+            <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
+            <span>terminal</span>
+          </div>
+          <div class="code-body" style="font-size:12px;">
+<span class="cmd">curl</span> <span class="arg">-H</span> <span class="str">"X-API-Key: $SNAPPER_API_KEY"</span> \
+  <span class="str">https://app.snapperprotect.com/api/v1/proxy/nodes</span>
+          </div>
+        </div>
+        <p style="font-size:13px;margin-top:12px;"><strong style="color:var(--text-bright);">Supported deployment patterns:</strong></p>
+        <ul style="font-size:13px;margin-top:6px;padding-left:18px;line-height:1.8;">
+          <li><strong style="color:var(--text-bright);">Active/active HA pair</strong> — Two proxies behind a load balancer to eliminate single-proxy SPOF</li>
+          <li><strong style="color:var(--text-bright);">Per-network-segment</strong> — One proxy per subnet or VLAN for network-level enforcement at each boundary</li>
+          <li><strong style="color:var(--text-bright);">Kubernetes DaemonSet</strong> — One proxy pod per node; agents connect to the node-local proxy</li>
+        </ul>
       </div>
 
       <div class="doc-card">
