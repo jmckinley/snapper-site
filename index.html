@@ -581,6 +581,115 @@ nav {
 .arch-flow-horiz { display: contents; }
 .arch-arrow-h { display: none; }
 
+/* ─── PAIN POINTS ─── */
+.pain-points {
+  padding: 80px 0 60px;
+  border-top: 1px solid var(--border);
+}
+.pain-label {
+  display: inline-block;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #f87171;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pain-headline {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-bright);
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.pain-sub {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 52px;
+}
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.pain-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.pain-top {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--border);
+  flex: 1;
+}
+.pain-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.pain-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+.pain-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f87171;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: rgba(239,68,68,0.1);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.pain-top h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.pain-top p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+.pain-solve {
+  padding: 18px 28px 22px;
+  background: rgba(16,185,129,0.04);
+  border-top: 1px solid rgba(16,185,129,0.15);
+}
+.pain-solve-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.pain-solve p {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.pain-solve strong { color: var(--text-bright); }
+@media (max-width: 760px) {
+  .pain-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── INTEGRATION ─── */
 .integration { padding: 80px 0; border-top: 1px solid var(--border); }
 .integration-grid {
@@ -865,6 +974,7 @@ footer a:hover { color: var(--accent); }
       <span class="nav-tag">ENTERPRISE</span>
     </div>
     <div class="nav-links">
+      <a href="#why">Why Snapper</a>
       <a href="#features">Features</a>
       <a href="#architecture">Architecture</a>
       <a href="#integration">Integration</a>
@@ -907,24 +1017,134 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- PAIN POINTS -->
+<section class="pain-points" id="why">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="pain-label">The Real Problem</div>
+      <h2 class="pain-headline">Your AI risk is growing faster than<br>your team can see it</h2>
+      <p class="pain-sub">Four things happening in your org right now — whether you know it or not.</p>
+    </div>
+    <div class="pain-grid">
+
+      <!-- Pain 1: Shadow AI -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x1F47B;</span>
+            <span class="pain-num">Problem 01</span>
+          </div>
+          <h3>Shadow AI is already inside your org</h3>
+          <p>Your employees are already using ChatGPT, Claude, Gemini, Copilot, Perplexity, and dozens more. They're pasting customer data, source code, contracts, and PII into AI tools you've never approved. You don't know which tools, which data, or how often — because you have no visibility layer.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p>Snapper monitors <strong>582 AI domains</strong> across network traffic, browser, DNS, and process inspection. Real-time discovery of every tool in use. Block unauthorized services at the network layer — no employee action required, no policy compliance required.</p>
+        </div>
+      </div>
+
+      <!-- Pain 2: AI-inside apps -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x1F9EC;</span>
+            <span class="pain-num">Problem 02</span>
+          </div>
+          <h3>Your apps are calling LLMs with your most sensitive data</h3>
+          <p>It's not just employees — the software you run is AI-inside: SaaS tools, coding assistants, internal apps, and agentic workflows all make direct LLM API calls. Those calls carry your intellectual property, customer records, and confidential data with zero governance, zero audit trail, and zero enforcement.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p>SDK wrappers and a <strong>purpose-built network proxy</strong> intercept every outbound LLM call — from apps and agents alike. Evaluate, redact, enforce, and log every request in <strong>under 10ms</strong>. No code changes to your agents or apps required.</p>
+        </div>
+      </div>
+
+      <!-- Pain 3: Compliance -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x2696;&#xFE0F;</span>
+            <span class="pain-num">Problem 03</span>
+          </div>
+          <h3>Compliance requirements are here — and accelerating</h3>
+          <p>The EU AI Act is already in force. ISO 42001 is landing in vendor questionnaires. SOC 2 auditors are asking about AI governance. HIPAA and FINRA are publishing AI guidance. When your auditor asks "what do your AI agents access and what decisions do they make?" — right now, you don't have an answer.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p>Tamper-evident <strong>SHA-256 audit chain</strong>, automated EU AI Act evidence export, policy versioning, and data governance — all built in. Every agent action is logged, hashed, and retrievable. Answer any auditor question today. Stay ahead of what's coming next.</p>
+        </div>
+      </div>
+
+      <!-- Pain 4: SecOps overload -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x1F6A8;</span>
+            <span class="pain-num">Problem 04</span>
+          </div>
+          <h3>SecOps is drowning in AI alerts with no trusted automation</h3>
+          <p>AI agents generate 10&ndash;50&times; more security events than traditional software. Your team already has too many alerts and too little context. Every approval request, every anomaly, every potential threat lands in an already-overloaded queue. You can't scale human review to match AI velocity — and you don't trust automation you can't explain.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p>A <strong>0&ndash;100 Composite Trust Score</strong> synthesizes 8 SIEM sources into one signal per entity. The <strong>Adaptive Learning Engine</strong> trains on your decisions and automates what it has learned to trust. <strong>Bidirectional SOAR</strong> closes the loop into your existing workflows. Your analysts focus on what matters.</p>
+        </div>
+      </div>
+
+      <!-- Pain 5: Rogue agents and MCP servers -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x1F480;</span>
+            <span class="pain-num">Problem 05</span>
+          </div>
+          <h3>Rogue agents and weaponized MCP servers</h3>
+          <p>AI agents can be hijacked without breaking a single firewall rule. Indirect prompt injection through RAG pipelines. MCP servers with tampered tool definitions that silently redirect behavior. Multi-agent delegation chains where trust is assumed and abused. One compromised upstream tool can weaponize every agent downstream — and you won't see it in your SIEM.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p><strong>SHA-256 tool integrity hashing</strong> detects any MCP tool definition change at runtime. A 6-check covert instruction scanner catches hidden Unicode, schema breadth attacks, prompt injection in tool descriptions, and credential harvesting attempts. Rogue agents get quarantined automatically. <strong>27K+ MCP servers</strong> cataloged and classified before they ever touch your agents.</p>
+        </div>
+      </div>
+
+      <!-- Pain 6: Day 0 exposure window -->
+      <div class="pain-card">
+        <div class="pain-top">
+          <div class="pain-icon-row">
+            <span class="pain-icon">&#x23F1;&#xFE0F;</span>
+            <span class="pain-num">Problem 06</span>
+          </div>
+          <h3>Day 0 exposures and weeks-long resolution windows</h3>
+          <p>AI attack techniques evolve faster than any team can write rules. New jailbreaks, new MCP poisoning patterns, new indirect injection vectors — they're live in the wild before your security team has even heard about them. Traditional tooling has no answer for zero-day AI threats. Your exposure window is open by default.</p>
+        </div>
+        <div class="pain-solve">
+          <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
+          <p><strong>29 red team scenarios</strong> run continuously against your live policy — detecting gaps before attackers find them. The <strong>Adaptive Learning Engine</strong> updates detection logic from live decisions with no retraining cycle and no deployment window. Behavioral baselines catch novel attacks that match no known signature. Mean time to detection: seconds, not days.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- MESSAGING PILLARS -->
 <section class="pillars">
   <div class="container">
     <div class="pillars-grid">
       <div class="pillar-card">
         <div class="pillar-num">01</div>
-        <h3>Stop Saying No to AI</h3>
-        <p>With Snapper, your security team can say yes to AI adoption with confidence. Runtime enforcement means agents keep full power while you keep full control. No more choosing between innovation and security.</p>
+        <h3>Say Yes to AI — With Confidence</h3>
+        <p>Security teams that block AI adoption lose the innovation race. Snapper gives you the visibility and control to approve AI use safely — runtime enforcement with full governance, so the answer to your developers is yes, not wait.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num">02</div>
-        <h3>Self-Learning, Autonomous SecOps</h3>
-        <p>Snapper doesn't just enforce rules — it learns from every decision. The Adaptive Learning Engine trains on your security signals in real time, auto-pilot mode approves or denies autonomously, and composite trust scoring synthesizes CrowdStrike, Okta, and 6 more SIEM feeds into a single 0–100 score per entity.</p>
+        <h3>Automation You Can Trust</h3>
+        <p>Snapper learns from every security decision your team makes. The Adaptive Learning Engine trains on your signals in real time. Auto-pilot mode handles routine approvals autonomously. Composite trust scoring synthesizes 8 SIEM feeds so your analysts act on insight, not noise.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num">03</div>
-        <h3>Deployed in Minutes</h3>
-        <p>One Docker command. Smart defaults. Auto-apply rules. Full protection from day one. No months-long integration projects, no SDK rewrites, no vendor lock-in. Your agents keep working unchanged.</p>
+        <h3>Protected in Minutes, Not Months</h3>
+        <p>One Docker command. Smart defaults auto-applied from day one. No SDK rewrites, no agent modifications, no months-long integration projects. Drop Snapper in front of your AI stack and you're enforcing policy before the coffee gets cold.</p>
       </div>
     </div>
   </div>
