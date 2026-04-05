@@ -976,8 +976,7 @@ footer a:hover { color: var(--accent); }
     <div class="nav-links">
       <a href="#why">Why Snapper</a>
       <a href="#features">Features</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#integration">Integration</a>
+      <a href="#integration">How It Works</a>
       <a href="#comparison">Compare</a>
       <a href="#enterprise">Enterprise</a>
       <a href="support.html">Support</a>
@@ -1367,11 +1366,12 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
-<!-- ARCHITECTURE -->
+<!-- ARCHITECTURE + INTEGRATION (combined) -->
 <section class="architecture" id="architecture">
+<span id="integration" style="display:block;position:relative;top:-80px;"></span>
   <div class="container">
     <h2 class="section-title">7 entry points. One security layer.</h2>
-    <p class="section-subtitle">Every path an AI agent can take is covered. SDK, shell, network, browser, MCP, CI/CD, and LLM proxy all route through Snapper's rule engine.</p>
+    <p class="section-subtitle">Every path an AI agent can take is covered — SDK, shell, network proxy, browser, MCP, CI/CD, and LLM proxy. Each route converges on the same rule engine, the same audit trail, the same policy.</p>
     <div class="arch-hub">
       <!-- Left: 4 entry points → pointing right toward Snapper -->
       <div class="arch-side arch-side-left">
@@ -1425,14 +1425,11 @@ footer a:hover { color: var(--accent); }
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- INTEGRATION -->
-<section class="integration" id="integration">
-  <div class="container">
-    <h2 class="section-title">7 ways in. One consistent policy.</h2>
-    <p class="section-subtitle">Each entry point has its own integration method. Deploy the ones you need. Every path converges on the same rule engine, the same audit trail, the same alerts.</p>
+    <div style="margin-top:52px;">
+      <h3 class="section-title" style="font-size:1.3rem;margin-bottom:8px;">How each entry point integrates</h3>
+      <p class="section-subtitle" style="margin-bottom:32px;">Deploy the layers you need. Mix and match. Every path converges on the same rule engine, the same audit trail, the same alerts.</p>
+    </div>
     <div class="integration-grid">
 
       <div class="integration-card">
@@ -1560,7 +1557,7 @@ footer a:hover { color: var(--accent); }
         <tbody>
           <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">RUNTIME ENFORCEMENT</td></tr>
           <tr>
-            <td>Policy rule engine (18 rule types)</td>
+            <td>Policy rule engine (26 rule types)</td>
             <td class="snapper-col"><span class="check">&#x2713;</span></td>
             <td><span class="partial">~</span> Limited policies</td>
             <td><span class="partial">~</span> Prompt-only</td>
