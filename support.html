@@ -602,6 +602,14 @@ footer a:hover { color: var(--accent); }
         API Reference
       </a>
     </div>
+    <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <span style="font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--accent);background:var(--accent-dim);padding:4px 10px;border-radius:4px;letter-spacing:0.5px;">v1.4.0</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:rgba(255,255,255,0.04);padding:4px 10px;border-radius:4px;border:1px solid var(--border);">5,027 tests</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:rgba(255,255,255,0.04);padding:4px 10px;border-radius:4px;border:1px solid var(--border);">88 cycles</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:rgba(255,255,255,0.04);padding:4px 10px;border-radius:4px;border:1px solid var(--border);">98.4% success</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:rgba(255,255,255,0.04);padding:4px 10px;border-radius:4px;border:1px solid var(--border);">32/32 SecureIQLab</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:rgba(255,255,255,0.04);padding:4px 10px;border-radius:4px;border:1px solid var(--border);">91/100 beta readiness</span>
+    </div>
   </div>
 </section>
 
@@ -666,7 +674,7 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Rules &amp; Policies</h3>
-        <p>14 rule types including command allow/deny, rate limiting, PII gates, time restrictions, and human-in-the-loop approval. Rules evaluate in priority order; DENY always short-circuits.</p>
+        <p>26 rule types including command allow/deny, rate limiting, PII gates, time restrictions, human-in-the-loop approval, MCP tool allowlists/denylists, cost limits, multi-agent chain-of-custody, data classification, and geolocation restriction. Rules evaluate in priority order; DENY always short-circuits.</p>
         <div class="tag-list">
           <span>COMMAND_ALLOW</span>
           <span>COMMAND_DENY</span>
@@ -676,6 +684,14 @@ footer a:hover { color: var(--accent); }
           <span>CREDENTIAL_BLOCK</span>
           <span>DENYLIST</span>
           <span>TIME_RESTRICTION</span>
+          <span>TOOL_ALLOWLIST</span>
+          <span>TOOL_DENYLIST</span>
+          <span>OUTPUT_SIZE_LIMIT</span>
+          <span>DEPENDENCY_CONTROL</span>
+          <span>COST_LIMIT</span>
+          <span>CHAIN_OF_CUSTODY</span>
+          <span>DATA_CLASSIFICATION</span>
+          <span>GEOLOCATION_RESTRICTION</span>
         </div>
       </div>
 
@@ -745,6 +761,50 @@ footer a:hover { color: var(--accent); }
         <span class="mono-detail">Priority 1000 &middot; all agents &middot; all rule types &middot; instant</span>
       </div>
 
+      <div class="doc-card">
+        <div class="card-icon amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>Behavioral Baseline Monitoring</h3>
+        <p>Snapper learns each agent's normal behavior using 7 metrics (request rate, deny rate, token usage, commands, errors, PII rate, approvals) and alerts when an agent deviates from its baseline. Uses exponential moving averages with z-score anomaly detection.</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>7-metric EMA per agent (24h bootstrap, then live alerts)</li>
+          <li>Warning threshold (score &ge;60) and Critical threshold (score &ge;80 &rarr; force approval)</li>
+          <li>Per-agent Baseline tab in the agent detail view</li>
+          <li>Org-wide anomaly feed: <code style="font-size:11px;color:var(--accent);">GET /api/v1/baseline/anomalies</code></li>
+        </ul>
+        <a href="/guides/behavioral-baseline" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);text-decoration:none;">Behavioral Baseline Guide &rarr;</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="6" x2="10" y2="11"/><line x1="18" y1="6" x2="14" y2="11"/><line x1="6" y1="18" x2="10" y2="13"/><line x1="18" y1="18" x2="14" y2="13"/></svg>
+        </div>
+        <h3>Threat Visualization</h3>
+        <p>Interactive D3.js visualizations of kill chain progression across your agent fleet. Two views: a swimlane timeline (per-agent, colored by kill chain stage) and a force-directed graph (nodes = agents, edges = attack progression).</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>7 kill chain types: data exfiltration, privilege escalation, lateral movement, credential theft, ransomware, supply chain, model poisoning</li>
+          <li>Auto-refreshes every 10 seconds</li>
+          <li>Admin dashboard at <code style="font-size:11px;color:var(--accent);">/admin/threat-visualization</code></li>
+        </ul>
+        <a href="/guides/threat-detection" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);text-decoration:none;">Threat Detection Guide &rarr;</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon red">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Permission Mirroring</h3>
+        <p>Automatically sync access controls from Google Drive and Microsoft Entra (Azure AD) to create corresponding Snapper rules. Keep your AI agent permissions in sync with your existing identity and access management without manual rule authoring.</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>Google Drive: Drive API v3 permissions &rarr; TOOL_ALLOWLIST rules</li>
+          <li>Microsoft Entra: Graph API group memberships &rarr; org role rules</li>
+          <li>Syncs every 6 hours automatically (configurable)</li>
+          <li>Manage in Settings &rarr; Operations &rarr; Permission Mirroring</li>
+        </ul>
+        <a href="/guides/permission-mirroring" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);text-decoration:none;">Permission Mirroring Guide &rarr;</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -768,6 +828,10 @@ footer a:hover { color: var(--accent); }
           <span>One-click rules</span>
           <span>13 categories</span>
         </div>
+        <ul style="font-size:13px;margin-top:12px;padding-left:18px;line-height:1.8;">
+          <li>Agent auto-discovery: scans every 15 minutes for unregistered AI agents (network, process, Docker)</li>
+          <li>One-click enrollment from <code style="font-size:11px;color:var(--accent);">/admin/discovery</code> dashboard</li>
+        </ul>
       </div>
 
       <div class="doc-card">
@@ -802,6 +866,21 @@ footer a:hover { color: var(--accent); }
           <span>/snapper-block</span>
           <span>/snapper-help</span>
         </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>SOAR Playbook Library</h3>
+        <p>Pre-built, importable playbooks for the top 4 SOAR platforms. Import once and Snapper events automatically flow into your existing SOC workflows.</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>Splunk SOAR: ingest webhook &rarr; enrich with agent risk score &rarr; route to analyst</li>
+          <li>Palo Alto XSOAR: kill chain detection &rarr; isolate agent &rarr; create incident</li>
+          <li>Azure Sentinel: analytics rule + workbook</li>
+          <li>ServiceNow: require_approval event &rarr; Change Request &rarr; resolve on decision</li>
+        </ul>
+        <a href="/guides/soar-integration" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);text-decoration:none;">SOAR Integration Guide &rarr;</a>
       </div>
 
     </div>
@@ -865,6 +944,7 @@ footer a:hover { color: var(--accent); }
           <span>Scan Reports UI</span>
           <span>Python/JS/Go/Java</span>
         </div>
+        <p style="font-size:13px;margin-top:14px;">Available as a GitHub Action (<code style="font-size:11px;color:var(--accent);">snapper/source-scan-action@v1</code>) for one-line CI/CD integration with SARIF upload to GitHub Code Scanning.</p>
       </div>
 
     </div>
@@ -1087,6 +1167,16 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
         <h3 style="color:var(--text);margin-bottom:8px;">Air-Gapped Deployments</h3>
         <p style="color:var(--text-muted);font-size:14px;">Full threat intelligence without internet. Curated CVE/advisory bundle (20 records), file import for custom intel, 4 deployment modes (cloud, private cloud, private server, air-gapped).</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">SOAR Integration</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Bidirectional integration with 5 SOAR platforms: Splunk SOAR, Cortex XSOAR, Microsoft Sentinel, ServiceNow, and generic webhook. Snapper fires HMAC-signed incident events; your playbooks call back to block agents, create rules, or resolve approvals. Pre-built playbook library included.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">GitHub Action (Marketplace)</h3>
+        <p style="color:var(--text-muted);font-size:14px;">One-line CI/CD integration via <code style="font-size:11px;color:var(--accent);">snapper/source-scan-action@v1</code> on the GitHub Actions marketplace. Runs the 3-tier source scanner on every PR, uploads SARIF results to GitHub Code Scanning, and blocks merges when ungoverned AI is detected.</p>
       </div>
 
     </div>
