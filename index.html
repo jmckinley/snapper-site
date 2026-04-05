@@ -466,59 +466,78 @@ nav {
 
 /* ─── ARCHITECTURE ─── */
 .architecture { padding: 80px 0; border-top: 1px solid var(--border); }
-.arch-flow-horiz {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
-  overflow-x: auto;
-  padding-bottom: 8px;
+/* Architecture hub layout */
+.arch-hub {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0 16px;
+  align-items: center;
 }
+.arch-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.arch-side-right { align-items: flex-start; }
+.arch-side-left  { align-items: flex-end; }
 .arch-node {
-  flex: 1;
-  min-width: 130px;
+  width: 100%;
+  max-width: 220px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 20px 16px;
+  padding: 14px 16px;
   text-align: center;
   transition: border-color 0.2s;
 }
+.arch-side-left .arch-node  { text-align: right; }
+.arch-side-right .arch-node { text-align: left; }
 .arch-node:hover { border-color: var(--border-bright); }
 .arch-node.snapper-node {
-  border-color: rgba(16, 185, 129, 0.3);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.04) 100%);
-  flex: 1.5;
+  border-color: rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.06) 100%);
+  padding: 28px 24px;
+  max-width: none;
+  text-align: center;
 }
-.arch-node .arch-icon { font-size: 24px; margin-bottom: 8px; }
+.arch-node .arch-icon { font-size: 22px; margin-bottom: 6px; }
 .arch-node h4 {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-bright);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .arch-node p {
   font-size: 11px;
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: 1.4;
 }
-.arch-arrow-h {
+.arch-connectors {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 20px;
-  color: var(--text-dim);
-  flex-shrink: 0;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 4px;
 }
-@media (max-width: 900px) {
-  .arch-flow-horiz {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .arch-arrow-h {
-    justify-content: center;
-    transform: rotate(90deg);
-    padding: 4px 0;
-  }
+.arch-arr {
+  font-size: 18px;
+  color: var(--accent);
+  line-height: 1;
 }
+@media (max-width: 800px) {
+  .arch-hub {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .arch-connectors { flex-direction: row; }
+  .arch-arr { transform: rotate(90deg); }
+  .arch-side-left .arch-node,
+  .arch-side-right .arch-node { text-align: center; max-width: none; }
+}
+/* keep old arch-flow-horiz as no-op */
+.arch-flow-horiz { display: contents; }
+.arch-arrow-h { display: none; }
 
 /* ─── INTEGRATION ─── */
 .integration { padding: 80px 0; border-top: 1px solid var(--border); }
@@ -1091,47 +1110,68 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <h2 class="section-title">7 entry points. One security layer.</h2>
     <p class="section-subtitle">Every path an AI agent can take is covered. SDK, shell, network, browser, MCP, CI/CD, and LLM proxy all route through Snapper's rule engine.</p>
-    <div class="arch-flow-horiz">
-      <div class="arch-node">
-        <div class="arch-icon">&#x1F4E6;</div>
-        <h4>SDK</h4>
-        <p>Python, TypeScript, Go wrappers</p>
+    <div class="arch-hub">
+      <!-- Left: entry points feeding INTO Snapper -->
+      <div class="arch-side arch-side-left">
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F4E6;</div>
+          <h4>SDK</h4>
+          <p>Python, TypeScript, Go wrappers</p>
+        </div>
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F4BB;</div>
+          <h4>Shell Hooks</h4>
+          <p>Pre-exec hooks for CLI agents</p>
+        </div>
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F310;</div>
+          <h4>Network Proxy</h4>
+          <p>Go binary, SNI/MITM, 582 domains</p>
+        </div>
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F9EA;</div>
+          <h4>LLM Proxy</h4>
+          <p>OpenAI-compatible drop-in rails</p>
+        </div>
       </div>
-      <div class="arch-arrow-h">&#x2192;</div>
-      <div class="arch-node">
-        <div class="arch-icon">&#x1F4BB;</div>
-        <h4>Shell</h4>
-        <p>Pre-exec hooks for CLI agents</p>
+
+      <!-- Center connectors + Snapper -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="arch-connectors">
+          <div class="arch-arr">&#x2192;</div>
+          <div class="arch-arr">&#x2192;</div>
+          <div class="arch-arr">&#x2192;</div>
+          <div class="arch-arr">&#x2192;</div>
+        </div>
+        <div class="arch-node snapper-node">
+          <div class="arch-icon">&#x1F6E1;</div>
+          <h4 style="color:var(--accent);font-size:15px;">Snapper</h4>
+          <p style="margin-top:8px;">26 rule types &middot; threat engine<br>PII vault &middot; SOAR &middot; compliance<br>behavioral baselines &middot; FinOps</p>
+        </div>
+        <div class="arch-connectors">
+          <div class="arch-arr">&#x2190;</div>
+          <div class="arch-arr">&#x2190;</div>
+          <div class="arch-arr">&#x2190;</div>
+        </div>
       </div>
-      <div class="arch-arrow-h">&#x2192;</div>
-      <div class="arch-node">
-        <div class="arch-icon">&#x1F310;</div>
-        <h4>Network</h4>
-        <p>Go proxy, SNI/MITM, 582 domains</p>
-      </div>
-      <div class="arch-arrow-h">&#x2192;</div>
-      <div class="arch-node snapper-node">
-        <div class="arch-icon">&#x1F6E1;</div>
-        <h4 style="color: var(--accent);">Snapper</h4>
-        <p>26 rule types, threat engine, PII vault, SOAR, compliance, FinOps</p>
-      </div>
-      <div class="arch-arrow-h">&#x2190;</div>
-      <div class="arch-node">
-        <div class="arch-icon">&#x1F5A5;</div>
-        <h4>Browser</h4>
-        <p>Extension, 582 AI services</p>
-      </div>
-      <div class="arch-arrow-h">&#x2190;</div>
-      <div class="arch-node">
-        <div class="arch-icon">&#x1F517;</div>
-        <h4>MCP</h4>
-        <p>27K+ servers, integrity hashing</p>
-      </div>
-      <div class="arch-arrow-h">&#x2190;</div>
-      <div class="arch-node">
-        <div class="arch-icon">&#x2699;</div>
-        <h4>CI/CD</h4>
-        <p>Code scanner, SARIF, GitHub Action</p>
+
+      <!-- Right: entry points feeding FROM right side -->
+      <div class="arch-side arch-side-right">
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F5A5;</div>
+          <h4>Browser</h4>
+          <p>Extension, 582 AI services</p>
+        </div>
+        <div class="arch-node">
+          <div class="arch-icon">&#x1F517;</div>
+          <h4>MCP</h4>
+          <p>27K+ servers, integrity hashing</p>
+        </div>
+        <div class="arch-node">
+          <div class="arch-icon">&#x2699;</div>
+          <h4>CI/CD</h4>
+          <p>Code scanner, SARIF, GitHub Action</p>
+        </div>
       </div>
     </div>
   </div>
