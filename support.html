@@ -903,10 +903,19 @@ footer a:hover { color: var(--accent); }
           <span>55+ AI domains</span>
           <span>SNI mode</span>
           <span>MITM mode</span>
+          <span>SANITIZE</span>
+          <span>INTERRUPT</span>
+          <span>FINGERPRINT</span>
+          <span>BASELINE</span>
           <span>Canary tokens</span>
           <span>Prometheus</span>
           <span>Circuit breaker</span>
         </div>
+        <h4 style="font-size:13px;font-weight:700;color:var(--text-bright);margin-top:20px;margin-bottom:8px;letter-spacing:-0.2px;">Detection Capabilities</h4>
+        <p style="font-size:13px;"><strong style="color:var(--text-bright);">Active Prevention:</strong> Tool result sanitization (SANITIZE, CEF-915) strips injection attempts from LLM responses before they reach the agent. Kill chain circuit breaker (INTERRUPT, CEF-916) blocks compromised agents for a configurable window (default 1 hour) the moment a multi-step attack is detected.</p>
+        <p style="font-size:13px;margin-top:10px;"><strong style="color:var(--text-bright);">Behavioral Analytics:</strong> Model fingerprinting (FINGERPRINT, CEF-917) catches model bait-and-switch attacks via statistical drift detection using Welford's algorithm. Per-agent baselines (BASELINE, CEF-918) detect traffic anomalies &mdash; new domains, request size spikes, and token volume spikes &mdash; using EMA tracking.</p>
+        <p style="font-size:13px;margin-top:10px;">All four capabilities ship enabled by default and are configurable live via <strong style="color:var(--text-bright);">Settings &rarr; Proxy Detection Settings</strong> or the <code>GET/POST /api/v1/proxy/detection-settings</code> API.</p>
+
         <h4 style="font-size:13px;font-weight:700;color:var(--text-bright);margin-top:20px;margin-bottom:8px;letter-spacing:-0.2px;">Multiple Proxy Instances</h4>
         <p style="font-size:13px;">Run as many proxy instances as needed against a single Snapper control plane — no manual configuration required. Each instance self-registers on startup and appears in the proxy node registry within 30 seconds. Instances that stop sending heartbeats are automatically removed within 90 seconds.</p>
         <p style="font-size:13px;margin-top:10px;"><strong style="color:var(--text-bright);">Rule propagation:</strong> Rule changes reach all running proxy instances within ~10 seconds. Each proxy polls for cache invalidation events on a 10-second interval.</p>
