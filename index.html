@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
 <title>Snapper — AI Agent Security Platform</title>
-<meta name="description" content="Snapper is the enterprise AI Agent Security Platform. Autonomous self-learning SecOps agent. Composite Trust scoring. 29-scenario red team simulation. Runtime enforcement at every boundary — deployed in minutes, not months.">
+<meta name="description" content="Snapper is the enterprise AI Agent Security Platform. Autonomous self-learning SecOps agent. Composite Trust scoring. 35-scenario red team simulation. Runtime enforcement at every boundary — deployed in minutes, not months.">
 <meta property="og:title" content="Snapper — AI Agent Security Platform">
-<meta property="og:description" content="Say Yes to More AI — Safely. Autonomous self-learning SecOps agent. Composite Trust engine. 29 red team scenarios. Runtime enforcement at every boundary. 364 API endpoints. 27K+ MCP servers.">
+<meta property="og:description" content="Say Yes to More AI — Safely. Autonomous self-learning SecOps agent. Composite Trust engine. 35 red team scenarios. Runtime enforcement at every boundary. 364 API endpoints. 27K+ MCP servers.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapperprotect.com">
 <meta name="twitter:card" content="summary_large_image">
@@ -1004,7 +1004,7 @@ footer a:hover { color: var(--accent); }
       <div class="hero-stat"><span class="hs-num">26</span> Rule Types</div>
       <div class="hero-stat"><span class="hs-num">27K+</span> MCP Servers</div>
       <div class="hero-stat"><span class="hs-num">582</span> AI Services</div>
-      <div class="hero-stat"><span class="hs-num">29</span> Red Team Scenarios</div>
+      <div class="hero-stat"><span class="hs-num">35</span> Red Team Scenarios</div>
       <div class="hero-stat"><span class="hs-num">5,027</span> Tests</div>
     </div>
     <div style="max-width: 720px; margin: 32px auto 0; text-align: center;">
@@ -1118,7 +1118,7 @@ footer a:hover { color: var(--accent); }
         </div>
         <div class="pain-solve">
           <div class="pain-solve-label"><span>&#x2714;</span> How Snapper solves it</div>
-          <p><strong>29 red team scenarios</strong> run continuously against your live policy — detecting gaps before attackers find them. The <strong>Adaptive Learning Engine</strong> updates detection logic from live decisions with no retraining cycle and no deployment window. Behavioral baselines catch novel attacks that match no known signature. Mean time to detection: seconds, not days.</p>
+          <p><strong>35 red team scenarios</strong> run continuously against your live policy — detecting gaps before attackers find them. The <strong>Adaptive Learning Engine</strong> updates detection logic from live decisions with no retraining cycle and no deployment window. Behavioral baselines catch novel attacks that match no known signature. Mean time to detection: seconds, not days.</p>
         </div>
       </div>
 
@@ -1295,8 +1295,8 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card highlight">
         <div class="feature-icon red">&#x1F310;</div>
         <h3>Market-Leading Network Proxy</h3>
-        <p>The only AI security product with a production-grade, purpose-built network enforcement layer. High-performance Go binary intercepts all agent traffic at the OS level — no code changes to agents, no SDK wrapping. SNI-based inspection sees every AI provider request; optional MITM enables deep content analysis. Covers 582 AI provider domains. Catches runtime bypass attempts, shadow AI, and unauthorized model calls that SDK-level hooks can never see.</p>
-        <span class="mono-detail">Go binary &middot; SNI/MITM &middot; OS-level &middot; 582 AI domains &middot; zero code changes</span>
+        <p>The only AI security product with a production-grade, purpose-built network enforcement layer. High-performance Go binary intercepts all agent traffic at the OS level — no code changes to agents, no SDK wrapping. SNI-based inspection sees every AI provider request; optional MITM enables deep content analysis with active prevention: tool result sanitization strips injection attempts, kill chain circuit breaker blocks compromised agents. Behavioral analytics detect model bait-and-switch via statistical fingerprinting and surface traffic anomalies via per-agent baselines. Covers 582 AI provider domains.</p>
+        <span class="mono-detail">Go binary &middot; SNI/MITM &middot; OS-level &middot; 582 AI domains &middot; SANITIZE &middot; INTERRUPT &middot; FINGERPRINT &middot; BASELINE</span>
       </div>
 
       <div class="feature-card">
@@ -1323,7 +1323,7 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card highlight">
         <div class="feature-icon red">&#x1F9EC;</div>
         <h3>AI-Inside Risk Protection</h3>
-        <p>AI agents introduce a fundamentally different threat surface: the model itself can be weaponized. Snapper defends against indirect prompt injection via RAG pipelines, LLM output injection (malicious instructions smuggled in model responses), MCP tool poisoning (modified tool definitions that redirect agent behavior), multi-agent delegation attacks, shadow model loading, and token smuggling. 29 red team scenarios cover the full OWASP LLM Top 10 and MITRE ATLAS v5.4.</p>
+        <p>AI agents introduce a fundamentally different threat surface: the model itself can be weaponized. Snapper defends against indirect prompt injection via RAG pipelines, LLM output injection (malicious instructions smuggled in model responses), MCP tool poisoning (modified tool definitions that redirect agent behavior), multi-agent delegation attacks, shadow model loading, and token smuggling. 35 red team scenarios (including 6 MCP-specific attack vectors) cover the full OWASP LLM Top 10 and MITRE ATLAS v5.4.</p>
         <span class="mono-detail">Indirect injection &middot; LLM output injection &middot; MCP poisoning &middot; OWASP LLM Top 10 &middot; MITRE ATLAS</span>
       </div>
 
@@ -1467,7 +1467,7 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <h3>Network Proxy</h3>
-        <p>Go binary intercepts all agent traffic at the OS level. SNI-based inspection catches every AI provider request, even from agents that bypass SDK hooks. The network layer catch-all.</p>
+        <p>Go binary intercepts all agent traffic at the OS level. SNI-based inspection catches every AI provider request, even from agents that bypass SDK hooks. Active prevention (SANITIZE + INTERRUPT) and behavioral analytics (FINGERPRINT + BASELINE) operate at the network layer.</p>
         <div class="agent-list">
           <span>All agents</span>
           <span>582 domains</span>
@@ -1542,7 +1542,7 @@ footer a:hover { color: var(--accent); }
 <section class="comparison" id="comparison">
   <div class="container">
     <h2 class="section-title">How Snapper compares</h2>
-    <p class="section-subtitle">The most complete AI agent security platform — 7 enforcement layers, autonomous self-learning SecOps, composite trust scoring, and 29-scenario red team simulation in a single product.</p>
+    <p class="section-subtitle">The most complete AI agent security platform — 7 enforcement layers, autonomous self-learning SecOps, composite trust scoring, and 35-scenario red team simulation in a single product.</p>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
@@ -1715,7 +1715,7 @@ footer a:hover { color: var(--accent); }
             <td><span class="cross">&#x2717;</span></td>
           </tr>
           <tr>
-            <td>Red team simulator (29 attack scenarios)</td>
+            <td>Red team simulator (35 attack scenarios)</td>
             <td class="snapper-col"><span class="check">&#x2713;</span> continuous</td>
             <td><span class="cross">&#x2717;</span></td>
             <td><span class="cross">&#x2717;</span></td>
@@ -1753,7 +1753,7 @@ footer a:hover { color: var(--accent); }
       </table>
     </div>
     <div class="comp-note">
-      <strong>Where each excels:</strong> Acuvity/Proofpoint leads in multimodal PII detection using SLMs and has strong browser visibility. Prompt Security specializes in prompt injection defense. Generic WAFs handle network traffic. <strong>Snapper is unique in covering all seven enforcement layers</strong> &mdash; SDK, shell hooks, network proxy, browser extension, MCP, CI/CD code scanner, and LLM proxy &mdash; plus five capabilities no other product offers: an <strong>Adaptive Learning Engine</strong> that trains autonomously on your own security signals, a <strong>Composite Trust Score</strong> synthesizing 8 SIEM sources into a 0&ndash;100 per-entity score, a <strong>continuous self-learning Red Team</strong> with 29 attack scenarios that validates your posture automatically, <strong>bidirectional SOAR integration</strong> across 5 platforms with inbound action support, and a <strong>market-leading network proxy</strong> &mdash; the only purpose-built OS-level enforcement layer in the AI security category.
+      <strong>Where each excels:</strong> Acuvity/Proofpoint leads in multimodal PII detection using SLMs and has strong browser visibility. Prompt Security specializes in prompt injection defense. Generic WAFs handle network traffic. <strong>Snapper is unique in covering all seven enforcement layers</strong> &mdash; SDK, shell hooks, network proxy, browser extension, MCP, CI/CD code scanner, and LLM proxy &mdash; plus five capabilities no other product offers: an <strong>Adaptive Learning Engine</strong> that trains autonomously on your own security signals, a <strong>Composite Trust Score</strong> synthesizing 8 SIEM sources into a 0&ndash;100 per-entity score, a <strong>continuous self-learning Red Team</strong> with 35 attack scenarios that validates your posture automatically, <strong>bidirectional SOAR integration</strong> across 5 platforms with inbound action support, and a <strong>market-leading network proxy</strong> &mdash; the only purpose-built OS-level enforcement layer in the AI security category.
     </div>
   </div>
 </section>
@@ -1796,7 +1796,7 @@ footer a:hover { color: var(--accent); }
         <div class="label">Kill Chain State Machines</div>
       </div>
       <div class="stat-card">
-        <div class="number">29</div>
+        <div class="number">35</div>
         <div class="label">Red Team Scenarios</div>
       </div>
       <div class="stat-card">
