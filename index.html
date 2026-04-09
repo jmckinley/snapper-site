@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
 <title>Snapper — AI Agent Security Platform</title>
-<meta name="description" content="Mythos proved AI agents can escape sandboxes, reason deceptively, and engineer exploits. Snapper is the only platform that governs AI agents from application intent to kernel enforcement — with 7 self-learning loops that adapt faster than the threat.">
+<meta name="description" content="Mythos proved AI agents can escape sandboxes, reason deceptively, and engineer exploits. Snapper is the only platform that governs AI agents from application intent to kernel enforcement — with 7 self-learning loops, eBPF Sentinel, and Landlock/Seatbelt Cage that adapt faster than the threat.">
 <meta property="og:title" content="Snapper — AI Agent Security for the Mythos Era">
-<meta property="og:description" content="AI agents can now escape their sandbox. Snapper provides 3 enforcement layers, 7 self-learning loops, and kernel-level containment — the only platform built for Mythos-class threats.">
+<meta property="og:description" content="AI agents can now escape their sandbox. Snapper provides 3 enforcement layers (application, network, kernel), 7 self-learning loops, eBPF behavioral monitoring, and Landlock/Seatbelt kernel containment — the only platform built for Mythos-class threats.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://snapperprotect.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Snapper — AI Agent Security for the Mythos Era">
-<meta name="twitter:description" content="AI agents can now escape their sandbox. 3 enforcement layers. 7 self-learning loops. Kernel-level containment. Built for Mythos-class threats.">
+<meta name="twitter:description" content="AI agents can now escape their sandbox. 3 enforcement layers. 7 self-learning loops. eBPF Sentinel + Landlock/Seatbelt Cage. Built for Mythos-class threats.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1466,8 +1466,8 @@ footer a:hover { color: var(--accent); }
 <section class="features" id="features">
   <div class="container">
     <div style="text-align: center; margin-bottom: 56px;">
-      <h2 class="section-title">20+ capabilities. One platform.</h2>
-      <p class="section-subtitle" style="margin-bottom: 0;">Everything you need to govern AI agents at enterprise scale — from network-layer enforcement and SOAR automation to AI-inside threat detection and autonomous self-learning SecOps.</p>
+      <h2 class="section-title">25+ capabilities. One platform.</h2>
+      <p class="section-subtitle" style="margin-bottom: 0;">Everything you need to govern AI agents at enterprise scale — from network-layer enforcement and SOAR automation to eBPF kernel monitoring, AI-inside threat detection, and autonomous self-learning SecOps.</p>
     </div>
     <div class="features-grid">
 
@@ -1611,6 +1611,20 @@ footer a:hover { color: var(--accent); }
         <span class="mono-detail">Google Drive &middot; Microsoft Entra &middot; AES-256-GCM token store &middot; 6h sync</span>
       </div>
 
+      <div class="feature-card highlight">
+        <div class="feature-icon green">&#x1F512;</div>
+        <h3>Kernel Security</h3>
+        <p>Two-phase kernel enforcement that contains agents even after every application-layer boundary is breached. <strong>Phase 1 — Snapper Cage</strong>: Landlock (Linux 5.13+) and Seatbelt (macOS) restrict filesystem, network, and process access per-agent. No root required. Profiles survive Snapper outages. <strong>Phase 2 — Snapper Sentinel</strong>: eBPF ring buffer monitors syscalls, network, process ancestry, and memory in real time. Behavioral DNA profiles detect impersonation. Kill switch terminates violating processes. Self-learning profiles tighten over time.</p>
+        <span class="mono-detail">Landlock &middot; Seatbelt &middot; eBPF Sentinel &middot; behavioral DNA &middot; kill switch &middot; no root</span>
+      </div>
+
+      <div class="feature-card highlight">
+        <div class="feature-icon purple">&#x1F9E0;</div>
+        <h3>Advanced Intent Analysis</h3>
+        <p>Three complementary systems detect when an agent's stated intent diverges from its actual behavior. <strong>Intent Drift</strong>: Shannon entropy analysis of per-agent command histograms flags gradual behavioral drift — the signature of patient Mythos-class manipulation. <strong>Prompt Intent Scoring</strong>: DeBERTa-based classifier scores injection likelihood on every prompt before it reaches the model. <strong>AI Arbiter</strong>: 8 async AI reviewer roles (post-decision audit, approval triage, conspiracy detection, false-positive learning) provide a second opinion on every high-stakes decision using tiered model routing.</p>
+        <span class="mono-detail">intent entropy &middot; DeBERTa injection &middot; AI Arbiter &middot; 8 async roles &middot; tiered model routing</span>
+      </div>
+
       <div class="feature-card">
         <div class="feature-icon green">&#x1F50E;</div>
         <h3>Agent Auto-Discovery</h3>
@@ -1645,19 +1659,19 @@ footer a:hover { color: var(--accent); }
         <p>Mandatory Access Control profiles restrict filesystem, network, and IPC for every agent process. Per-agent policies. Profiles survive Snapper outages. Works without root or kernel modules.</p>
         <span class="kernel-badge live">SHIPPING</span>
       </div>
-      <div class="kernel-card">
+      <div class="kernel-card shipping">
         <div class="kernel-icon blue">&#x1F50D;</div>
         <h3>Snapper Sentinel</h3>
-        <div class="kernel-sub">eBPF observability</div>
-        <p>Kernel-level system call tracing with zero overhead. Detect sandbox escape attempts, privilege escalation, and anomalous process behavior before they succeed. Self-learning profiles adapt to agent behavior.</p>
-        <span class="kernel-badge q3">Q3 2026</span>
+        <div class="kernel-sub">eBPF ring buffer &middot; syscall + net + proc + memory</div>
+        <p>Kernel-level observability via eBPF with zero agent overhead. Detects sandbox escape attempts, privilege escalation, anomalous syscall sequences, and process ancestry violations. Behavioral DNA profiles adapt continuously &mdash; the kernel itself becomes self-learning.</p>
+        <span class="kernel-badge live">SHIPPING</span>
       </div>
       <div class="kernel-card">
         <div class="kernel-icon purple">&#x1F6E1;</div>
         <h3>Snapper Vault</h3>
         <div class="kernel-sub">Trusted Execution Environments</div>
         <p>Hardware-isolated enclaves for the most sensitive agent operations. Model weights, PII decryption, and credential access happen inside TEE boundaries. Even a compromised kernel cannot access vault contents.</p>
-        <span class="kernel-badge q4">Q4 2026</span>
+        <span class="kernel-badge q3">Q3 2026</span>
       </div>
     </div>
     <div class="kernel-note">
@@ -1705,9 +1719,14 @@ footer a:hover { color: var(--accent); }
         <h3>Network Baselines</h3>
         <p>Statistical fingerprinting of network traffic patterns per agent. Detects model bait-and-switch, anomalous API call patterns, and data exfiltration attempts at the network layer. Learns what normal looks like for each agent.</p>
       </div>
+      <div class="sl-card">
+        <div class="sl-num">Loop 07</div>
+        <h3>Kernel Self-Learning</h3>
+        <p>Snapper Cage profiles begin permissive on day 1 and tighten automatically via EMA baselines as agent behavior is observed — until only what the agent actually needs is allowed. Sentinel behavioral DNA profiles adapt continuously, and Q-Learning escape detection trains against the agent's own evasion attempts. The kernel itself becomes self-learning.</p>
+      </div>
     </div>
     <div class="sl-callout">
-      <strong>Loop 07: Kernel Self-Learning.</strong> Snapper Cage and Sentinel profiles tighten automatically based on observed agent behavior. The kernel learns what each agent actually needs &mdash; and restricts everything else. Cage profiles survive reboots and Snapper outages.
+      <strong>Defense in depth that self-improves.</strong> Every loop shares signal with every other. A behavioral baseline anomaly (Loop 01) reinforces the kernel cage profile (Loop 07). A network fingerprint deviation (Loop 06) tightens the eBPF Sentinel rules. The system converges on a uniquely precise threat model for each agent &mdash; one that static rules can never achieve.
     </div>
   </div>
 </section>
@@ -1716,8 +1735,8 @@ footer a:hover { color: var(--accent); }
 <section class="architecture" id="architecture">
 <span id="integration" style="display:block;position:relative;top:-80px;"></span>
   <div class="container">
-    <h2 class="section-title">7 entry points. One security layer.</h2>
-    <p class="section-subtitle">Every path an AI agent can take is covered — SDK, shell, network proxy, browser, MCP, CI/CD, and LLM proxy. Each route converges on the same rule engine, the same audit trail, the same policy.</p>
+    <h2 class="section-title">8 entry points. One security layer.</h2>
+    <p class="section-subtitle">Every path an AI agent can take is covered — SDK, shell, network proxy, browser, MCP, CI/CD, LLM proxy, and kernel enforcement. Each route converges on the same rule engine, the same audit trail, the same policy.</p>
     <div class="arch-hub">
       <!-- Left: 4 entry points → pointing right toward Snapper -->
       <div class="arch-side arch-side-left">
@@ -1748,11 +1767,11 @@ footer a:hover { color: var(--accent); }
         <div class="arch-node snapper-node">
           <div class="arch-icon">&#x1F6E1;</div>
           <h4>Snapper</h4>
-          <p>26 rule types &middot; threat engine<br>PII vault &middot; SOAR &middot; compliance<br>behavioral baselines &middot; FinOps</p>
+          <p>26 rule types &middot; threat engine<br>PII vault &middot; SOAR &middot; compliance<br>behavioral baselines &middot; FinOps<br>Cage + eBPF Sentinel</p>
         </div>
       </div>
 
-      <!-- Right: 3 entry points ← pointing left toward Snapper -->
+      <!-- Right: 4 entry points ← pointing left toward Snapper -->
       <div class="arch-side arch-side-right">
         <div class="arch-node">
           <span class="arch-arrow-edge">&#x2190;</span>
@@ -1768,6 +1787,11 @@ footer a:hover { color: var(--accent); }
           <span class="arch-arrow-edge">&#x2190;</span>
           <div class="arch-icon">&#x2699;</div>
           <div class="arch-node-text"><h4>CI/CD</h4><p>Code scanner, SARIF, GitHub Action</p></div>
+        </div>
+        <div class="arch-node">
+          <span class="arch-arrow-edge">&#x2190;</span>
+          <div class="arch-icon">&#x1F512;</div>
+          <div class="arch-node-text"><h4>Kernel</h4><p>Cage (Landlock/Seatbelt) + eBPF Sentinel</p></div>
         </div>
       </div>
     </div>
@@ -1877,6 +1901,21 @@ footer a:hover { color: var(--accent); }
           <span>Input rails</span>
           <span>Output rails</span>
           <span>Per-agent</span>
+        </div>
+      </div>
+
+      <div class="integration-card">
+        <div class="int-icon" style="background: rgba(16, 185, 129, 0.12);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Kernel Enforcement</h3>
+        <p>Snapper Cage wraps every agent process in a Landlock (Linux) or Seatbelt (macOS) sandbox applied at agent launch — no code changes required. Snapper Sentinel attaches eBPF probes to the agent's syscalls, network, and process tree. Profiles are applied once and persist even if Snapper is down.</p>
+        <div class="agent-list">
+          <span>Linux 5.13+</span>
+          <span>macOS 12+</span>
+          <span>No root</span>
+          <span>eBPF probes</span>
+          <span>Persistent</span>
         </div>
       </div>
 
@@ -1991,7 +2030,7 @@ footer a:hover { color: var(--accent); }
           <tr><td colspan="5" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; padding: 8px 16px; background: rgba(255,255,255,0.02);">COVERAGE &amp; INTEGRATION</td></tr>
           <tr>
             <td>Enforcement entry points</td>
-            <td class="snapper-col"><span class="check">&#x2713;</span> 7 layers</td>
+            <td class="snapper-col"><span class="check">&#x2713;</span> 8 layers</td>
             <td><span class="partial">~</span> 2 (proxy + API)</td>
             <td><span class="partial">~</span> 1 (API)</td>
             <td><span class="partial">~</span> 1 (network)</td>
@@ -2113,7 +2152,7 @@ footer a:hover { color: var(--accent); }
       </table>
     </div>
     <div class="comp-note">
-      <strong>Where each excels:</strong> Acuvity/Proofpoint leads in multimodal PII detection using SLMs and has strong browser visibility. Prompt Security specializes in prompt injection defense. Generic WAFs handle network traffic. <strong>Snapper is the only platform with both kernel-level containment and self-learning defense</strong> &mdash; 3 enforcement layers (application, network, kernel), 7 adaptive learning loops, and 7 entry points (SDK, shell hooks, network proxy, browser extension, MCP, CI/CD, LLM proxy). In a Mythos world where agents can escape sandboxes and reason deceptively, Snapper is the only product that defends at every layer from application intent to kernel enforcement.
+      <strong>Where each excels:</strong> Acuvity/Proofpoint leads in multimodal PII detection using SLMs and has strong browser visibility. Prompt Security specializes in prompt injection defense. Generic WAFs handle network traffic. <strong>Snapper is the only platform with kernel-level containment, eBPF behavioral monitoring, and self-learning defense</strong> &mdash; 3 enforcement layers (application, network, kernel), 7 adaptive learning loops, and 8 entry points (SDK, shell hooks, network proxy, browser extension, MCP, CI/CD, LLM proxy, kernel enforcement). In a Mythos world where agents can escape sandboxes and reason deceptively, Snapper is the only product that defends at every layer from application intent to kernel enforcement.
     </div>
   </div>
 </section>
