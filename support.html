@@ -729,8 +729,8 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
         <h3>Trust Scoring</h3>
-        <p>Adaptive per-agent trust score (0.5&ndash;2.0) that adjusts rate limits based on behavior. Only rate-limit breaches penalize trust — rule denials do not affect the score. Opt-in per agent via dashboard toggle or API.</p>
-        <span class="mono-detail">0.5x min &middot; 2.0x max &middot; per-agent opt-in &middot; Redis-backed</span>
+        <p>Two-layer trust model. <strong>Behavioral trust</strong> (0.5&ndash;2.0 multiplier) adjusts rate limits based on per-agent behavior — only rate-limit breaches penalize it. <strong>Composite trust</strong> (0&ndash;100 score) aggregates signals from 8 SIEM sources (Proofpoint, CrowdStrike, SentinelOne, Okta, Splunk, Darktrace, Microsoft Sentinel, Palo Alto) — scores below 20 force REQUIRE_APPROVAL on all actions. Intent drift penalties (0&ndash;15%) apply when an agent's command patterns diverge from established intent baselines.</p>
+        <span class="mono-detail">Behavioral: 0.5x–2.0x &middot; Composite: 0–100 &middot; 8 SIEM sources &middot; Intent drift: 0–15% penalty</span>
       </div>
 
       <div class="doc-card">
@@ -738,8 +738,8 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <h3>Threat Detection</h3>
-        <p>Real-time behavioral analysis: 13 signal types, 7 kill chain patterns (data exfil, credential theft, PII harvest, encoded exfil, privilege escalation, vault extraction, LOTL), behavioral baselines with 7-day rolling window. Feed health monitoring with auto-recovery and air-gapped threat intel support. Built-in <strong>Red Team Simulator</strong> admin dashboard with 29 attack scenarios for validating detection rules and kill chain coverage.</p>
-        <span class="mono-detail">Score &ge;60 &rarr; approval required &middot; &ge;80 &rarr; auto-deny &middot; Feed health: 15-min checks &middot; Red Team: 29 scenarios</span>
+        <p>Real-time behavioral analysis: 13 signal types, 7 kill chain patterns (data exfil, credential theft, PII harvest, encoded exfil, privilege escalation, vault extraction, LOTL), behavioral baselines with 7-day rolling window. Feed health monitoring with auto-recovery and air-gapped threat intel support. Built-in <strong>Red Team Simulator</strong> admin dashboard with 35 attack scenarios (29 general + 6 MCP-specific) for validating detection rules and kill chain coverage.</p>
+        <span class="mono-detail">Score &ge;60 &rarr; approval required &middot; &ge;80 &rarr; auto-deny &middot; Feed health: 15-min checks &middot; Red Team: 35 scenarios</span>
       </div>
 
       <div class="doc-card">
@@ -802,6 +802,36 @@ footer a:hover { color: var(--accent); }
           <li>Manage in Settings &rarr; Operations &rarr; Permission Mirroring</li>
         </ul>
         <a href="/guides/permission-mirroring" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);text-decoration:none;">Permission Mirroring Guide &rarr;</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon purple" style="background:rgba(139,92,246,0.15);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Advanced Intent Analysis</h3>
+        <p>Multi-layer analysis of what an agent is actually trying to do, beyond pattern matching. <strong>Prompt injection ML</strong> (DeBERTa classifier) detects manipulation attempts with confidence scoring. <strong>Intent drift detection</strong> measures Shannon entropy of each agent's command history — deviations from established intent baselines trigger trust penalties and alerts. <strong>AI Arbiter</strong> (8 async roles) provides post-decision review, approval triage, false-positive learning, conspiracy detection, and compliance gap analysis using tiered model routing.</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>DeBERTa classifier: 50+ regex patterns + ML scoring</li>
+          <li>Intent entropy tracked per agent (circular buffer, 100 entries)</li>
+          <li>Intent drift penalty: 0&ndash;15% trust reduction</li>
+          <li>AI Arbiter: 8 roles, no hot-path impact, local/Haiku/Sonnet routing</li>
+        </ul>
+        <span class="mono-detail">ML: DeBERTa &middot; Intent: Shannon entropy &middot; Arbiter: 8 async roles &middot; Tiered model routing</span>
+      </div>
+
+      <div class="doc-card">
+        <div class="card-icon green" style="background:rgba(16,185,129,0.15);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Kernel Sandbox (Snapper Cage)</h3>
+        <p>OS-level mandatory access control applied at agent launch — not per-request. <strong>Phase 1 (shipped):</strong> Landlock LSM (Linux 5.13+) and Seatbelt (macOS) enforce filesystem, process, and network restrictions. Profile auto-derived from 26 rule types; no root required. <strong>Phase 2 (eBPF Sentinel):</strong> Ring-buffer syscall/network/process event monitoring with behavioral DNA, Q-Learning escape detection, and cross-layer signal correlation. Cage fails safe — a caging failure leaves the agent running uncaged rather than crashing.</p>
+        <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
+          <li>Landlock ABI v1&ndash;v5 (kernel 5.13&ndash;6.7+), Seatbelt on macOS 12+</li>
+          <li>Circuit breaker: 3 failures &rarr; cage bypassed, agent continues</li>
+          <li>Hot path: zero kernel calls during evaluate (&lt;2ms overhead)</li>
+          <li>Admin dashboard at <code style="font-size:11px;color:var(--accent);">/admin/cage</code></li>
+        </ul>
+        <span class="mono-detail">Landlock &middot; Seatbelt &middot; eBPF Sentinel &middot; Profile auto-derived &middot; No root needed</span>
       </div>
 
     </div>
@@ -1185,6 +1215,12 @@ footer a:hover { color: var(--accent); }
       <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
         <h3 style="color:var(--text);margin-bottom:8px;">GitHub Action (Marketplace)</h3>
         <p style="color:var(--text-muted);font-size:14px;">One-line CI/CD integration via <code style="font-size:11px;color:var(--accent);">snapper/source-scan-action@v1</code> on the GitHub Actions marketplace. Runs the 3-tier source scanner on every PR, uploads SARIF results to GitHub Code Scanning, and blocks merges when ungoverned AI is detected.</p>
+      </div>
+
+      <div class="feature-card" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <h3 style="color:var(--text);margin-bottom:8px;">Kernel Enforcement (Enterprise)</h3>
+        <p style="color:var(--text-muted);font-size:14px;">3-phase kernel roadmap: <strong style="color:var(--text);">Phase 1</strong> — Landlock/Seatbelt cage (shipped, 99 tests). <strong style="color:var(--text);">Phase 2</strong> — eBPF Sentinel: ring-buffer syscall/network/process monitoring, behavioral DNA, adaptive sandbox profiles that tighten over 14 days, Q-Learning escape detection. <strong style="color:var(--text);">Phase 3</strong> — TEE attestation via AMD SEV / Intel TDX. Self-learning kernel strategy links app-layer behavioral baselines to kernel enforcement for 6 cross-layer signal integration points.</p>
+        <span style="font-size:11px;color:var(--text-muted);font-family:monospace;">Linux 5.13+ &middot; macOS 12+ &middot; No privileged access &middot; Docker/K8s compatible</span>
       </div>
 
     </div>
