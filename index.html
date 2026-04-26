@@ -915,6 +915,108 @@ nav {
   margin-right: auto;
 }
 
+/* ─── BETA ACCESS SECTION ─── */
+.beta-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  position: relative;
+}
+.beta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.beta-label {
+  display: inline-block;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.25);
+  color: var(--accent);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.beta-form-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  margin-top: 36px;
+}
+.beta-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 12px;
+  padding: 28px 32px 24px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.beta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.beta-field--wide {
+  grid-column: 1 / -1;
+}
+.beta-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+.beta-field input {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-bright);
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-bright);
+  font-family: var(--font-display);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.beta-field input::placeholder { color: var(--text-dim); }
+.beta-field input:focus { border-color: var(--accent); }
+.beta-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.beta-actions .btn-secondary {
+  padding: 10px 20px;
+  font-size: 13px;
+}
+.beta-success {
+  grid-column: 1 / -1;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--accent);
+  line-height: 1.5;
+}
+.hidden { display: none !important; }
+@media (max-width: 600px) {
+  .beta-form { grid-template-columns: 1fr; padding: 20px 18px; }
+  .beta-field--wide { grid-column: 1; }
+  .beta-actions { grid-column: 1; flex-direction: column; align-items: stretch; }
+}
+
 /* ─── FOOTER ─── */
 footer {
   padding: 32px 0;
@@ -1208,7 +1310,7 @@ footer a:hover { color: var(--accent); }
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
         Sign In
       </a>
-      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-demo">Request Demo</a>
+      <a href="#beta" class="btn-demo">Request Beta Access</a>
     </div>
   </div>
 </nav>
@@ -1219,8 +1321,8 @@ footer a:hover { color: var(--accent); }
     <h1>AI Agents Can Now <span class="accent">Escape Their Sandbox.</span><br>Are You Ready?</h1>
     <p class="hero-sub">Anthropic's Mythos demonstrated sandbox escape, deceptive reasoning, and exploit engineering. Snapper is the only platform that governs AI agents from application intent to kernel enforcement &mdash; with self-learning that adapts faster than the threat.</p>
     <div class="hero-actions">
-      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
-        Get Started
+      <a href="#beta" class="btn-primary">
+        Request Beta Access
       </a>
       <a href="#features" class="btn-secondary">See How It Works</a>
     </div>
@@ -2268,14 +2370,47 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- BETA ACCESS -->
+<section class="beta-section" id="beta">
+  <div class="container">
+    <div class="beta-label">Closed Beta</div>
+    <h2 class="section-title">Request Beta Access</h2>
+    <p class="section-subtitle">Snapper is in closed beta. Tell us a bit about your use case and we'll send you an invite code within 1–2 business days.</p>
+    <div class="beta-form-wrap">
+      <form id="beta-form" class="beta-form" onsubmit="submitBetaForm(event)">
+        <div class="beta-field">
+          <label for="bf-name">Your name</label>
+          <input id="bf-name" type="text" placeholder="Jane Smith" required autocomplete="name">
+        </div>
+        <div class="beta-field">
+          <label for="bf-email">Work email</label>
+          <input id="bf-email" type="email" placeholder="jane@company.com" required autocomplete="email">
+        </div>
+        <div class="beta-field beta-field--wide">
+          <label for="bf-usecase">How will you use Snapper? <span style="color:var(--text-dim);font-weight:400;">(optional)</span></label>
+          <input id="bf-usecase" type="text" placeholder="e.g. securing production Claude agents for our CRM integration">
+        </div>
+        <div id="beta-success" class="beta-success hidden">
+          &#x2713; Request sent! Check your inbox — we'll follow up within 1&ndash;2 business days.
+          <br><a href="https://app.snapperprotect.com/register" style="color:var(--accent);margin-top:6px;display:inline-block;">Already have an invite? Sign up &rarr;</a>
+        </div>
+        <div class="beta-actions">
+          <button type="submit" class="btn-primary" id="beta-submit-btn">Request Access</button>
+          <a href="https://app.snapperprotect.com/register" class="btn-secondary">Already have an invite &rarr;</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <div class="container">
     <h2>Say Yes to More AI &mdash; Safely.</h2>
     <p>One Docker command. Smart defaults. Full protection from day one. See what Snapper can do for your team.</p>
     <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-      <a href="mailto:john@mckinleylabs.com?subject=Snapper%20Demo%20Request&amp;body=Hi%20John%2C%0A%0AI%27m%20interested%20in%20a%20demo%20of%20Snapper%20for%20our%20team.%0A%0ACompany%3A%20%0AUse%20case%3A%20%0ANumber%20of%20agents%3A%20%0A%0AThanks!" class="btn-primary">
-        Get Started
+      <a href="#beta" class="btn-primary">
+        Request Beta Access
       </a>
       <a href="#features" class="btn-secondary">See How It Works</a>
     </div>
@@ -2293,5 +2428,28 @@ footer a:hover { color: var(--accent); }
   </div>
 </footer>
 
+<script>
+function submitBetaForm(e) {
+  e.preventDefault();
+  var name = document.getElementById('bf-name').value.trim();
+  var email = document.getElementById('bf-email').value.trim();
+  var usecase = document.getElementById('bf-usecase').value.trim();
+  var btn = document.getElementById('beta-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  var subject = encodeURIComponent('Snapper Beta Access Request');
+  var body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Use case: ' + (usecase || '(not provided)') + '\n\n' +
+    'Please send me a beta invite code.'
+  );
+  window.location.href = 'mailto:john@snapperprotect.com?subject=' + subject + '&body=' + body;
+  setTimeout(function() {
+    document.getElementById('beta-success').classList.remove('hidden');
+    document.querySelector('.beta-actions').classList.add('hidden');
+  }, 400);
+}
+</script>
 </body>
 </html>
