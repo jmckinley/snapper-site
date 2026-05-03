@@ -898,6 +898,25 @@ footer a:hover { color: var(--accent); }
       </div>
 
       <div class="doc-card">
+        <div class="card-icon" style="background:rgba(16,185,129,0.1);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3>Native MCP Server</h3>
+        <p>Snapper exposes a JSON-RPC 2.0 MCP server at <code style="font-size:11px;color:var(--accent);">/mcp/snapper</code>. Any MCP-capable agent adds Snapper with a single command — no hook script, plugin, or SDK wrapper required.</p>
+        <div class="tag-list">
+          <span>snapper_check</span>
+          <span>vault_store</span>
+          <span>request_approval</span>
+          <span>audit_recent</span>
+        </div>
+        <ul style="font-size:13px;margin-top:12px;padding-left:18px;line-height:1.8;">
+          <li><strong>Claude Code:</strong> <code style="font-size:11px;">claude mcp add snapper https://app.snapperprotect.com/mcp/snapper</code></li>
+          <li>7 tools: evaluate, vault store/get/list, request approval, approval status, audit log</li>
+          <li>Identical rule engine as PreToolUse hooks — same &lt;150ms p95 latency</li>
+        </ul>
+      </div>
+
+      <div class="doc-card">
         <div class="card-icon amber">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         </div>
@@ -1139,6 +1158,18 @@ footer a:hover { color: var(--accent); }
         <span class="api-method post">POST</span>
         <div class="api-path">/api/v1/security/threat-intel/import</div>
         <div class="api-desc">Import threat intel JSON file (air-gapped deployments)</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method get">GET</span>
+        <div class="api-path">/mcp/snapper</div>
+        <div class="api-desc">MCP server discovery — returns tool schemas and <code style="font-size:11px;">claude mcp add</code> setup command</div>
+      </div>
+
+      <div class="api-card">
+        <span class="api-method post">POST</span>
+        <div class="api-path">/mcp/snapper</div>
+        <div class="api-desc">Native MCP server — JSON-RPC 2.0. Tools: snapper_check, vault_store/get/list, request_approval, approval_status, audit_recent</div>
       </div>
 
     </div>
