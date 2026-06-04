@@ -673,7 +673,7 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Rules &amp; Policies</h3>
-        <p>26 rule types including command allow/deny, rate limiting, PII gates, time restrictions, human-in-the-loop approval, MCP tool allowlists/denylists, cost limits, multi-agent chain-of-custody, data classification, and geolocation restriction. Rules evaluate in priority order; DENY always short-circuits.</p>
+        <p>27 rule types including command allow/deny, rate limiting, PII gates, time restrictions, human-in-the-loop approval, MCP tool allowlists/denylists, cost limits, multi-agent chain-of-custody, data classification, and geolocation restriction. Rules evaluate in priority order; DENY always short-circuits.</p>
         <div class="tag-list">
           <span>COMMAND_ALLOW</span>
           <span>COMMAND_DENY</span>
@@ -824,7 +824,7 @@ footer a:hover { color: var(--accent); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Kernel Sandbox (Snapper Cage)</h3>
-        <p>OS-level mandatory access control applied at agent launch — not per-request. <strong>Phase 1 (shipped):</strong> Landlock LSM (Linux 5.13+) and Seatbelt (macOS) enforce filesystem, process, and network restrictions. Profile auto-derived from 26 rule types; no root required. <strong>Phase 2 (eBPF Sentinel):</strong> Ring-buffer syscall/network/process event monitoring with behavioral DNA, Q-Learning escape detection, and cross-layer signal correlation. Cage fails safe — a caging failure leaves the agent running uncaged rather than crashing.</p>
+        <p>OS-level mandatory access control applied at agent launch — not per-request. <strong>Phase 1 (shipped):</strong> Landlock LSM (Linux 5.13+) and Seatbelt (macOS) enforce filesystem, process, and network restrictions. Profile auto-derived from 27 rule types; no root required. <strong>Phase 2 (eBPF Sentinel):</strong> Ring-buffer syscall/network/process event monitoring with behavioral DNA, Q-Learning escape detection, and cross-layer signal correlation. Cage fails safe — a caging failure leaves the agent running uncaged rather than crashing.</p>
         <ul style="font-size:13px;margin-top:10px;padding-left:18px;line-height:1.8;">
           <li>Landlock ABI v1&ndash;v5 (kernel 5.13&ndash;6.7+), Seatbelt on macOS 12+</li>
           <li>Circuit breaker: 3 failures &rarr; cage bypassed, agent continues</li>
