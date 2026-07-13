@@ -2450,6 +2450,28 @@ function submitBetaForm(e) {
     document.querySelector('.beta-actions').classList.add('hidden');
   }, 400);
 }
+
+// Signup source attribution: forward the landing URL's UTM/ref params to the
+// app signup + login links so a Reddit/HN-driven visit keeps its attribution
+// through to registration (the app records it per-org). Direct visits get a
+// utm_source=landing fallback so they're not "unknown".
+(function forwardAttribution() {
+  try {
+    var q = new URLSearchParams(window.location.search);
+    var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'ref'];
+    var out = new URLSearchParams();
+    keys.forEach(function (k) { var v = q.get(k); if (v) out.set(k, v.slice(0, 200)); });
+    if (!out.get('utm_source')) out.set('utm_source', 'landing');
+    var qs = out.toString();
+    document.querySelectorAll('a[href*="app.snapperprotect.com/register"], a[href*="app.snapperprotect.com/login"]').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        out.forEach(function (val, key) { u.searchParams.set(key, val); });
+        a.href = u.toString();
+      } catch (e) { /* leave link as-is */ }
+    });
+  } catch (e) { /* non-fatal */ }
+})();
 </script>
 </body>
 </html>
