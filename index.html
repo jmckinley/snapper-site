@@ -2373,9 +2373,9 @@ footer a:hover { color: var(--accent); }
 <!-- BETA ACCESS -->
 <section class="beta-section" id="beta">
   <div class="container">
-    <div class="beta-label">Closed Beta</div>
+    <div class="beta-label">Closed Beta &middot; Free</div>
     <h2 class="section-title">Request Beta Access</h2>
-    <p class="section-subtitle">Snapper is in closed beta. Tell us a bit about your use case and we'll send you an invite code within 1–2 business days.</p>
+    <p class="section-subtitle">Snapper is <strong>free during the closed beta</strong> — no credit card. Tell us a bit about your use case and we'll send you an invite code within 1–2 business days.</p>
     <div class="beta-form-wrap">
       <form id="beta-form" class="beta-form" onsubmit="submitBetaForm(event)">
         <div class="beta-field">
@@ -2437,18 +2437,44 @@ function submitBetaForm(e) {
   var btn = document.getElementById('beta-submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending…';
-  var subject = encodeURIComponent('Snapper Beta Access Request');
-  var body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    'Use case: ' + (usecase || '(not provided)') + '\n\n' +
-    'Please send me a beta invite code.'
-  );
-  window.location.href = 'mailto:john@snapperprotect.com?subject=' + subject + '&body=' + body;
-  setTimeout(function() {
+
+  function showSuccess() {
     document.getElementById('beta-success').classList.remove('hidden');
     document.querySelector('.beta-actions').classList.add('hidden');
-  }, 400);
+  }
+  // Last-resort fallback so a motivated lead is never lost if the API is
+  // unreachable (network error / CORS): open the user's mail client.
+  function mailtoFallback() {
+    var subject = encodeURIComponent('Snapper Beta Access Request');
+    var body = encodeURIComponent(
+      'Name: ' + name + '\nEmail: ' + email + '\n' +
+      'Use case: ' + (usecase || '(not provided)') + '\n\nPlease send me a beta invite code.'
+    );
+    window.location.href = 'mailto:john@snapperprotect.com?subject=' + subject + '&body=' + body;
+    setTimeout(showSuccess, 400);
+  }
+
+  // Real capture: persist the lead + launch attribution to Snapper's waitlist
+  // endpoint (replaces the lead-losing mailto). Name is folded into use_case so
+  // the CRM keeps it. UTM/ref carried from the landing URL for channel breakdown.
+  var q = new URLSearchParams(window.location.search);
+  var payload = {
+    email: email,
+    use_case: name + (usecase ? ' — ' + usecase : ''),
+    utm_source: q.get('utm_source') || 'landing',
+    utm_medium: q.get('utm_medium') || undefined,
+    utm_campaign: q.get('utm_campaign') || undefined,
+    referral_source: q.get('ref') || q.get('referral_source') || undefined,
+    landing_page: (window.location.pathname + window.location.search).slice(0, 512)
+  };
+  fetch('https://app.snapperprotect.com/api/v1/meta/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(r) {
+    if (r.ok) { showSuccess(); }
+    else { mailtoFallback(); }
+  }).catch(function() { mailtoFallback(); });
 }
 
 // Signup source attribution: forward the landing URL's UTM/ref params to the
