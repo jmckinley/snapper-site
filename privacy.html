@@ -5,161 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/">
 <title>Privacy Policy — Snapper</title>
-<meta name="description" content="Privacy Policy for Snapper, the Agent Application Firewall by McKinley Labs LLC. How we handle data in our browser extension and web application.">
+<meta name="description" content="Privacy Policy for Snapper, the Agent Application Firewall by McKinley Labs LLC. Covers the hosted service, self-hosted deployments, and the browser extension.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
-  --bg: #06090f;
-  --bg-elevated: #0c1119;
-  --bg-card: #0f1520;
-  --border: #1a2233;
-  --border-bright: #243044;
-  --text: #c8cdd5;
-  --text-dim: #8b95a5;
-  --text-bright: #e8ecf1;
-  --accent: #10b981;
-  --accent-dim: rgba(16, 185, 129, 0.12);
-  --font-display: 'Outfit', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --bg: #06090f; --bg-elevated: #0c1119; --bg-card: #0f1520; --border: #1a2233;
+  --border-bright: #243044; --text: #c8cdd5; --text-dim: #8b95a5; --text-bright: #e8ecf1;
+  --accent: #10b981; --accent-dim: rgba(16, 185, 129, 0.12);
+  --font-display: 'Outfit', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
 }
-
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-display);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-}
-
+body { font-family: var(--font-display); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(6, 9, 15, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--text-bright);
-  letter-spacing: -0.3px;
-  text-decoration: none;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(6, 9, 15, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text-bright); letter-spacing: -0.3px; text-decoration: none; }
 .nav-brand:hover { text-decoration: none; }
-.nav-brand svg { flex-shrink: 0; }
-.nav-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-dim);
-  padding: 2px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-}
-
-/* CONTENT */
-.content {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 120px 24px 80px;
-}
-.content h1 {
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--text-bright);
-  letter-spacing: -1px;
-  margin-bottom: 8px;
-}
-.content .updated {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--text-dim);
-  margin-bottom: 48px;
-}
-.content h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-bright);
-  margin-top: 40px;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
-}
-.content p, .content li {
-  font-size: 15px;
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-.content ul {
-  list-style: disc;
-  padding-left: 24px;
-  margin-bottom: 16px;
-}
-.content li {
-  margin-bottom: 8px;
-}
-.content p.dim {
-  color: var(--text-dim);
-  font-size: 14px;
-}
+.nav-tag { font-family: var(--font-mono); font-size: 10px; font-weight: 500; color: var(--accent); background: var(--accent-dim); padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+.content { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
+.content h1 { font-size: 36px; font-weight: 800; color: var(--text-bright); letter-spacing: -1px; margin-bottom: 8px; }
+.content .updated { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); margin-bottom: 48px; }
+.content h2 { font-size: 20px; font-weight: 700; color: var(--text-bright); margin-top: 40px; margin-bottom: 12px; letter-spacing: -0.3px; }
+.content p, .content li { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
+.content ul { list-style: disc; padding-left: 24px; margin-bottom: 16px; }
+.content li { margin-bottom: 8px; }
+.content p.dim { color: var(--text-dim); font-size: 14px; }
 .content strong { color: var(--text-bright); }
-.content code {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 2px 6px;
-  border-radius: 4px;
-  color: var(--accent);
-}
-
-/* FOOTER */
-footer {
-  padding: 32px 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-footer p {
-  font-size: 12px;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-}
+.content code { font-family: var(--font-mono); font-size: 13px; background: var(--bg-card); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; color: var(--accent); }
+footer { padding: 32px 0; border-top: 1px solid var(--border); text-align: center; }
+footer p { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); }
 footer a { color: var(--text-dim); }
 footer a:hover { color: var(--accent); }
 </style>
@@ -181,64 +59,59 @@ footer a:hover { color: var(--accent); }
 
 <div class="content">
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: February 2026</p>
+  <p class="updated">Last updated: July 2026</p>
 
-  <p>This privacy policy describes how the <strong>Snapper AI Firewall</strong> browser extension and web application ("Snapper"), operated by McKinley Labs LLC ("we", "us"), collect, use, and protect your information.</p>
-
-  <h2>What Snapper Does</h2>
-  <p>Snapper is a security tool that monitors interactions between users and AI services (such as ChatGPT, Claude, Gemini, and others) to enforce organizational security policies. The browser extension intercepts content sent to AI services, scans for sensitive data, and enforces rules configured on your organization's Snapper server.</p>
-
-  <h2>Data Collected by the Browser Extension</h2>
-  <p>The Snapper browser extension collects the following data:</p>
+  <p>This privacy policy describes how <strong>Snapper</strong>, operated by McKinley Labs LLC ("we", "us"), collects, uses, and protects your information. Snapper is offered in three forms, and the data practices differ for each:</p>
   <ul>
-    <li><strong>AI service interactions:</strong> Text submitted to supported AI services is scanned locally in your browser for PII patterns and policy violations before being sent. The text content itself is not transmitted to Snapper servers unless a rule evaluation is triggered.</li>
-    <li><strong>Rule evaluation requests:</strong> When a policy check is needed, the extension sends the tool name, command, and relevant metadata to your organization's Snapper server for evaluation. The server returns an allow, deny, or approval-required decision.</li>
-    <li><strong>AI service visit tracking:</strong> If shadow AI tracking is enabled, the extension records which AI services you visit (domain names and timestamps only, not page content). This helps organizations understand which AI tools are in use.</li>
-    <li><strong>Clipboard monitoring:</strong> If enabled, the extension scans text pasted into AI services for PII patterns. Clipboard content is scanned locally and is not transmitted unless it triggers a rule evaluation.</li>
-    <li><strong>Device information:</strong> Platform, browser type, timezone, and a generated device identifier are sent during registration so your organization can manage enrolled devices.</li>
-    <li><strong>Authentication tokens:</strong> Your sign-in credentials are exchanged for session tokens stored locally in <code>chrome.storage.local</code>.</li>
+    <li><strong>Hosted service</strong> — the closed-beta application we operate at <code>app.snapperprotect.com</code>, plus this marketing site (<code>snapperprotect.com</code>).</li>
+    <li><strong>Self-hosted deployment</strong> — Snapper installed and operated entirely on your own infrastructure.</li>
+    <li><strong>Browser extension</strong> — the client that intercepts AI-service traffic in your browser.</li>
   </ul>
 
-  <h2>Data Collected by the Web Application</h2>
-  <p>The Snapper web application (self-hosted by your organization) stores:</p>
+  <h2>Hosted Service (Closed Beta)</h2>
+  <p>When you use the hosted service at <code>app.snapperprotect.com</code>, McKinley Labs LLC operates the infrastructure and therefore acts as a data processor for the following:</p>
   <ul>
-    <li><strong>Audit logs:</strong> Records of all rule evaluations, including agent identity, command, tool name, decision, and timestamp.</li>
-    <li><strong>PII vault entries:</strong> Sensitive values you explicitly store are encrypted with AES-256-GCM before being written to the database. Encryption keys are derived from your organization's secret key.</li>
-    <li><strong>Agent and device registrations:</strong> Names, identifiers, and configuration for registered AI agents and browser extension devices.</li>
-    <li><strong>User accounts:</strong> Email, username, hashed password, and organization membership.</li>
+    <li><strong>Account data:</strong> email, username, hashed password, organization name, and membership.</li>
+    <li><strong>Waitlist / access requests:</strong> when you request beta access from this site, we store the email, use-case description, and marketing-attribution parameters (UTM source/medium/campaign, referrer, landing page) you submit, along with your IP address and browser user-agent. We use this solely to send you a beta invite and to understand which channels our beta interest comes from. We do not sell it.</li>
+    <li><strong>Audit logs &amp; evaluation records:</strong> records of rule evaluations (agent identity, command/tool metadata, decision, timestamp) generated by your agents.</li>
+    <li><strong>PII vault entries:</strong> sensitive values you explicitly store are encrypted with AES-256-GCM before being written to the database; encryption keys are derived from your organization's secret key.</li>
   </ul>
+  <p>Hosted-service data is stored on cloud infrastructure we operate. We use a small number of infrastructure sub-processors — our hosting provider, and, only where you enable AI-assisted features for your organization, the AI model providers you configure. We do not share your data with anyone else.</p>
 
-  <h2>Where Data Is Stored</h2>
-  <p>Snapper is a <strong>self-hosted</strong> application. All data is stored on infrastructure controlled by your organization. McKinley Labs LLC does not operate a cloud service and does not have access to your Snapper server, your audit logs, your PII vault, or any data processed by the extension.</p>
-  <p>The browser extension stores configuration and cached decisions locally in <code>chrome.storage.local</code>. No data is sent to any third party. All network communication is between the extension and your organization's Snapper server.</p>
+  <h2>Self-Hosted Deployments</h2>
+  <p>When your organization installs Snapper on its own infrastructure, <strong>all data stays on infrastructure your organization controls.</strong> McKinley Labs LLC does not operate that server and does not have access to your audit logs, PII vault, or evaluation data. In that model your organization is the data controller and this policy's hosted-service section does not apply.</p>
+
+  <h2>Browser Extension</h2>
+  <p>The Snapper browser extension monitors interactions between you and AI services (such as ChatGPT, Claude, and Gemini) to enforce your organization's policies. It collects:</p>
+  <ul>
+    <li><strong>AI service interactions:</strong> text submitted to supported AI services is scanned locally in your browser for PII and policy violations; the content is not transmitted unless a rule evaluation is triggered, in which case tool name, command, and relevant metadata are sent to the configured Snapper server.</li>
+    <li><strong>AI service visit tracking:</strong> if shadow-AI tracking is enabled, the extension records which AI services you visit (domain + timestamp only, not page content).</li>
+    <li><strong>Clipboard monitoring:</strong> if enabled, text pasted into AI services is scanned locally for PII; content is not transmitted unless it triggers a rule evaluation.</li>
+    <li><strong>Device information:</strong> platform, browser type, timezone, and a generated device identifier, sent at registration so your organization can manage enrolled devices.</li>
+    <li><strong>Authentication tokens:</strong> stored locally in <code>chrome.storage.local</code>.</li>
+  </ul>
+  <p>The extension communicates only with the Snapper server URL you or your administrator configure — which may be the hosted service or a self-hosted server. No analytics or third-party tracking is embedded in the extension.</p>
 
   <h2>Data Sharing</h2>
-  <p>We do not sell, rent, or share your data with any third party. The extension communicates only with the Snapper server URL configured by you or your organization's administrator. No analytics, telemetry, or tracking services are embedded in the extension or web application.</p>
+  <p>We do not sell or rent your data. We share data only with the sub-processors needed to operate the hosted service (listed above), and only as required by law. Self-hosted deployments and the extension communicate solely with the Snapper server you configure.</p>
 
   <h2>Data Retention</h2>
-  <p>Data retention is controlled by your organization's Snapper administrator. Audit logs, PII vault entries, and device registrations can be deleted at any time through the Snapper dashboard or API. The browser extension's local storage can be cleared by removing the extension or using Chrome's "Clear browsing data" feature.</p>
+  <p>For the hosted service, waitlist entries are retained until the closed beta ends or you ask us to delete them, whichever comes first. Account, audit, and vault data are retained for the life of your account and deleted on request. For self-hosted deployments, retention is entirely controlled by your organization's administrator.</p>
 
   <h2>Your Rights</h2>
-  <p>Because Snapper is self-hosted, your data rights are governed by your organization's policies. You can:</p>
-  <ul>
-    <li>View your stored data through the Snapper dashboard</li>
-    <li>Delete PII vault entries at any time</li>
-    <li>Remove your device registration</li>
-    <li>Uninstall the browser extension to stop all data collection</li>
-    <li>Contact your organization's Snapper administrator for data export or deletion requests</li>
-  </ul>
+  <p>You can request access to, export of, or deletion of your personal data at any time by contacting us (hosted service) or your organization's administrator (self-hosted). You can also uninstall the browser extension at any time to stop all extension data collection. If your organization requires a Data Processing Agreement (DPA), contact us and we'll provide one.</p>
 
   <h2>Security</h2>
-  <p>Snapper uses industry-standard security practices including AES-256-GCM encryption for PII vault entries, HKDF key derivation, bcrypt password hashing, JWT authentication with short-lived tokens, and HTTPS for all server communication. The extension enforces a configurable fail-safe mode (closed by default) when the server is unreachable.</p>
+  <p>Snapper uses AES-256-GCM encryption for PII vault entries, HKDF key derivation, bcrypt password hashing, JWT authentication with short-lived tokens, a tamper-evident audit hash chain, and HTTPS for all server communication. The extension enforces a configurable fail-safe mode (closed by default) when the server is unreachable.</p>
 
   <h2>Children's Privacy</h2>
-  <p>Snapper is not intended for use by individuals under the age of 18. We do not knowingly collect information from children.</p>
+  <p>Snapper is not intended for individuals under 18, and we do not knowingly collect information from children.</p>
 
   <h2>Changes to This Policy</h2>
-  <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+  <p>We may update this policy from time to time. Changes are posted here with an updated "Last updated" date.</p>
 
   <h2>Contact</h2>
-  <p>For privacy questions or concerns, contact us at <a href="mailto:support@mckinleylabsllc.com">support@mckinleylabsllc.com</a>.</p>
+  <p>For privacy questions, data export, or deletion requests, contact us at <a href="mailto:support@mckinleylabsllc.com">support@mckinleylabsllc.com</a>.</p>
 
   <p class="dim" style="margin-top: 40px;">McKinley Labs LLC &middot; Dallas, Texas</p>
 </div>
