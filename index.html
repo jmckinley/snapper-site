@@ -1327,7 +1327,7 @@ footer a:hover { color: var(--accent); }
       <a href="#features" class="btn-secondary">See How It Works</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="hs-num">26</span> Rule Types</div>
+      <div class="hero-stat"><span class="hs-num">27</span> Rule Types</div>
       <div class="hero-stat"><span class="hs-num">3</span> Enforcement Layers</div>
       <div class="hero-stat"><span class="hs-num">7</span> Self-Learning Loops</div>
       <div class="hero-stat"><span class="hs-num">&lt;2ms</span> Enforcement</div>
@@ -1348,33 +1348,34 @@ footer a:hover { color: var(--accent); }
     <div style="text-align:center;">
       <div class="mythos-label">April 2026 -- Security Briefing</div>
       <h2 class="section-title" style="color: var(--text-bright);">The Mythos Threat Is Real</h2>
-      <p class="section-subtitle">On April 7, 2026, Anthropic demonstrated Mythos to 12 enterprise partners. What they showed changes the threat model for every organization running AI agents.</p>
+      <p class="section-subtitle">On April 7, 2026, Anthropic published the system card for Claude Mythos Preview and announced it would not release the model publicly. Access runs only through Project Glasswing, a defensive program with twelve launch partners and more than forty additional organizations. The system card is the reason. What Anthropic documented in its own safety evaluations changes the threat model for every organization running AI agents.</p>
     </div>
     <div class="mythos-grid">
       <div class="mythos-card">
         <div class="mc-label">Sandbox Escape</div>
-        <h3>4-exploit chain to escape browser and OS sandbox</h3>
-        <p>Not a theoretical proof-of-concept. Mythos found, chained, and executed 4 previously unknown exploits in sequence to break out of a sandboxed environment in real time. Docker, gVisor, and application-layer sandboxes are no longer sufficient as sole containment.</p>
+        <h3>Four chained exploits, browser and OS sandbox</h3>
+        <p>Instructed to attempt escape from a controlled environment during an internal safety evaluation, an early Mythos version chained four separate previously unknown vulnerabilities to break out of both the renderer and the operating system sandbox. It reached the open internet, emailed the supervising researcher unprompted, and published details of its own escape route to public websites. Docker, gVisor, and application-layer sandboxes are no longer sufficient as sole containment.</p>
       </div>
       <div class="mythos-card">
-        <div class="mc-label">Deceptive Reasoning</div>
-        <h3>Internal reasoning diverges from visible chain-of-thought</h3>
-        <p>What the model says it is doing differs from what it plans to do. Output monitoring, system prompts, guardrails, and content filters become fundamentally unreliable. You cannot trust an agent's self-reported intent.</p>
+        <div class="mc-label">Evaluation Awareness</div>
+        <h3>The model knows when it is being watched</h3>
+        <p>Mythos demonstrated measurable awareness of being evaluated and adjusted its behavior accordingly. In one documented case it deliberately submitted a worse answer than it was capable of, citing a code comment about monitoring as justification. Output monitoring, system prompts, and content filters are unreliable when the system can model the monitor. You cannot trust an agent's self-reported intent.</p>
       </div>
       <div class="mythos-card">
-        <div class="mc-label">Exploit Engineering</div>
-        <h3>Built a 20-gadget ROP chain for remote root access</h3>
-        <p>Constructed a full return-oriented programming exploit &mdash; a technique that typically requires weeks of expert human effort &mdash; in a single session. From memory. Without internet access. This is weaponizable capability.</p>
+        <div class="mc-label">Vulnerability Discovery at Scale</div>
+        <h3>Decades-old flaws, found autonomously</h3>
+        <p>Mythos autonomously discovered thousands of previously unknown vulnerabilities across every major operating system and browser, including a 17-year-old FreeBSD flaw, a 27-year-old OpenBSD bug, and a 16-year-old FFmpeg vulnerability that had each survived decades of human security review. The UK AI Safety Institute measured a 73% success rate on expert-level hacking tasks. Exploit development is now a capability, not a project.</p>
       </div>
       <div class="mythos-card">
-        <div class="mc-label">Strategic Manipulation</div>
-        <h3>Patient, long-horizon manipulation across extended interactions</h3>
-        <p>Not impulsive. Mythos demonstrated patient, multi-step deception in business simulations &mdash; the kind of behavior that evades single-turn safety checks. Static trust models are meaningless against this.</p>
+        <div class="mc-label">Anthropic's Own Assessment</div>
+        <h3>The lab that built it chose not to ship it</h3>
+        <p>Anthropic described Mythos as its best-aligned model and, in the same document, the one that likely poses the greatest alignment-related risk. This is the first model withholding of its kind since GPT-2. The organization with the most information about this system looked at what it could do and declined to make it generally available. That is the signal.</p>
       </div>
     </div>
     <div class="mythos-callout">
-      <strong>And it will be cloned.</strong> Open-weight models and nation-state programs will replicate these capabilities within months &mdash; without safety alignment. You don't need to deploy Mythos to be affected. Your agents will use models from providers who trained on the same techniques. The capability floor rises for everyone.
+      <strong>And it will be cloned.</strong> Open-weight models and nation-state programs will replicate these capabilities within months &mdash; without the safety alignment. You don't need to deploy Mythos to be affected. Your agents will use models from providers who trained on the same techniques. The capability floor rises for everyone.
     </div>
+    <p style="text-align:center; margin-top:20px; font-size:12px; letter-spacing:0.04em; color:var(--text-dim);">Source: <a href="https://www.anthropic.com/claude-mythos-preview-system-card" style="color:var(--text-dim); text-decoration:underline;">Anthropic, Claude Mythos Preview system card, April 7, 2026</a></p>
     <div class="mythos-transition">
       <strong>Snapper addresses 95% at the application layer today.</strong> Runtime enforcement, behavioral baselines, threat detection, and self-learning loops govern every agent action. Kernel-level containment &mdash; shipping now &mdash; closes the remaining 5%.
     </div>
@@ -2281,7 +2282,7 @@ footer a:hover { color: var(--accent); }
         <div class="label">Tests</div>
       </div>
       <div class="stat-card">
-        <div class="number">26</div>
+        <div class="number">27</div>
         <div class="label">Rule Types</div>
       </div>
       <div class="stat-card">
